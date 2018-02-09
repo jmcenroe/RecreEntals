@@ -1,3 +1,6 @@
+var Sequelize = require('sequelize');
+var sequelize = require('../models/user.js'); //sequelize instance
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     id: {
@@ -28,10 +31,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       notEmpty: true,
       validation: {
-        isAlpha: true
-        len: [5,50],
+        isAlpha: true,
+        len: [5,50]
       },
-    }
+    },
     email: {
       type: DataTypes.STRING(10),
       allowNull: false,
@@ -77,8 +80,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(10),
       allowNull: false,
       defaultValue: 0
-    }
+    },
+    // Timestamps
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
   });
 
   return User;
 };
+
+module.exports = sequelize;

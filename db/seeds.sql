@@ -1,7 +1,6 @@
 use rentStuff;
 
-insert into users(username)
-
+insert into users(username);
 
 select * from users;
 
