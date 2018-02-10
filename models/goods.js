@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var sequelize = require('../models/goods.js'); //sequelize instance
+var sequelize = require('../models/goods.js'); 
 
 module.exports = function(sequelize, DataTypes) {
   var Goods = sequelize.define("Goods", {
@@ -25,20 +25,20 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
     },
-    // Timestamps
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
-	});
-  
-  Goods.associate = function(models) {
-    // Goods should belong to a user
-    // Goods can't be created without a User 
-    Goods.belongsTo(models.User, {
-        foreignKey: {
-        allowNull: false
-        }
-    });
-  };
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: 'rentStuff',
+    paranoid: true,
+    underscored: true
+  });
     
   return Goods;
 };

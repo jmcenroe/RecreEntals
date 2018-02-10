@@ -19,7 +19,8 @@ router.put('/user/update', function (req, res) {
 	db.User.update(
 		req.body, {
 			where: {
-				username: req.body.username
+				username: req.body.username,
+				password: req.body.username
 			}
 		}).then((data) => {
 

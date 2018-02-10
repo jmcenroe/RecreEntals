@@ -57,8 +57,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validation: {
         isNumeric: true,
-        len: [10],
-
+        len: [10]
       },
     },
     qtyrented: {
@@ -81,9 +80,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 0
     },
-    // Timestamps
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: 'rentStuff',
+    paranoid: true,
+    underscored: true,
   });
 
   return User;
