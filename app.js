@@ -4,15 +4,35 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var passport = require('./modules/passport/');
+
+//Passport authentication stuff
+const passport = require('passport');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
+//Passport app setup stuff
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({
+  store: new RedisStore({
+    url: config.redisStore.url
+  }),
+  secret: config.redisStore.secret,
+  resave: false,
+  saveUninitialized: false
+}));
+
+
 var db = require('./modules/models');
 var seed = require('./seeders/seeds');
+
+var PORT = process.env.PORT || 8080;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(passport);
+
 
 app.use('/', index);
 app.use('/users', users);
