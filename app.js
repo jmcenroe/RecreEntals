@@ -5,14 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+<<<<<<< HEAD
 //Passport authentication stuff
 const passport = require('passport');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
 
+=======
+
+
+console.log('got here');
+>>>>>>> 22ec338d33a18047d0107f60d4b24e373e5428f7
 var index = require('./routes/index');
+
 var users = require('./routes/users');
+
+
+var db = require('./app/db');
+var seed = require('./seeders/seeds');
 
 var app = express();
 
@@ -46,9 +57,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 
 app.use('/', index);
 app.use('/users', users);
+=======
+// app.use('/', index);
+// app.use('/users', users);
+>>>>>>> 22ec338d33a18047d0107f60d4b24e373e5428f7
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,6 +86,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+<<<<<<< HEAD
+=======
+var PORT = process.env.PORT || 3001;
+
+>>>>>>> 22ec338d33a18047d0107f60d4b24e373e5428f7
 db.sequelize.sync({
   force: true
 })
