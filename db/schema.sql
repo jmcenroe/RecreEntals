@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rentStuff;
+DROP DATABASE IF EXISTS rentmystuff;
 
-CREATE DATABASE rentStuff;
+CREATE DATABASE rentmystuff;
 
-USE rentStuff;
+USE rentmystuff;
 
 CREATE TABLE users (
 id INT(10) NOT NULL AUTO_INCREMENT,
