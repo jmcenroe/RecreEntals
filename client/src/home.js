@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import Profile from './components/profile';
 import Splash from './components/splash';
 import AllProducts from './components/all-products';
+import About from './components/about';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
 
@@ -20,6 +21,7 @@ class App extends Component {
       <h3>A place to rent (and rent out) the small stuff (and the big stuff).</h3>
       <Profile />
       <AllProducts />
+      <About />
       </div> 
     );
   }

@@ -2,6 +2,7 @@
 // search bar that carries over to all pages except home.js
 import React, { Component } from 'react';
 import '../App.css';
+import logo from '../assets/img/recre-entals-black.gif';
 
 // class Header extends Component {
 //   render() {
@@ -13,7 +14,7 @@ import '../App.css';
 //         <a className="navbar-brand" href="#">Logo Goes Here</a>
 //         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 //           <ul className="navbar-nav mr-auto">
-//             <li className="nav-item active">
+//             <li className="nav-item active"> 
 //               <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
 //             </li>
 //             <li className="nav-item">

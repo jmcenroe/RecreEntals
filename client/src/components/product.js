@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import logo from '../assets/img/recre-entals-black.gif';
 
 class Product extends Component{
     render(){

@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Product from './product';
 import '../App.css';
+import logo from '../assets/img/recre-entals-black.gif';
 
 function loopReturn(){
     let toReturn = [];

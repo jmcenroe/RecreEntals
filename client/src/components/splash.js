@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import '../App.css';
+import logo from '../assets/img/recre-entals-black.gif';
 
 class Splash extends Component {
     render() {
@@ -13,7 +14,7 @@ class Splash extends Component {
                 <div className = "row">
                     <div className = "col-2 col-sm-12">
                         <div className="logo">
-                            <img alt="logo" href="#" />
+                            <img alt="RecreEntals" className="logo" src={logo} />
                         </div>
                     </div>
                 </div>
