@@ -5,8 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+console.log('got here');
 var index = require('./routes/index');
+
 var users = require('./routes/users');
+
+var db = require('./app/db');
+var seed = require('./seeders/seeds');
 
 var app = express();
 
@@ -41,6 +47,22 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+var PORT = process.env.PORT || 3000;
+
+db.sequelize.sync({
+  force: true
+})
+//Run seed functions to populate database
+.then(function () {
+  var promise = seed(db);
+  console.log('This is our promise:', promise);
+  promise.then(function () {
+    app.listen(PORT, function () {
+      console.log("App listening on PORT " + PORT);
+    });
+  });
 });
 
 module.exports = app;
