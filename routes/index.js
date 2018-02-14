@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var db = require('../models');
+var db = require('../app/db');
 var path = require('path');
 
 // Launches shop
