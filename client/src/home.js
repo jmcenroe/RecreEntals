@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
       <Splash />
-      Welcome to RecreEntals. 
+      <h1>Welcome to <img src=""/></h1>
       <Profile />
       <AllProducts />
       </div> 
