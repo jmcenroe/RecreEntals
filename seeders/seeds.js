@@ -1,21 +1,5 @@
 function seedModel1(db) {
     const returnablePromise = Promise.all([
-<<<<<<< HEAD
-
-        db.User.create({
-            username: 'sampleuser',
-            password: 'password'
-        }),
-        db.User.create({
-            username: 'Chris',
-            password: 'Chris123'
-        })
-    
-    ]);
-
-    return returnablePromise;
-}
-=======
         db.User.create({
             username: 'sampleUser', 
             password: 'password',
@@ -53,7 +37,6 @@ function seedModel2(db) {
 }
         
 
->>>>>>> 22ec338d33a18047d0107f60d4b24e373e5428f7
 
 
 function seed(db) {
@@ -62,12 +45,8 @@ function seed(db) {
     console.log('Trying seeds');
     return Promise.all([
 
-<<<<<<< HEAD
-        seedModel1(db)
-=======
         seedModel1(db),
         seedModel2(db)
->>>>>>> 22ec338d33a18047d0107f60d4b24e373e5428f7
 
     ]);
 }
