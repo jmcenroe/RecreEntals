@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 
 
 
+
+
+
+
 console.log('got here');
 var index = require('./routes/index');
 
@@ -17,6 +21,18 @@ var db = require('./app/db');
 var seed = require('./seeders/seeds');
 
 var app = express();
+
+//Passport app setup stuff
+//Passport authentication stuff
+const passport = require('passport');
+const session = require('express-session');
+
+app.use(session({ secret: 'secret'}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+var PORT = process.env.PORT || 8080;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,8 +46,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', index);
-// app.use('/users', users);
+
+app.use('/', index);
+app.use('/users', users);
+
+//Authentication hooks
+require('./app/authentication').localAuth(app);
+require('./app/authentication').googleAuth(app);
+require('./app/authentication').facebookAuth(app);
+require('./app/authentication').universalAuth(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,6 +63,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
