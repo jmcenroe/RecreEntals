@@ -8,6 +8,7 @@ import Profile from './components/profile';
 import Splash from './components/splash';
 import AllProducts from './components/all-products';
 import './App.css';
+import logo from './assets/img/recre-entals-black.gif';
 
 
 class App extends Component {
@@ -15,7 +16,8 @@ class App extends Component {
     return (
       <div>
       <Splash />
-      <h1>Welcome to <img src=""/></h1>
+      <h1>Welcome to <p><img className="logo" src={logo}/></p></h1>
+      <h3>A place to rent (and rent out) the small stuff (and the big stuff).</h3>
       <Profile />
       <AllProducts />
       </div> 
