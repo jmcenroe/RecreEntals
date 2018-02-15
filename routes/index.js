@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var db = require('../app/db');
 var path = require('path');
-var passport = require('../modules/passport/passport');
+const passport = require('passport');
 
 // Launches shop
 router.route('/:username').get(function (req, res) {

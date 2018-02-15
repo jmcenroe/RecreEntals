@@ -5,10 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//Passport authentication stuff
-const passport = require('passport');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
+
+
 
 
 
@@ -25,20 +23,14 @@ var seed = require('./seeders/seeds');
 var app = express();
 
 //Passport app setup stuff
+//Passport authentication stuff
+const passport = require('passport');
+const session = require('express-session');
+
+app.use(session({ secret: 'secret'}));
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({
-  store: new RedisStore({
-    url: config.redisStore.url
-  }),
-  secret: config.redisStore.secret,
-  resave: false,
-  saveUninitialized: false
-}));
-
-
-var db = require('./modules/models');
-var seed = require('./seeders/seeds');
 
 var PORT = process.env.PORT || 8080;
 
@@ -57,6 +49,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+//Authentication hooks
+require('./app/authentication').localAuth(app);
+require('./app/authentication').googleAuth(app);
+require('./app/authentication').facebookAuth(app);
+require('./app/authentication').universalAuth(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
