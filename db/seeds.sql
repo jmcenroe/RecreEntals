@@ -1,9 +1,8 @@
-use rentStuff;
+use rentmystuff;
 
 insert into users(username)
 
-
 select * from users;
 
-select * from goods;
+select * from item;
 
