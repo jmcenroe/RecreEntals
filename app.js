@@ -5,13 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
-
-
-
-
-
-console.log('got here');
+var apiRoutes = require('./routes/api');
 var index = require('./routes/index');
 
 var users = require('./routes/users');
@@ -75,6 +69,15 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// Define apiRoutes
+// app.use("/api", apiRoutes);
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 var PORT = process.env.PORT || 3001;
