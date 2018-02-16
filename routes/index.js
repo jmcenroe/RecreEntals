@@ -1,7 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const db = require('../app/db');
-const path = require('path');
+var express = require("express");
+var router = express.Router();
+var db = require('../app/db');
+var path = require('path');
+const passport = require('passport');
 
 // Sets up initial splash page
 router.route('/').get(function (req, res) {
@@ -76,9 +77,19 @@ router.post('/user/:username/products/:product', function (req, res) {
 	});
 });
 
-// Sets up sign in page
-router.route('/signin').get(function (req, res) {
-	res.sendFile(path.join(__dirname, '../signin.html'));
+router.get('/', function (req,res) {
+	res.sendFile(path.join(__dirname, '../samples/userform.html'));
 });
+
+router.get('/success', function (req,res) {
+	res.send('Congratulations, you\'ve signed in');
+});
+
+
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/success',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
 
 module.exports = router;
