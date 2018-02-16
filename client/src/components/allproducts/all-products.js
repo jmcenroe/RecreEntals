@@ -1,8 +1,8 @@
 // product grid of all products for rent 
 
 import React, { Component } from 'react';
-import Product from './product';
-import '../App.css';
+import Product from '../product';
+import './all-products.css';
 
 function loopReturn(){
     let toReturn = [];

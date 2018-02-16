@@ -2,4 +2,4 @@
 // photo of item for rent, title, description, cost, seller rating 
 
 import React, { Component } from 'react';
-import '../App.css';
+import '../app.css';
