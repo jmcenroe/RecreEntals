@@ -4,7 +4,7 @@
 // log in modal (form, FB/G+ authentication)
 
 import React, { Component } from 'react';
-import '../App.css';
+import './splash.css';
 
 class Splash extends Component {
     render() {
