@@ -1,14 +1,19 @@
-var express = require("express");
-var router = express.Router();
-var db = require('../app/db');
-var path = require('path');
+const express = require("express");
+const router = express.Router();
+const db = require('../app/db');
+const path = require('path');
 
-// Launches shop
-router.route('/:username').get(function (req, res) {
-	res.sendFile(path.join(__dirname, '../index.html'));
+// Sets up initial splash page
+router.route('/').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../splash.html'));
 });
 
-//Update user information
+// Show User Profile
+router.route('/user').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../profile.html'));
+});
+
+// Update user information
 router.put('/user/update', function (req, res) {
 
 	db.User.update(
@@ -20,10 +25,9 @@ router.put('/user/update', function (req, res) {
 
 		res.json(data);
 	});
-
 });
 
-//Find existing user data
+// Find existing user data
 router.get('/user/:username', function (req, res) {
 
 	db.User.findOne({
@@ -34,10 +38,9 @@ router.get('/user/:username', function (req, res) {
 
 		res.json(data);
 	});
-
 });
 
-//Add new user to database
+// Add new user to database
 router.post('/user/:username', function (req, res) {
 
 	Promise.all([
@@ -48,6 +51,34 @@ router.post('/user/:username', function (req, res) {
 
 		res.json(data);
 	});
+});
+
+// List of all products
+router.route('/products').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../product.html'));
+});
+
+// Single product detail
+router.route('/product-detail').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../product-detail.html'));
+});
+
+// Add new product to database
+router.post('/user/:username/products/:product', function (req, res) {
+
+	Promise.all([
+		db.Product.create({
+		productsname: req.params.productsname
+    }),
+  ]).then((data) => {
+
+		res.json(data);
+	});
+});
+
+// Sets up sign in page
+router.route('/signin').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../signin.html'));
 });
 
 module.exports = router;
