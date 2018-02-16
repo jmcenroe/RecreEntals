@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../app/db');
 const path = require('path');
 
+
 // Sets up initial splash page
 router.route('/').get(function (req, res) {
 	res.sendFile(path.join(__dirname, '../splash.html'));
@@ -80,5 +81,24 @@ router.post('/user/:username/products/:product', function (req, res) {
 router.route('/signin').get(function (req, res) {
 	res.sendFile(path.join(__dirname, '../signin.html'));
 });
+
+router.get('/login', function (req,res) {
+	
+});
+
+router.get('/', function (req,res) {
+	res.sendFile(path.join(__dirname, '../samples/userform.html'));
+});
+
+router.get('/success', function (req,res) {
+	res.send('Congratulations, you\'ve signed in');
+});
+
+
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/success',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
 
 module.exports = router;
