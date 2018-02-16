@@ -41,8 +41,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', index);
-app.use('/users', users);
+// app.use('/', index);
+// app.use('/users', users);
 
 //Authentication hooks
 require('./app/authentication').localAuth(app);
@@ -50,6 +50,16 @@ require('./app/authentication').googleAuth(app);
 require('./app/authentication').facebookAuth(app);
 require('./app/authentication').universalAuth(app);
 
+// Define apiRoutes
+app.use("/api", apiRoutes);
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+var PORT = process.env.PORT || 3001;
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,17 +80,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// Define apiRoutes
-// app.use("/api", apiRoutes);
-
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-var PORT = process.env.PORT || 3001;
 
 db.sequelize.sync({
   force: true
