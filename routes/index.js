@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require('../app/db');
 const path = require('path');
+const passport = require('passport');
 
 
 // Sets up initial splash page
