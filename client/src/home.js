@@ -8,6 +8,7 @@ import Profile from './components/profile';
 import Splash from './components/splash';
 import AllProducts from './components/all-products';
 import './App.css';
+import NavBar from './components/header.js';
 import logo from './assets/img/recre-entals-black.gif';
 
 
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div>
       <Splash />
+      <NavBar />
       <h1>Welcome to <p><img className="logo" src={logo}/></p></h1>
       <h3>A place to rent (and rent out) the small stuff (and the big stuff).</h3>
       <Profile />
