@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import Product from './product';
-import '../App.css';
 
 function loopReturn(){
     let toReturn = [];
