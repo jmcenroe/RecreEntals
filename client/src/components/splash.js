@@ -18,11 +18,11 @@ class Splash extends Component {
                         </div>
                     </div>
                 </div>
-                <div className = "row">
+                <div className ="row">
                     <button>Sign Up</button>
                     <button>Log In</button>
                 </div>
-                <div className = "row">
+                <div className ="row">
                     <a href="#">Continue as guest</a>
                 </div>
             </div>
