@@ -43,9 +43,13 @@ componentDidMount() {
                   : ""
               }
             >
-              <Link to="/">Home</Link>
+              <Link to="/">Sign In / Sign Up</Link>
             </li>
-          
+            <li
+              className={window.location.pathname === "/home" ? "active" : ""}
+            >
+              <Link to="/home">Home</Link>
+            </li>
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
             >
@@ -56,6 +60,7 @@ componentDidMount() {
             >
               <Link to="/profile">Profile</Link>
             </li>
+            
             
                 
           </ul>  
