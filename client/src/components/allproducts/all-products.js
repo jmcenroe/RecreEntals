@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 import Product from '../product';
+// import '../App.css';
+import logo from '../../assets/img/recre-entals-black.gif';
+// import Product from '../product';
 import './all-products.css';
 
 function loopReturn(){

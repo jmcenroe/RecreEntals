@@ -4,6 +4,8 @@
 // log in modal (form, FB/G+ authentication)
 
 import React, { Component } from 'react';
+// import '../App.css';
+import logo from '../../assets/img/recre-entals-black.gif';
 import './splash.css';
 
 class Splash extends Component {
@@ -13,15 +15,15 @@ class Splash extends Component {
                 <div className = "row">
                     <div className = "col-2 col-sm-12">
                         <div className="logo">
-                            <img alt="logo" href="#" />
+                            <img alt="RecreEntals" className="logo" src={logo} />
                         </div>
                     </div>
                 </div>
-                <div className = "row">
+                <div className ="row">
                     <button>Sign Up</button>
                     <button>Log In</button>
                 </div>
-                <div className = "row">
+                <div className ="row">
                     <a href="#">Continue as guest</a>
                 </div>
             </div>

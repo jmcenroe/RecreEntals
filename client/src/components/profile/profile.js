@@ -1,5 +1,7 @@
 // user profile page to edit / public profile 
 import React, { Component } from 'react';
+// import '../App.css';
+import logo from '../../assets/img/recre-entals-black.gif';
 import './profile.css';
 
 
