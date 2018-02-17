@@ -6,8 +6,12 @@ class Home extends Component{
     render(){
         return(
             <div className>
-            <h1>Hi</h1>
-                <i className="fas fa-football-ball"></i>
+                <h2>Browse by Category</h2>
+                <h3>Small Sporting Goods</h3>
+                <p><i className="fas fa-football-ball"></i></p>
+                <h3>Snow Equipment</h3>
+                <p><i className="fas fa-snowflake"></i></p>
+                
             </div>
         );
     }
