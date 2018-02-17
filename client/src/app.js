@@ -11,7 +11,7 @@ import Wrapper from "./components/wrapper";
 import Container from './components/container';
 import Navbar from "./components/navbar";
 import Search from './components/allproducts';
-import './app.css';
+import '../src/App.css';
 import logo from './assets/img/recre-entals-black.gif';
 
 
