@@ -37,8 +37,6 @@ body {
 #splash {
   height: 100%;
   width: 100%;
-  background-image: url('./bg.jpg');
-  background-size: cover;
 }
 
 .product{

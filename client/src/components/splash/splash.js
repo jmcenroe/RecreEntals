@@ -4,8 +4,8 @@
 // log in modal (form, FB/G+ authentication)
 
 import React, { Component } from 'react';
-// import '../App.css';
 import logo from '../../assets/img/recre-entals-black.gif';
+import background from '../../assets/img/daytime.jpg';
 import './splash.css';
 
 class Splash extends Component {
@@ -14,9 +14,12 @@ class Splash extends Component {
             <div className="container-fluid" id="splash">
                 <div className = "row">
                     <div className = "col-2 col-sm-12">
+<<<<<<< HEAD
                         <div className="logo">
                         Welcome to RecreEntals.
                         </div>
+=======
+>>>>>>> dj-mods
                     </div>
                 </div>
                 <div className ="row">

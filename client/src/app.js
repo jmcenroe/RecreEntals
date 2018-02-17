@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Container>
+        <Container fluid={true} >
           <Navbar/>
           <Wrapper>
             <Route exact path='/' component={Splash}/>
