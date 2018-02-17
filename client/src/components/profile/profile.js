@@ -1,7 +1,11 @@
 // user profile page to edit / public profile 
 import React, { Component } from 'react';
+<<<<<<< HEAD:client/src/components/profile.js
 import '../App.css';
 import logo from '../assets/img/recre-entals-black.gif';
+=======
+import './profile.css';
+>>>>>>> f0e05b649d12378e666f87200bd95603e0f9f1f5:client/src/components/profile/profile.js
 
 
 class Profile extends Component {

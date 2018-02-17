@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rentStuff;
+DROP DATABASE IF EXISTS rentmystuff;
 
-CREATE DATABASE rentStuff;
+CREATE DATABASE rentmystuff;
 
-USE rentStuff;
+USE rentmystuff;
 
 CREATE TABLE users (
 id INT(10) NOT NULL AUTO_INCREMENT,
@@ -19,9 +19,9 @@ acctage INT(5) NOT NULL
 PRIMARY KEY(id)
 );
 
-CREATE TABLE goods (
+CREATE TABLE products (
 id INT(10) NOT NULL AUTO_INCREMENT,
-goodsname VARCHAR(30) NOT NULL,
+productsname VARCHAR(30) NOT NULL,
 price INT(10) NOT NULL,
 available BOOLEAN NOT NULL,
 PRIMARY KEY(id)

@@ -1,14 +1,21 @@
-var express = require("express");
-var router = express.Router();
-var db = require('../app/db');
-var path = require('path');
+const express = require("express");
+const router = express.Router();
+const db = require('../app/db');
+const path = require('path');
+const passport = require('passport');
 
-// Launches shop
-router.route('/:username').get(function (req, res) {
-	res.sendFile(path.join(__dirname, '../index.html'));
+
+// Sets up initial splash page
+router.route('/').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../splash.html'));
 });
 
-//Update user information
+// Show User Profile
+router.route('/user').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../profile.html'));
+});
+
+// Update user information
 router.put('/user/update', function (req, res) {
 
 	db.User.update(
@@ -20,10 +27,9 @@ router.put('/user/update', function (req, res) {
 
 		res.json(data);
 	});
-
 });
 
-//Find existing user data
+// Find existing user data
 router.get('/user/:username', function (req, res) {
 
 	db.User.findOne({
@@ -34,10 +40,9 @@ router.get('/user/:username', function (req, res) {
 
 		res.json(data);
 	});
-
 });
 
-//Add new user to database
+// Add new user to database
 router.post('/user/:username', function (req, res) {
 
 	Promise.all([
@@ -49,5 +54,58 @@ router.post('/user/:username', function (req, res) {
 		res.json(data);
 	});
 });
+
+// List of all products
+router.route('/products').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../product.html'));
+});
+
+// Single product detail
+router.route('/product-detail').get(function (req, res) {
+	res.sendFile(path.join(__dirname, '../product-detail.html'));
+});
+
+// Add new product to database
+router.post('/user/:username/products/:product', function (req, res) {
+
+	Promise.all([
+		db.Product.create({
+		productsname: req.params.productsname
+    }),
+  ]).then((data) => {
+
+		res.json(data);
+	});
+});
+
+router.get('/', function (req,res) {
+	res.sendFile(path.join(__dirname, '../samples/userform.html'));
+});
+
+router.get('/success', function (req,res) {
+	res.send('Congratulations, you\'ve signed in');
+});
+
+<<<<<<< HEAD
+=======
+router.get('/login', function (req,res) {
+	
+});
+
+router.get('/', function (req,res) {
+	res.sendFile(path.join(__dirname, '../samples/userform.html'));
+});
+
+router.get('/success', function (req,res) {
+	res.send('Congratulations, you\'ve signed in');
+});
+
+>>>>>>> c7de10edc231ac9cd9553752e922bf7f15c76b92
+
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/success',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
 
 module.exports = router;

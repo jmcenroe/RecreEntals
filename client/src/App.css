@@ -50,3 +50,25 @@ body {
 .products{
   text-align: center;
 }
+
+@-webkit-keyframes bgTrans {
+  0% {
+    
+  } 50% {
+
+  } 100% {
+
+  }
+}
+
+@-moz-keyframes bgTrans {
+
+}
+
+@-o-keyframes bgTrans {
+
+}
+
+@keyframes bgTrans {
+
+}
