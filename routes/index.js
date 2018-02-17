@@ -86,21 +86,6 @@ router.get('/success', function (req,res) {
 	res.send('Congratulations, you\'ve signed in');
 });
 
-<<<<<<< HEAD
-=======
-router.get('/login', function (req,res) {
-	
-});
-
-router.get('/', function (req,res) {
-	res.sendFile(path.join(__dirname, '../samples/userform.html'));
-});
-
-router.get('/success', function (req,res) {
-	res.send('Congratulations, you\'ve signed in');
-});
-
->>>>>>> c7de10edc231ac9cd9553752e922bf7f15c76b92
 
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/success',

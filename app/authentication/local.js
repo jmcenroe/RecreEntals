@@ -14,6 +14,7 @@ const salt = bcrypt.genSaltSync(saltRounds)
 
 
 function initPassportLocal() {
+    console.log('Getting to authentication');
     passport.use(new LocalStrategy(
         (username, password, done) => {
             findUser(username, (err, user) => {

@@ -7,22 +7,22 @@ import React, { Component } from 'react';
 import './splash.css';
 
 class Splash extends Component {
+
+    
+
     render() {
         return(
             <div className="container-fluid" id="splash">
+                <h2>Sign in</h2>
                 <div className = "row">
-                    <div className = "col-2 col-sm-12">
-                        <div className="logo">
-                            <img alt="logo" href="#" />
-                        </div>
-                    </div>
+                <form action="/api/login" method="post">
+                    <input name="username" id="username" type="text" placeholder="Your username" />
+                    <input name="password" id="password" type="password" placeholder="Your password"/>
+                    <input type="submit" />
+                </form>
                 </div>
                 <div className = "row">
-                    <button>Sign Up</button>
-                    <button>Log In</button>
-                </div>
-                <div className = "row">
-                    <a href="#">Continue as guest</a>
+                <a href="/auth/google">Sign In with Google</a>
                 </div>
             </div>
         );
