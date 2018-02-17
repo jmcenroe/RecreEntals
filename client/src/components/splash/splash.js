@@ -15,7 +15,7 @@ class Splash extends Component {
                 <div className = "row">
                     <div className = "col-2 col-sm-12">
                         <div className="logo">
-                            <img alt="RecreEntals" className="logo" src={logo} />
+                        Welcome to RecreEntals.
                         </div>
                     </div>
                 </div>

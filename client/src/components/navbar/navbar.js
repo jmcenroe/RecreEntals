@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-
+import logo from '../../assets/img/recre-entals-black.gif';
+// white logo commented out for now
+// import logoWhite from '../../assets/img/recre-entals-white.gif';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 class Navbar extends Component {
@@ -30,7 +32,7 @@ componentDidMount() {
       
           <div className="navbar-header">
             <span className="navbar-brand">
-              NYT Search and Save
+            <img alt="RecreEntals" className="logo" src={logo} />
             </span>
           </div>
           <ul className="nav navbar-nav">
