@@ -11,6 +11,7 @@ import Wrapper from "./components/wrapper";
 import Container from './components/container';
 import Navbar from "./components/navbar";
 import Search from './components/allproducts';
+import Home from './components/home';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
 
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path='/' component={Splash}/>
             <Route exact path='/products' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/home' component={Home}/>
           </Wrapper>
         </Container>
       </Router>
