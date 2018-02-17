@@ -4,6 +4,8 @@
 // log in modal (form, FB/G+ authentication)
 
 import React, { Component } from 'react';
+// import '../App.css';
+import logo from '../../assets/img/recre-entals-black.gif';
 import './splash.css';
 
 class Splash extends Component {
@@ -15,14 +17,18 @@ class Splash extends Component {
             <div className="container-fluid" id="splash">
                 <h2>Sign in</h2>
                 <div className = "row">
-                <form action="/api/login" method="post">
-                    <input name="username" id="username" type="text" placeholder="Your username" />
-                    <input name="password" id="password" type="password" placeholder="Your password"/>
-                    <input type="submit" />
-                </form>
+                    <div className = "col-2 col-sm-12">
+                        <div className="logo">
+                        Welcome to RecreEntals.
+                        </div>
+                    </div>
                 </div>
-                <div className = "row">
-                <a href="/auth/google">Sign In with Google</a>
+                <div className ="row">
+                    <button>Sign Up</button>
+                    <button>Log In</button>
+                </div>
+                <div className ="row">
+                    <a href="#">Continue as guest</a>
                 </div>
             </div>
         );

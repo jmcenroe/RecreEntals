@@ -2,7 +2,7 @@
 // photo of item for rent, title, description, cost, seller rating 
 
 import React, { Component } from 'react';
-import '../App.css';
+// import '../App.css';
 import logo from '../assets/img/recre-entals-black.gif';
 import NavBar from './header.js';
 import Row from './BSstuff.js';
