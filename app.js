@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var apiRoutes = require('./routes/api');
+
 var index = require('./routes/index');
 
 var users = require('./routes/users');
@@ -18,7 +18,7 @@ var app = express();
 
 //Passport app setup stuff
 //Passport authentication stuff
-const passport = require('passport');
+var passport = require('passport');
 const session = require('express-session');
 
 app.use(session({ secret: 'secret'}));
@@ -44,14 +44,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', index);
 // app.use('/users', users);
 
-//Authentication hooks
-require('./app/authentication').localAuth(app);
-require('./app/authentication').googleAuth(app);
-require('./app/authentication').facebookAuth(app);
-require('./app/authentication').universalAuth(app);
 
 // Define apiRoutes
-app.use("/api", apiRoutes);
+
+// const newpassport = require('./app/authentication/index.js');
+// console.log(newpassport);
+require('./app/authentication')(passport);
+require('./routes/authentication')(app, passport);
+
+
 
 // Send every request to the React app
 // Define any API routes before this runs

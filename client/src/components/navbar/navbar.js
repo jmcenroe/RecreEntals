@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import logo from '../../assets/img/recre-entals-black.gif';
+import Auth from '../../modules/Auth';
+import API from '../../utils/API';
 // white logo commented out for now
 // import logoWhite from '../../assets/img/recre-entals-white.gif';
 
@@ -16,10 +18,22 @@ class Navbar extends Component {
 state = {
   lists: [],
   activeList: '',
-  changeList: ''
+  changeList: '',
+  message: 'Not Signed In'
 }
 
 componentDidMount() {
+  API.checkAuth().then( (data) => {
+    if (data.data.auth) {
+
+    
+      this.setState({
+      message: data.data.displayName
+      })
+    }
+  });
+
+ 
 
 }
 
@@ -34,6 +48,9 @@ componentDidMount() {
             <span className="navbar-brand">
             <img alt="RecreEntals" className="logo" src={logo} />
             </span>
+          </div>
+          <div className='message'>
+            <span>{this.state.message}</span>
           </div>
           <ul className="nav navbar-nav">
             <li

@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Profile from './components/profile';
-import Splash from './components/splash';
+import Splash from './pages/splashpage';
 import Wrapper from "./components/wrapper";
 import Container from './components/container';
 import Navbar from "./components/navbar";
@@ -14,7 +14,7 @@ import Search from './components/allproducts';
 import Home from './components/home';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
-
+import Auth from './modules/Auth';
 
 class App extends Component {
   render() {
