@@ -8,7 +8,11 @@ import React, { Component } from 'react';
 import logo from '../../assets/img/recre-entals-black.gif';
 import './splash.css';
 
-class Splash extends Component {
+class Splash extends Component {;
+
+    componentDidMount() {
+        console.log(window.sessionStorage);
+    }
 
     
 
@@ -28,7 +32,7 @@ class Splash extends Component {
                     <button>Log In</button>
                 </div>
                 <div className ="row">
-                    <a href="#">Continue as guest</a>
+                    <a href="/auth/google">Or Sign In with Google</a>
                 </div>
             </div>
         );

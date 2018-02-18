@@ -27,8 +27,26 @@ module.exports = function (app, passport) {
 			res.redirect('/profile', passport.middleware());
 		});
 
-	app.get('/auth/test', function (req, res) {
+	app.get('/auth/check', function (req, res) {
+		let data = {
+			auth: req.isAuthenticated()
+		};
 
+		if (req.user) {
+			data.id = req.user.id;
+			data.displayName = req.user.displayName;
+		}
+
+		res.json(data);
+	});
+
+	app.get('/auth/getUser', function (req, res) {
+		if (req.user) {
+			return req.user.displayName;
+		}
+		else {
+			return null;
+		}
 	});
 
 	app.get('/auth/facebook', passport.authenticate('facebook'));

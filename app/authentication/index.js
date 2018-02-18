@@ -22,7 +22,7 @@ module.exports = function (passport) {
   }
 
   passport.serializeUser(function (user, cb) {
-    console.log('getting any of this');
+    console.log('new phrase');
     cb(null, user.displayName)
   });
 
@@ -57,8 +57,7 @@ module.exports = function (passport) {
       callbackURL: 'http://localhost:3001/auth/google/callback'
     },
     function (accessToken, refreshToken, profile, done) {
-
-      console.log(profile);
+      
       db.User.findOrCreate({
           where: {
             otherId: profile.id
@@ -69,11 +68,7 @@ module.exports = function (passport) {
           }
         })
         .spread((user, created) => {
-          console.log(user.get({
-            plain: true
-          }))
-          console.log(created)
-          console.log(user);
+          console.log(accessToken);
           return done(null, user);
         })
     }));

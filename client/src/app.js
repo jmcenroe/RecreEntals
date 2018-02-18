@@ -13,7 +13,7 @@ import Navbar from "./components/navbar";
 import Search from './components/allproducts';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
-
+import Auth from './modules/Auth';
 
 class App extends Component {
   render() {
