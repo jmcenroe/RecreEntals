@@ -1,7 +1,19 @@
 nav.navbar.navbar-default {
   margin-bottom: 0;
+  border-radius: 3%;
+  box-shadow: 2px 2px darkgrey;
+  background-image: url('../../assets/img/wood.jpg');
 }
 
+#logo{
+  height: 100%;
+  width: 120%;
+}
+
+#options{
+  text-align: right;
+  text-shadow: 1px 1px black;
+}
 
 li.navbar-text {
   overflow: auto;
