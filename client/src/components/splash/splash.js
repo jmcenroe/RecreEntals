@@ -26,7 +26,6 @@ class Splash extends Component {
                 <h2>Sign in</h2>
                 <div className = "row">
                     <div className = "col-2 col-sm-12">
-<<<<<<< HEAD
                         <div className="logo">
                         Welcome to RecreEntals.
                         <span style={{
@@ -34,8 +33,6 @@ class Splash extends Component {
                             'paddingLeft': '20px'
                         }}>{this.state.errorMessage}</span>
                         </div>
-=======
->>>>>>> dj-mods
                     </div>
                 </div>
                 <div className ="row">

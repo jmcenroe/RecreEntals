@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import Row from "../row";
 import "./navbar.css";
-import Col from "../col";
 import logoWhite from "../../assets/img/recre-entals-white.gif";
 import logo from '../../assets/img/recre-entals-black.gif';
 import Auth from '../../modules/Auth';
@@ -44,11 +42,11 @@ componentDidMount() {
    
     return <nav className="navbar navbar-default">
     <div className="container-fluid">
-      <Row>
-        <Col size="3">
+      <div className="row justify-content-between">
+        <div className="col">
           <div className="navbar-header">
             <span className="navbar-brand">
-            <img alt="RecreEntals" className="logo" src={logoWhite} />
+            <img alt="RecreEntals" id="logo" src={logoWhite} />
             </span>
           </div>
           <div className='message'>
@@ -60,8 +58,8 @@ componentDidMount() {
                 : ''}
             </span>
           </div>
-        </Col>
-        <Col size="3" className="col-3 offset-sm-6 offset-md-6 offset-lg-6" id="options">
+        </div>
+        <div className="col" id="options">
           <ul className="navbar-nav">
             <li
               className={
@@ -91,9 +89,9 @@ componentDidMount() {
             
                 
           </ul> 
-        </Col> 
+        </div> 
         
-        </Row>
+        </div>
     </div>
   </nav>;
 
