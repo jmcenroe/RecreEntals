@@ -3,9 +3,15 @@ import React, { Component } from 'react';
 // import '../App.css';
 import logo from '../../assets/img/recre-entals-black.gif';
 import './profile.css';
+import Auth from '../../modules/Auth';
 
 
 class Profile extends Component {
+
+  componentDidMount() {
+    console.log(Auth.isUserAuthenticated());
+  }
+
   render() {
     return (
       <div className="Profile">

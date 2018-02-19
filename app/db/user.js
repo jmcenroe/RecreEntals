@@ -15,10 +15,11 @@ var User = sequelize.define("User", {
     },
     //User name
     username: {
-        type: DataTypes.STRING(50)
+        type: DataTypes.STRING(50),
+        unique: true
     },
     password: {
-        type: DataTypes.STRING(25)
+        type: DataTypes.STRING(256)
     },
     displayName: {
         type: DataTypes.STRING(50),
@@ -33,14 +34,6 @@ var User = sequelize.define("User", {
     },
     phone: {
         type: DataTypes.STRING(25)
-    },
-    quantityRented: {
-        type: DataTypes.INTEGER(10),
-        defaultValue: 0
-    },
-    quantityAvailable: {
-        type: DataTypes.INTEGER(10),
-        defaultValue: 0
     }
 
 }, {

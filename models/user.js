@@ -14,19 +14,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       notEmpty: true,
       validation: {
-        isAlphanumeric: true,
         len: [5,50]
       },
     },
     password: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
-      notEmpty: true,
-      validation: {
-        len: [5,10]
-      },
+      type: DataTypes.STRING(256)
+      
     },
-    name: {
+    displayName: {
       type: DataTypes.STRING(50),
       allowNull: false,
       notEmpty: true,
@@ -44,14 +39,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [5,100]
       },
     },
-    creditcard: {
-      type: DataTypes.INTEGER(16),
-      allowNull: false,
-      validation: {
-        isCreditCard: true,
-        len: [16,17],
-      },
-    },
     phone: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
@@ -59,26 +46,6 @@ module.exports = function(sequelize, DataTypes) {
         isNumeric: true,
         len: [10]
       },
-    },
-    qtyrented: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-      defaultValue: 0
-    },
-    qtyforrent: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-      defaultValue: 0
-    },
-    rating: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-      defaultValue: 0
-    },
-    acctage: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-      defaultValue: 0
     },
     'created_at': {
       type: DataTypes.DATE(3),
