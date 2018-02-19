@@ -16,7 +16,7 @@ class NewUser extends Component {
 }
 
 state = {
-  userName: '',
+  username: '',
   displayName: '',
   password: '',
   password2: '',
@@ -30,7 +30,9 @@ componentDidMount() {
 }
 
 send () {
-  console.log('Sending');
+  let data = this.state;
+  delete data.password2;
+  API.addUser(data);
 }
 
 checkpassword() {
@@ -84,7 +86,6 @@ submitDisabled() {
 
 }
 
-
   
   
   render() {
@@ -93,13 +94,13 @@ submitDisabled() {
     <form className="search">
     
       <div className="form-group">
-      <label htmlFor="userName">User Name</label>
+      <label htmlFor="username">User Name</label>
         <input
           type="text"
           className="form-control"
           placeholder="User Name"
-          name='userName'
-          value={this.state.userName}
+          name='username'
+          value={this.state.username}
           onChange={this.handleChange}
         />
         <div className="form-group">
@@ -180,7 +181,7 @@ submitDisabled() {
         type="submit" 
         className="btn btn-default" 
         id="run-search"
-        onClick={this.send}
+        onClick={this.send.bind(this)}
         disabled={this.submitDisabled()}>
         <i className="fa fa-search"></i>
           Submit

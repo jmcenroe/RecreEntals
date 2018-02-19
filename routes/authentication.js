@@ -66,6 +66,7 @@ module.exports = function (app, passport) {
 		bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
 			let user = req.body;
 			user.password = hash;
+			user.usertype='local';
 
 			db.User.create(user, (err, response) => {
 				if (!error) {
