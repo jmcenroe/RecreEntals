@@ -10,6 +10,10 @@ export default {
 
   getUser: function() {
       return axios.get('/auth/getUser');
+  },
+
+  addUser: function (data) {
+    return axios.post('/auth/adduser',data);
   }
 
     

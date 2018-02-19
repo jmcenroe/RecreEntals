@@ -83,17 +83,18 @@ app.use(function(err, req, res, next) {
 });
 
 db.sequelize.sync({
-  force: true
+  // force: true
 })
 //Run seed functions to populate database
 .then(function () {
-  var promise = seed(db);
-  console.log('This is our promise:', promise);
-  promise.then(function () {
+  // var promise = seed(db);
+  // console.log('This is our promise:', promise);
+  // promise.then(function () {
+
     app.listen(PORT, function () {
       console.log("App listening on PORT " + PORT);
     });
-  });
+  // });
 });
 
 module.exports = app;

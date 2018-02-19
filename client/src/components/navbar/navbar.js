@@ -50,7 +50,13 @@ componentDidMount() {
             </span>
           </div>
           <div className='message'>
-            <span>{this.state.message}</span>
+            <span>
+              {this.state.message}{this.state.message !== 'Not Signed In' ? 
+                <form action='/auth/logout' method='get'>
+                  <button type='submit'>Log Out</button>
+                </form> 
+                : ''}
+            </span>
           </div>
           <ul className="nav navbar-nav">
             <li

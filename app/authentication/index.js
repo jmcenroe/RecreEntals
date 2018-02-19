@@ -2,6 +2,9 @@
 
 module.exports = function (passport) {
 
+  const bcrypt = require('bcrypt');
+  const saltRounds = 10;
+  const salt = bcrypt.genSaltSync(saltRounds);
  
   const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
   const db = require('../db');
@@ -22,28 +25,24 @@ module.exports = function (passport) {
   }
 
   passport.serializeUser(function (user, cb) {
-    console.log('new phrase');
-    cb(null, user.displayName)
+    console.log(user);
+    cb(null, user.username)
   });
 
   passport.deserializeUser(function (username, cb) {
-    console.log(username);
+    console.log('deserialize');
     findUser(username, cb)
   });
 
   function findUser(user, callback) {
-
+    console.log(user);
     db.User.findOne({
       where: {
-        displayName: user
+       username: user
       }
     }).then((data) => {
       if (data) {
 
-        if (data.password !== null) {
-
-          data.password = bcrypt.hashSync(data.password, salt);
-        }
         return callback(null, data)
       }
 
@@ -63,6 +62,7 @@ module.exports = function (passport) {
             otherId: profile.id
           },
           defaults: {
+            username: profile.displayName,
             displayName: profile.displayName,
             usertype: 'Google'
           }
@@ -74,7 +74,6 @@ module.exports = function (passport) {
     }));
 
   const LocalStrategy = require('passport-local').Strategy;
-  const bcrypt = require('bcrypt');
 
   passport.use(new LocalStrategy(
     (username, password, done) => {
@@ -85,11 +84,12 @@ module.exports = function (passport) {
 
         // User not found
         if (!user) {
-          console.log('User not found')
-          return done(null, false)
+          return done(null, false, {message: 'User not found'})
         }
 
         // Always use hashed passwords and fixed time comparison
+        console.log(password);
+        console.log(user.password);
         bcrypt.compare(password, user.password, (err, isValid) => {
           if (err) {
             console.log('error');
@@ -97,7 +97,7 @@ module.exports = function (passport) {
           }
           if (!isValid) {
             console.log('password wrong');
-            return done(null, false)
+            return done(null, false, {message: 'Incorrect password'})
           }
           console.log('Getting here');
           return done(null, user)
@@ -124,6 +124,7 @@ module.exports = function (passport) {
             otherId: profile.id
           },
           defaults: {
+            username: profile.displayName,
             displayName: profile.displayName,
             usertype: 'Facebook'
           }
