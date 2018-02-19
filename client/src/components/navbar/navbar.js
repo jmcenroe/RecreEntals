@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import Row from "../row";
 import "./navbar.css";
 import Col from "../col";
-import logo from "../../assets/img/recre-entals-white.gif";
+import logoWhite from "../../assets/img/recre-entals-white.gif";
+import logo from '../../assets/img/recre-entals-black.gif';
+import Auth from '../../modules/Auth';
+import API from '../../utils/API';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 class Navbar extends Component {
@@ -16,10 +19,22 @@ class Navbar extends Component {
 state = {
   lists: [],
   activeList: '',
-  changeList: ''
+  changeList: '',
+  message: 'Not Signed In'
 }
 
 componentDidMount() {
+  API.checkAuth().then( (data) => {
+    if (data.data.auth) {
+
+    
+      this.setState({
+      message: data.data.displayName
+      })
+    }
+  });
+
+ 
 
 }
 
@@ -33,7 +48,16 @@ componentDidMount() {
         <Col size="3">
           <div className="navbar-header">
             <span className="navbar-brand">
-              <img src={logo} id="logo"/>
+            <img alt="RecreEntals" className="logo" src={logoWhite} />
+            </span>
+          </div>
+          <div className='message'>
+            <span>
+              {this.state.message}{this.state.message !== 'Not Signed In' ? 
+                <form action='/auth/logout' method='get'>
+                  <button type='submit'>Log Out</button>
+                </form> 
+                : ''}
             </span>
           </div>
         </Col>
@@ -46,9 +70,13 @@ componentDidMount() {
                   : ""
               }
             >
-              <Link to="/">Home</Link>
+              <Link to="/">Sign In / Sign Up</Link>
             </li>
-          
+            <li
+              className={window.location.pathname === "/home" ? "active" : ""}
+            >
+              <Link to="/home">Home</Link>
+            </li>
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
             >
@@ -59,6 +87,7 @@ componentDidMount() {
             >
               <Link to="/profile">Profile</Link>
             </li>
+            
             
                 
           </ul> 

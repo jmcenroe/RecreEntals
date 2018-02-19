@@ -8,6 +8,8 @@ class Product extends Component{
         return(
             <div className="col-xs-6 col-s-6 col-md-4 col-lg-3 product">
                 <a href="#"><img src="http://via.placeholder.com/150x150" /></a>
+                
+                <h3>Title</h3>
             </div>
         );
     }

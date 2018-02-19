@@ -45,8 +45,8 @@ function seed(db) {
     console.log('Trying seeds');
     return Promise.all([
 
-        seedModel1(db),
-        seedModel2(db)
+        // seedModel1(db),
+        // seedModel2(db)
 
     ]);
 }
