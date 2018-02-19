@@ -15,6 +15,7 @@ import Home from './components/home';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
 import Auth from './modules/Auth';
+import NewUserPage from './pages/newuserpage';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path='/products' component={Search}/>
             <Route exact path='/profile' component={Profile}/>
             <Route exact path='/home' component={Home}/>
+            <Route exact path='/newuser' component={NewUserPage}/>
           </Wrapper>
         </Container>
       </Router>

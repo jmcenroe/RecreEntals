@@ -1,5 +1,9 @@
 module.exports = function (app, passport) {
 
+	const bcrypt = require('bcrypt');
+	const saltRounds = 10;
+	const salt = bcrypt.genSaltSync(saltRounds);
+
 	console.log('Authentication routes');
 
 	const db = require('../app/db');
@@ -43,8 +47,7 @@ module.exports = function (app, passport) {
 	app.get('/auth/getUser', function (req, res) {
 		if (req.user) {
 			return req.user.displayName;
-		}
-		else {
+		} else {
 			return null;
 		}
 	});
@@ -58,5 +61,31 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}));
 
+	app.post('/auth/adduser', (req, res) => {
 
+		bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+			let user = req.body;
+			user.password = hash;
+
+			db.User.create(user, (err, response) => {
+				if (!error) {
+					res.send('Success');
+				} else {
+					console.log(error);
+				}
+
+			})
+		});
+
+	});
+
+	app.post('/auth/login', passport.authenticate('local', {
+		successRedirect: '/profile',
+		failureRedirect: '/'
+	}));
+
+	app.get('/auth/logout', function(req, res){
+		req.logout();
+		res.redirect('/');
+	  });
 }
