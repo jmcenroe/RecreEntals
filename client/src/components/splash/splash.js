@@ -29,7 +29,7 @@ class Splash extends Component {
                         <div className="logo">
                         Welcome to RecreEntals.
                         <span style={{
-                            color: 'red',
+                            'color': 'red',
                             'paddingLeft': '20px'
                         }}>{this.state.errorMessage}</span>
                         </div>

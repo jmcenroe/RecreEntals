@@ -10,16 +10,6 @@ import './all-products.css';
 
 import API from '../../utils/API';
 
-function loopReturn(){
-    let toReturn = [];
-
-    for(let i=0; i<10; i++){
-        toReturn.push(<Product />);
-    }
-
-    return toReturn;
-}
-
 class AllProducts extends Component{
 
     state = {
@@ -31,7 +21,7 @@ class AllProducts extends Component{
         console.log('Making call');
         let categorylist = [];
         let categorynum = [];
-        API.getCategories().then((data) => {
+        API.getCategoriesWithCount().then((data) => {
             console.log(data.data);
             for (let i=0; i<data.data.count.length; i++) {
                 categorylist.push(data.data.rows[i]);
@@ -71,24 +61,7 @@ class AllProducts extends Component{
        
     }
 
-    displayCategory(category) {
 
-        API.getProductByCategory(category)
-            .then((data) => {
-                return this.showProducts(data.data);                
-            });
-    }
-
-    showProducts(data) {
-        let html = [];
-        data.map((item,index) => {
-            html.push(<ProductPanel {...item}/>);
-        });
-
-        console.log(html);
-        
-        return html;
-    }
 
     allCategoryDisplay() {
         var rows = [];
@@ -110,11 +83,30 @@ class AllProducts extends Component{
         return rows;
     }
 
+    authenticate () {
+       API.checkAuth().then((data) => {
+           
+         if(!data.data.auth) {
+             alert('You must be signed in to add a product for rent.');
+         }
+         else {
+             this.props.history.push({
+                 pathname: '/newproduct'
+             })
+         }
+       });
+    }
+
 
     render(){
         return(
             <div className="container products">
-                <h1>Products By Category</h1>
+                <h1>
+                    Products By Category
+                    <button 
+                        style={{'float': 'right'}}
+                        onClick={this.authenticate.bind(this)}>Add Product</button>
+                </h1>
                 {this.allCategoryDisplay()}
             </div>
         );

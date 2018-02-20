@@ -53,6 +53,11 @@ Item.associate = function(models) {
         allowNull: false
       }
     });
+    Item.belongsTo(models.Category, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
   };
 
 
