@@ -198,7 +198,7 @@ submitDisabled() {
         id="run-search"
         onClick={this.send.bind(this)}
         disabled={this.submitDisabled()}>
-        <i className="fa fa-search"></i>
+        {/* <i className="fa fa-search"></i> */}
           Submit
         </button>
         
