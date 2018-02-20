@@ -29,7 +29,10 @@ function seedModel1(db) {
             phone: '555 666-5555'
 
         }).then(() => {
-            seedModel3(db)
+            Promise.all([
+                seedModel3(db),
+                seedModel4(db)
+            ])
 
         })
     })
@@ -106,7 +109,7 @@ function seedModel3(db) {
 }
 
         
-function seedModel3(db) {
+function seedModel4(db) {
     const returnablePromise = Promise.all([
         db.Item.create({
             itemName: 'Running Shoes',
@@ -115,7 +118,8 @@ function seedModel3(db) {
             daily: 75,
             weekly: 90,
             imageURL:'https://www.rei.com/media/44cc290b-8e64-4501-b4b6-da10baf6d58c?size=1020x510',
-            UserId: 1
+            UserId: 1,
+            CategoryId: 7
         }),
         db.Item.create({
             itemName: 'Helmet',
@@ -124,7 +128,8 @@ function seedModel3(db) {
             daily: 50,
             weekly: 110,
             imageURL:'https://images.craigslist.org/00e0e_aml1hPeReoY_1200x900.jpg',
-            UserID: 1
+            UserID: 1,
+            CategoryId: 5
         }),
         db.Item.create({
             itemName: 'Inner Tube',
@@ -132,7 +137,8 @@ function seedModel3(db) {
             category: 'Water Sports',
             weekly: 35,
             imageURL:'https://images.craigslist.org/01212_fbUSvh55E2l_600x450.jpg',
-            UserID: 2
+            UserID: 2,
+            CategoryId: 4
         }),
         db.Item.create({
             itemName: 'Skates',
@@ -140,7 +146,8 @@ function seedModel3(db) {
             category: 'Wheeled Sports',
             weekly: 55,
             imageURL:'https://images.craigslist.org/00P0P_l5GZIqcBmMM_600x450.jpg',
-            UserID: 2
+            UserID: 2,
+            CategoryId: 6
         }),
     ])
 }
