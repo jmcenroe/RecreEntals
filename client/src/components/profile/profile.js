@@ -21,8 +21,9 @@ class Profile extends Component {
         <div className="row justify-content-center text-center" id="profileInfo">
           <div className="col">
             <h1>My Name</h1>
-            <p className="Bio">Bio goes here</p>
             <p>Member since: </p>
+            <p className="Rating">Rating:</p>
+            <p className="Products">Products:</p>
             <p><button className="contact-button">Contact</button></p>
           </div>
         </div>

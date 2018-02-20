@@ -39,7 +39,7 @@ componentDidMount() {
   
   render() {
    
-    return <nav className="navbar navbar-default">
+    return <nav className="navbar navbar-default" id="navId">
     <div className="container-fluid">
       <div className="row justify-content-between">
         <div className="col">
