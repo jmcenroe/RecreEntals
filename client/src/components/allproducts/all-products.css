@@ -1,3 +1,9 @@
 .products{
     text-align: center;
   }
+
+  .category {
+    text-align: left;
+    color: blue;
+    cursor: pointer;
+  }
