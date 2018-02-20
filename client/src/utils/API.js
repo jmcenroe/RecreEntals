@@ -15,11 +15,14 @@ export default {
   addUser: function (data) {
     return axios.post('/auth/adduser',data);
   },
-  getCategories: function() {
-    return axios.get('/api/categories');
+  getCategoriesWithCount: function() {
+    return axios.get('/api/categoriescount');
   },
   getProductByCategory: function (category) {
     return axios.get('/api/items/' + category);
+  },
+  getCategories: function() {
+    return axios.get('/api/categories');
   }
 
     

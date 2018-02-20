@@ -41,22 +41,27 @@ class ProductPanel extends Component {
             <div> 
                 {this.state.products.map((item,index) => {
                     return (
-                        <div id={item.id}>
+                        <div id={item.id} key={index}>
+                            
                             <h2>{item.itemName}</h2>
                             <p>{item.itemDescription}</p>
                             <table>
-                                <tr>
-                                    <th>Hourly</th>
-                                    <th>Daily</th>
-                                    <th>Weekly</th>
-                                    <th>Monthly</th>
-                                </tr>
-                                <tr>
-                                    <td>{item.hourly !== null ? '$' + item.hourly +'/hr' : 'N/A'}</td>
-                                    <td>{item.daily !== null ? '$' + item.daily +'/day' : 'N/A'}</td>
-                                    <td>{item.weekly !== null ? '$' + item.weekly +'/week' : 'N/A'}</td>
-                                    <td>{item.monthly !== null ? '$' + item.monthly +'/month' : 'N/A'}</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Hourly</th>
+                                        <th>Daily</th>
+                                        <th>Weekly</th>
+                                        <th>Monthly</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{item.hourly !== null ? '$' + item.hourly +'/hr' : 'N/A'}</td>
+                                        <td>{item.daily !== null ? '$' + item.daily +'/day' : 'N/A'}</td>
+                                        <td>{item.weekly !== null ? '$' + item.weekly +'/week' : 'N/A'}</td>
+                                        <td>{item.monthly !== null ? '$' + item.monthly +'/month' : 'N/A'}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     )
