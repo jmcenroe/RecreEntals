@@ -4,7 +4,7 @@ import NewProductForm from "../components/newproduct";
 import API from '../utils/API';
 
 
-class NewPRoductPage extends Component {
+class NewProductPage extends Component {
   
   constructor(props) {
     super(props);
@@ -50,4 +50,4 @@ componentWillMount() {
   }
 }
 
-export default NewPRoductPage;
+export default NewProductPage;
