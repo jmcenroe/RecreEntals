@@ -7,6 +7,8 @@ import logo from '../../assets/img/recre-entals-black.gif';
 // import Product from '../product';
 import './all-products.css';
 
+import API from '../../utils/API';
+
 function loopReturn(){
     let toReturn = [];
 
@@ -18,6 +20,21 @@ function loopReturn(){
 }
 
 class AllProducts extends Component{
+
+    state = {
+        categories: [],
+        categoryCount: []
+    }
+
+    componentDidMount() {
+        console.log('Making call');
+        API.getCategories().then((data) => {
+            console.log(data);
+        });
+
+    }
+
+
     render(){
         return(
             <div className="container products">
