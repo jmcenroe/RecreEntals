@@ -27,7 +27,19 @@ function seedModel1(db) {
             usertype: 'local',
             email: 'otheruser@gmail.com',
             phone: '555 666-5555'
+        })
+    }),
 
+    bcrypt.hash('password3',saltRounds,(error,hash) => {
+        console.log('Done with User 3 hash')
+
+        db.User.create({
+            username: 'userThree', 
+            password: hash,
+            displayName: 'User Three',
+            usertype: 'local',
+            email: 'userthree@gmail.com',
+            phone: '555 777-5555'
         }).then(() => {
             Promise.all([
                 seedModel3(db),
