@@ -23,6 +23,10 @@ export default {
   },
   getCategories: function() {
     return axios.get('/api/categories');
+  },
+  addItem: function(data) {
+    console.log('getting here');
+    return axios.post('/api/additem',data);
   }
 
     
