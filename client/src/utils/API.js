@@ -17,6 +17,9 @@ export default {
   },
   getCategories: function() {
     return axios.get('/api/categories');
+  },
+  getProductByCategory: function (category) {
+    return axios.get('/api/items/' + category);
   }
 
     
