@@ -1,12 +1,17 @@
 nav.navbar.navbar-default {
   margin-bottom: 0;
   border-radius: 3%;
-  box-shadow: 2px 2px darkgrey;
+  box-shadow: 1px 1px 1px teal;
+  opacity: .9;
   background-image: url('../../assets/img/wood.jpg');
 }
 
 #navId {
   margin-bottom: 1em;
+}
+
+#navRow{
+  width: 100%;
 }
 
 #logo{

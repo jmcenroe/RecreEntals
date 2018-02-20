@@ -1,7 +1,9 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 1em 1em 2em 2em !important;
   font-family: sans-serif;
+  height: 100%;
+  width: 100%;
   background-image: url('./assets/img/bodyBG.jpg');
   background-size: cover;
   background-position: center;
