@@ -43,6 +43,9 @@ class Splash extends Component {
                     </form>
                 </div>
                 <div className ="row">
+                    <a href="/newuser">Don't have an account? Create one</a>
+                </div>
+                <div className ="row">
                     <a href="/auth/google">Or Sign In with Google</a>
                 </div>
                 <div className ="row">

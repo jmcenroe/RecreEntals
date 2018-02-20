@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Export an object containing method used to hit NYT API
+// Export an object containing method used 
 
 
 export default {
@@ -14,6 +14,9 @@ export default {
 
   addUser: function (data) {
     return axios.post('/auth/adduser',data);
+  },
+  getCategories: function() {
+    return axios.get('/api/categories');
   }
 
     

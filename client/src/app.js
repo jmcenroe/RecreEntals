@@ -14,7 +14,6 @@ import Search from './components/allproducts';
 import Home from './components/home';
 import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
-import Auth from './modules/Auth';
 import NewUserPage from './pages/newuserpage';
 
 class App extends Component {

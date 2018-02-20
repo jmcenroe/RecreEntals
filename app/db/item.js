@@ -8,29 +8,52 @@ var Item = sequelize.define("Item", {
         autoIncrement: true,
         primaryKey: true
     },
-    //Id which comes from third party authentication (Google, Facebook)
     itemName: {
         type: DataTypes.STRING(50),
         allowNull: false
     },
-    //User name
     itemDescription: {
         type: DataTypes.STRING(250),
         allowNull: false
     },
-    price: {
-        type: DataTypes.STRING(25),
+    category: {
+        type: DataTypes.STRING(50),
         allowNull: false
+    },
+    hourly: {
+        type: DataTypes.DECIMAL(10,2)
+    },
+    daily: {
+        type: DataTypes.DECIMAL(10,2)
+    },
+    weekly: {
+        type: DataTypes.DECIMAL(10,2)
+    },
+    monthly: {
+        type: DataTypes.DECIMAL(10,2)
+    },
+    imageURL: {
+        type: DataTypes.STRING(150)
     },
     available: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: true
     }
 
 }, {
     timestamps: true
 });
+
+Item.associate = function(models) {
+    // We're saying that a Post should belong to an Author
+    // A Post can't be created without an Author due to the foreign key constraint
+    Item.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
 
 return Item;
