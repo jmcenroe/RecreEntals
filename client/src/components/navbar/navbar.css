@@ -9,6 +9,10 @@ nav.navbar.navbar-default {
   margin-bottom: 1em;
 }
 
+#navRow {
+  width: 100%;
+}
+
 #logo{
   height: 40%;
   width: 40%;

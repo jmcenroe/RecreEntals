@@ -41,7 +41,7 @@ componentDidMount() {
    
     return <nav className="navbar navbar-default" id="navId">
     <div className="container-fluid">
-      <div className="row justify-content-between">
+      <div className="row justify-content-between" id="navRow">
         <div className="col">
           <div className="navbar-header">
             <span className="navbar-brand">
