@@ -5,12 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
-var index = require('./routes/index');
-
-var users = require('./routes/users');
-
-
 var db = require('./app/db');
 var seed = require('./seeders/seeds');
 
@@ -52,6 +46,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./app/authentication')(passport);
 require('./routes/authentication')(app, passport);
 
+const apiRoutes = require('./routes/api');
+
+app.use('/api',apiRoutes);
+
 
 
 // Send every request to the React app
@@ -83,18 +81,18 @@ app.use(function(err, req, res, next) {
 });
 
 db.sequelize.sync({
-  // force: true
+  force: true
 })
 //Run seed functions to populate database
 .then(function () {
-  // var promise = seed(db);
-  // console.log('This is our promise:', promise);
-  // promise.then(function () {
+  var promise = seed(db);
+  console.log('This is our promise:', promise);
+  promise.then(function () {
 
     app.listen(PORT, function () {
       console.log("App listening on PORT " + PORT);
     });
-  // });
+  });
 });
 
 module.exports = app;

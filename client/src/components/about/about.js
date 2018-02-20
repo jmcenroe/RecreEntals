@@ -6,6 +6,7 @@ import '../app.css';
 class About extends Component{
     render(){
         return(
+
             <div className="container">
                 <div className="row">
                     <div className="col">
@@ -15,8 +16,10 @@ class About extends Component{
                         <div className="col-lg"><h4>Tori Smith</h4></div>
                     </div>
                 </div>
+            
             <div>
                 <h1>About Us</h1>
+            </div>
             </div>
 
         );

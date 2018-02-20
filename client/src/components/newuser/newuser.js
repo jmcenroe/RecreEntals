@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./newuser.css";
 import logo from '../../assets/img/recre-entals-black.gif';
-import Auth from '../../modules/Auth';
 import API from '../../utils/API';
 // white logo commented out for now
 // import logoWhite from '../../assets/img/recre-entals-white.gif';
@@ -35,7 +34,17 @@ send () {
   API.addUser(data);
 }
 
-checkpassword() {
+checkPassword () {
+  const numtest = /[0-9]/g;
+  const lettertest = /[a-z]/g;
+
+  if(numtest.test(this.state.password) && lettertest.test(this.state.password) && this.state.password.length>=8) {
+    return '';
+  }
+  return 'Password must be at least 8 characters long and contain at least one letter and one number';
+}
+
+passwordMatch() {
   if (this.state.password !== this.state.password2) {
     return "Passwords must match";
   } 
@@ -76,7 +85,7 @@ submitDisabled() {
 
   // Confirms validated fields are valid
   
-  if (this.checkemail() !== '' || this.checkpassword() !== '' || this.checkphone() !== '') {
+  if (this.checkemail() !== '' || this.checkPassword() !== '' || this.checkphone() !== '' || this.passwordMatch() !== '') {
     disabled= true;
   }
 
@@ -104,7 +113,7 @@ submitDisabled() {
           onChange={this.handleChange}
         />
         <div className="form-group">
-          <label htmlFor="start-year">Display Name</label>
+          <label htmlFor="displayName">Display Name</label>
           <input
             type="text"
             className="form-control"
@@ -114,7 +123,13 @@ submitDisabled() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>   
+          <label htmlFor="password">Password</label>
+            <span style={{
+                  color: 'red',
+                  paddingLeft: '25px'}}>
+                    {this.state.password !== '' ? 
+                    this.checkPassword() : ''}
+            </span>     
           <input
             type="password"
             className="form-control"
@@ -124,12 +139,12 @@ submitDisabled() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="start-year">Confirm Password
+          <label htmlFor="password2">Confirm Password
             <span style={{
                 color: 'red',
                 paddingLeft: '25px'}}>
                   {this.state.password2 !== '' ? 
-                  this.checkpassword() : ''}
+                  this.passwordMatch() : ''}
             </span>  
           </label>
     
@@ -142,7 +157,7 @@ submitDisabled() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="start-year">Email
+          <label htmlFor="email">Email
             <span style={{
                 color: 'red',
                 paddingLeft: '25px'}}>
@@ -160,7 +175,7 @@ submitDisabled() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="start-year">Phone Number
+          <label htmlFor="phone">Phone Number
                 <span style={{
                 color: 'red',
                 paddingLeft: '25px'}}>

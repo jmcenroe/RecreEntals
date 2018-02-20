@@ -21,8 +21,10 @@ PRIMARY KEY(id)
 
 CREATE TABLE products (
 id INT(10) NOT NULL AUTO_INCREMENT,
-productsname VARCHAR(30) NOT NULL,
+productname VARCHAR(30) NOT NULL,
 price INT(10) NOT NULL,
+picture VARCHAR(100) NOT NULL,
+condition VARCHAR(10), NOT NULL
 available BOOLEAN NOT NULL,
 PRIMARY KEY(id)
 );

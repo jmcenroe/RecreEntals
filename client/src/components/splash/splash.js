@@ -29,7 +29,7 @@ class Splash extends Component {
                         <div className="logo">
                         Welcome to RecreEntals.
                         <span style={{
-                            color: 'red',
+                            'color': 'red',
                             'paddingLeft': '20px'
                         }}>{this.state.errorMessage}</span>
                         </div>
@@ -41,6 +41,9 @@ class Splash extends Component {
                         <input name="password" id="password" type="password" placeholder="Your password"/>
                         <input type="submit" />
                     </form>
+                </div>
+                <div className ="row">
+                    <a href="/newuser">Don't have an account? Create one</a>
                 </div>
                 <div className ="row">
                     <a href="/auth/google">Or Sign In with Google</a>
