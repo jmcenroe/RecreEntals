@@ -25,7 +25,8 @@ state = {
     monthly: '',
     imageUrl: ''
   },
-  categorylist: []
+  categorylist: [],
+  errorMessage: ''
 
 }
 
@@ -41,42 +42,35 @@ componentDidMount() {
   });
 }
 
-send () {
-  console.log('Sending');
-}
+send (event) {
+  event.preventDefault();
+  let data = this.state.item;
 
-// checkPassword () {
-//   const numtest = /[0-9]/g;
-//   const lettertest = /[a-z]/g;
+  //Get category id
+  for(let i=0; i<this.state.categorylist.length; i++) {
+    if (data.category === this.state.categorylist[i]) {
+      data.CategoryId = i;
+    }
+  }
 
-//   if(numtest.test(this.state.password) && lettertest.test(this.state.password) && this.state.password.length>=8) {
-//     return '';
-//   }
-//   return 'Password must be at least 8 characters long and contain at least one letter and one number';
-// }
+  // Make sure rates are numbers
+  if (data.hourly !== '') {data.hourly = parseFloat(data.hourly);}
+    else {data.hourly=null;}
+  if (data.daily !== '') {data.daily = parseFloat(data.daily);}
+   else {data.daily=null;}
+  if (data.weekly !== '') {data.weekly = parseFloat(data.weekly);}
+    else {data.weekly=null;}
+  if (data.monthly !== '') {data.monthly = parseFloat(data.monthly);}
+  else {data.monthly=null;}
 
-// passwordMatch() {
-//   if (this.state.password !== this.state.password2) {
-//     return "Passwords must match";
-//   } 
-//   return '';
-// }
-
-// checkemail() {
-//   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
-//     return '';
-//   }
-//   return 'Not a valid email address';
-// }
-
-// checkphone() {
-//   if (this.state.phone.match(/\d/)){
-//     if (this.state.phone.match(/\d/g).length===10) {
-//       return '';
-//     }
-//   }
-//   return 'Not a valid phone number';
-// }
+  //Find active userId 
+  API.checkAuth().then((userdata) => {
+    if (userdata.data.auth) {
+      data.UserId = userdata.data.id;
+      API.addItem(data);
+    }
+  })
+}  
 
 handleChange = event => {
   let statedata = this.state.item;
@@ -88,8 +82,48 @@ handleChange = event => {
 }
 
 submitDisabled() {
-  return false;
+  const item = this.state.item;
+  
+  //Check required fields
+  if (item.itemName === '' || item.itemDescription === '' || item.category === '' || item.imageUrl === '' ) {
+    if (this.state.errorMessage !== 'Missing Required Fields') {
+      this.setState({
+        errorMessage: 'Missing Required Fields'
+      });
+    }
+    return true
+  }
 
+  //Check for at least one rate
+  if (item.hourly === '' && item.daily === '' && item.weekly === '' && item.monthly === '' ) {
+    if (this.state.errorMessage !== 'At least one Rate must be provided') {
+      this.setState({
+        errorMessage: 'At least one Rate must be provided'
+      });
+    }
+    return true
+  }
+
+  
+  //Check that rates are valid (numbers)
+  if ((item.hourly !== '' && isNaN(parseFloat(item.hourly))) ||
+      (item.daily !== '' && isNaN(parseFloat(item.daily))) ||
+      (item.weekly !== '' && isNaN(parseFloat(item.weekly))) ||
+      (item.monthly !== '' && isNaN(parseFloat(item.monthly)))) {
+    if (this.state.errorMessage !== 'Entered Rates must be valid numbers') {
+      this.setState({
+        errorMessage: 'Entered Rates must be valid numbers'
+      })
+    }
+    return true;
+  }
+
+  if (this.state.errorMessage !== '') {
+    this.setState({
+      errorMessage: ''
+    })
+  }
+ return false;
 }
 
   
@@ -100,7 +134,7 @@ submitDisabled() {
     <form className="search">
     
       <div className="form-group">
-      <label htmlFor="itemName">Item Name</label>
+      <label htmlFor="itemName">Item Name*</label>
         <input
           type="text"
           className="form-control"
@@ -110,7 +144,7 @@ submitDisabled() {
           onChange={this.handleChange}
         />
         <div className="form-group">
-          <label htmlFor="itemDescription">Item Description</label>
+          <label htmlFor="itemDescription">Item Description*</label>
           <textarea
             type="text"
             style={{
@@ -124,7 +158,7 @@ submitDisabled() {
           ></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="category">Category: </label>
+          <label htmlFor="category">Category*</label>
               
           <select
             name='category'
@@ -132,6 +166,7 @@ submitDisabled() {
             value={this.state.category}
             onChange={this.handleChange}
           >
+            <option selected="true" disabled="disabled">Choose Category</option>  
             {this.state.categorylist.map((item,index) => {
               return <option value={item}>{item}</option>
             })}
@@ -177,7 +212,7 @@ submitDisabled() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="imageURL">Image URL</label>
+          <label htmlFor="imageURL">Image URL*</label>
     
           <input
             type="text"
@@ -198,6 +233,12 @@ submitDisabled() {
         <i className="fa fa-search"></i>
           Submit
         </button>
+        <span style={{
+                  color: 'red',
+                  paddingLeft: '25px'}}>
+                    {this.state.errorMessage !== '' ? 
+                    this.state.errorMessage : ''}
+            </span>  
         
     </div>
     </form>);

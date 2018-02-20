@@ -4,37 +4,50 @@ const db = require('../app/db');
 const path = require('path');
 const sequelize = require('sequelize');
 
-router.get('/categoriescount', (req,res) => {
+router.get('/categoriescount', (req, res) => {
 	console.log('Route hit');
 	db.Item.findAndCountAll({
 		attributes: ['category'],
 		group: ['category']
-	  }).then((data) => {
-		  res.json(data);
-	  });
+	}).then((data) => {
+		res.json(data);
+	});
 });
 
-router.get('/categories', (req,res) =>{
+router.get('/categories', (req, res) => {
 	db.Category.findAll().then((data) => {
 		res.json(data);
 	})
 });
 
-router.get('/items/:category', (req,res) => {
+router.get('/items/:category', (req, res) => {
 	db.Item.findAll({
 		where: {
 			category: req.params.category
 		}
-	}).then((data)=> {
+	}).then((data) => {
 		res.json(data);
 	})
 });
 
-router.get('/items', (req,res) => {
-	db.Item.findAll({
-	}).then((data)=> {
+router.get('/items', (req, res) => {
+	db.Item.findAll({}).then((data) => {
 		res.json(data);
 	})
+});
+
+router.post('/additem', (req, res) => {
+	console.log('Hitting api');
+	db.Item.create(req.body, (err, response) => {
+		if (!error) {
+			res.send('Success');
+		} else {
+			res.send(error);
+		}
+
+	});
+
+
 });
 
 module.exports = router;
