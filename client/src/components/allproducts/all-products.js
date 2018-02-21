@@ -67,7 +67,7 @@ class AllProducts extends Component{
         var rows = [];
         for(let i = 0; i<this.state.categories.length; i++) {
             rows.push(<div id={this.state.categories[i]}>
-                        <h2 style={{'text-align': 'left'}}>
+                        <h2 className="align-left">
                             <span 
                                 className='category' 
                                 onClick={this.productClick.bind(this)}
@@ -105,7 +105,7 @@ class AllProducts extends Component{
                     Products By Category </h1>
                     <button 
                         style={{'float': 'right'}}
-                        onClick={this.authenticate.bind(this)}><i class="fas fa-plus"></i> Add Product</button>
+                        onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
                 {this.allCategoryDisplay()}
             </div>
         );
