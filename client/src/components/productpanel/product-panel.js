@@ -9,22 +9,21 @@ import React, { Component } from 'react';
 import './product-panel.css';
 import API from '../../utils/API';
 
-const ProductPanel = props =>
-            <div id={props.id} key={props.index}>
+const ProductPanel = props => <div id={props.id} key={props.index}>
                 <div className = "row productRow">
                             <div className="col col-4 col-xs-12 imgCol">
                                 <img src={props.imageURL} alt={props.itemName} className="productImage"/>
                             </div>
                         
-                            <div id={props.id} key={index} className="col col-4 col-xs-6 productInfo">
+                            <div id={props.id} key={props.index} className="col col-4 col-xs-6 productInfo">
                                 <h3>{props.itemName}</h3>
                                 <h4>{props.itemDescription}</h4>
                             </div>
                             <div className="col col-4 col-xs-6 productPrice">
-                                <div className="row align-left">{item.hourly !== null ? '$' + props.hourly +'/hr' : 'Hourly price not available.'}</div>
-                                <div className="row align-left">{item.daily !== null ? '$' + props.daily +'/day' : 'Daily price not available'}</div>
-                                <div className="row align-left">{item.weekly !== null ? '$' + props.weekly +'/week' : 'Weekly price not available'}</div>
-                                <div className="row align-left">{item.monthly !== null ? '$' + props.monthly +'/month' : 'Monthly price not available'}</div>
+                                <div className="row align-left">{props.hourly !== null ? '$' + props.hourly +'/hr' : 'Hourly price not available.'}</div>
+                                <div className="row align-left">{props.daily !== null ? '$' + props.daily +'/day' : 'Daily price not available'}</div>
+                                <div className="row align-left">{props.weekly !== null ? '$' + props.weekly +'/week' : 'Weekly price not available'}</div>
+                                <div className="row align-left">{props.monthly !== null ? '$' + props.monthly +'/month' : 'Monthly price not available'}</div>
                             </div>
                   </div>
             </div>
