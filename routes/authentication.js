@@ -24,7 +24,7 @@ module.exports = function (app, passport) {
 	app.get('/auth/google/callback',
 		passport.authenticate('google', {
 			failureRedirect: '/login',
-			successRedirect: 'http://localhost:3000/profile'
+			successRedirect: 'http://localhost:3000/products'
 		}),
 		function (req, res) {
 			console.log('Authenticated');
