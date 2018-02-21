@@ -9,14 +9,8 @@ h3 {
   text-decoration: none;
 }
 
-
 .splashGreeting {
   margin-bottom: -1em;
-}
-
-.splashGreeting > h1{
-  font-size: 2em;
-  margin-bottom: 0;
 }
 
 .signIn {

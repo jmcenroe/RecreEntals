@@ -24,19 +24,13 @@ class Splash extends Component {
     render() {
         return(
             <div className="container-fluid d-flex" id="splash">
-                <div className = "row text-center splashGreeting">
-                    <h1>Welcome to</h1>
-                </div>
                 <div className="row splashGreeting">
                     <img src={logo} alt="logo" id="splashLogo"/>
                 </div>
                 <div className="row splashEnd">
                     <h2>A place to rent things.</h2>
                 </div>
-                
                     <h3>Sign in or sign up to start renting!</h3>
-                
-
                 <div className = "row signIn">
                     <div className="row">
                         <a className ="icon-border" href="/auth/google"><img className="icon" src={gIcon} alt="Sign in with Google"/>Log In with Google</a>
