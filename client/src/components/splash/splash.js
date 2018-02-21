@@ -5,8 +5,9 @@
 
 import React, { Component } from 'react';
 import logo from '../../assets/img/recre-entals-black.gif';
-import background from '../../assets/img/daytime.jpg';
 import './splash.css';
+import fbIcon from '../../assets/img/facebook.png';
+import gIcon from '../../assets/img/google.png';
 
 class Splash extends Component {
 
@@ -22,34 +23,34 @@ class Splash extends Component {
 
     render() {
         return(
-            <div className="container-fluid" id="splash">
-                <h2>Sign in</h2>
-                <div className = "row">
-                    <div className = "col-2 col-sm-12">
-                        <div className="logo">
-                        Welcome to RecreEntals.
-                        <span style={{
-                            'color': 'red',
-                            'paddingLeft': '20px'
-                        }}>{this.state.errorMessage}</span>
-                        </div>
-                    </div>
+            <div className="container-fluid d-flex" id="splash">
+                <div className = "row text-center splashGreeting">
+                    <h1>Welcome to</h1>
                 </div>
-                <div className ="row">
+                <div className="row splashGreeting">
+                    <img src={logo} alt="logo" id="splashLogo"/>
+                </div>
+                <div className="row splashEnd">
+                    <h2>A place to rent things.</h2>
+                </div>
+
+                <div className = "row signIn">
                     <form action="/auth/login" method="post">
-                        <input name="username" id="username" type="text" placeholder="Your username" />
-                        <input name="password" id="password" type="password" placeholder="Your password"/>
-                        <input type="submit" />
+                        <input name="username" id="username" type="text" placeholder="Username" />
+                        <input name="password" id="password" type="password" placeholder="Password"/>
+                        <div className = "row">
+                            <div className = "col-6 offset-3">
+                                <input type="submit" />
+                            </div>
+                        </div>
                     </form>
                 </div>
-                <div className ="row">
-                    <a href="/newuser">Don't have an account? Create one</a>
-                </div>
-                <div className ="row">
-                    <a href="/auth/google">Or Sign In with Google</a>
-                </div>
-                <div className ="row">
-                    <a href="/auth/facebook">Or Sign In with Facebook</a>
+                <div className="row">
+                    <a href="/newuser"><h3 id="createOne">Don't have an account? Create one</h3></a>
+                </div>  
+                <div className="row">                      
+                    <a href="/auth/google"><img class="icon" src={gIcon} alt="Sign in with Google"/></a>
+                    <a href="/auth/facebook"><img class="icon" src={fbIcon} alt="Sign in with Facebook"/></a>
                 </div>
             </div>
         );
