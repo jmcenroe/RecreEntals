@@ -102,12 +102,11 @@ submitDisabled() {
     return (
     <form className="search">
     
-      <div className="form-group">
-      <label htmlFor="username">User Name</label>
+      <div className="form-group col-md-6">
+      <label htmlFor="username">Username</label>
         <input
           type="text"
           className="form-control"
-          placeholder="User Name"
           name='username'
           value={this.state.username}
           onChange={this.handleChange}
@@ -199,7 +198,7 @@ submitDisabled() {
         onClick={this.send.bind(this)}
         disabled={this.submitDisabled()}>
         {/* <i className="fa fa-search"></i> */}
-          Submit
+          CREATE ACCOUNT
         </button>
         
     </div>

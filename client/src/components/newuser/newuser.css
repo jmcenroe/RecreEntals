@@ -2,6 +2,9 @@ nav.navbar.navbar-default {
   margin-bottom: 0;
 }
 
+input.formcontrol {
+  width: auto;
+}
 
 li.navbar-text {
   overflow: auto;
