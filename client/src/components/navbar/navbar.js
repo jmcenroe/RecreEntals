@@ -18,7 +18,8 @@ state = {
   activeList: '',
   changeList: '',
   auth: false,
-  userName: ''
+  userName: '',
+  searchTerm: ''
 }
 
 componentDidMount() {
@@ -34,10 +35,13 @@ componentDidMount() {
       statedata
     );
   });
+}
 
  
 
-}
+ 
+
+
 
   
   
@@ -75,12 +79,16 @@ componentDidMount() {
                     </form> 
                 </div>
                 
-                : 'You are not logged in'}<Link to="/">Log In</Link>
+                : <div>
+                    You are not logged in. <Link to="/">Log In</Link>
+                  </div>}
             </li>
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
-            >
-              <Link to="/products">Products</Link>
+            > <div>
+               <Link to="/productsearch">Search Products</Link>
+               <Link to="/products">Or Browse Products</Link>
+              </div>
             </li>
            
             

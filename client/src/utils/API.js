@@ -27,6 +27,10 @@ export default {
   addItem: function(data) {
     console.log('getting here');
     return axios.post('/api/additem',data);
+  },
+
+  searchItem: function(searchterm) {
+    return axios.get('/api/item/' + searchterm);
   }
 
     
