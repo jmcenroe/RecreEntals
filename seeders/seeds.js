@@ -13,6 +13,7 @@ function seedModel1(db) {
             email: 'sampleuser@gmail.com',
             phone: '555 555-5555'
         }).then(() => {
+            console.log('Done with User 1 create');
             seedModel3(db)
         })
     }),
@@ -41,11 +42,12 @@ function seedModel1(db) {
             email: 'userthree@gmail.com',
             phone: '555 777-5555'
         }).then(() => {
+            Promise.all([
                 
                 seedModel4(db)
            
-
-        })
+            ]);
+        });
     })
 
     ])
@@ -87,6 +89,7 @@ function seedModel3(db) {
     console.log('Starting items');
     const returnablePromise = Promise.all([
         
+        
         db.Item.create({
             itemName: 'Running Shoes',
             itemDescription: 'Saucony Peregrine 7 Trail-Running Shoes - Men\'s',
@@ -106,6 +109,16 @@ function seedModel3(db) {
             imageURL: 'https://images-na.ssl-images-amazon.com/images/I/61jRhAr-aGL._SL1000_.jpg',
             UserId: 1,
             CategoryId: 1
+        }),
+        db.Item.create({
+            itemName: 'Helmet',
+            itemDescription: 'Daytona Women 3/4 OPEN Face Motorcycle Helmet',
+            category: 'Motor Sports',
+            daily: 50,
+            weekly: 110,
+            imageURL:'https://images.craigslist.org/00e0e_aml1hPeReoY_1200x900.jpg',
+            UserId: 1,
+            CategoryId: 5
         }),
         db.Item.create({
             itemName: 'Skis', 
@@ -145,6 +158,8 @@ function seedModel4(db) {
             CategoryId: 7
         }),
         
+       
+       
         db.Item.create({
             itemName: 'Inner Tube',
             itemDescription: 'HO Water Sports Water Tube',
@@ -162,7 +177,7 @@ function seedModel4(db) {
             imageURL:'https://images.craigslist.org/00P0P_l5GZIqcBmMM_600x450.jpg',
             UserId: 2,
             CategoryId: 6
-        }),
+        })
     ])
 }
 

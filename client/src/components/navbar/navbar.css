@@ -3,7 +3,39 @@ nav.navbar.navbar-default {
   border-radius: 3%;
   box-shadow: 1px 1px 1px teal;
   opacity: .9;
+  color: white;
   background-image: url('../../assets/img/wood.jpg');
+}
+
+span.navbar-brand {
+  padding: 0px;
+}
+
+
+div#options.col {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 0.85em;
+  display: block;
+  text-align: right;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: right;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: rgb(238, 196, 9);
+  text-decoration: none;
 }
 
 #navId {
@@ -15,18 +47,17 @@ nav.navbar.navbar-default {
 }
 
 #logo{
-  height: 40%;
-  width: 40%;
+  height: 3.5em;
 }
 
 #options{
   text-align: right;
   text-shadow: 1px 1px black;
+  color: black;
 }
 
 li.navbar-text {
   overflow: auto;
-  
 }
 
 li#split {
@@ -34,7 +65,7 @@ li#split {
 }
 
 select#listselect {
-  margin-right: 20px;
+  margin-right: 0px;
 }
 
 span#currentList {

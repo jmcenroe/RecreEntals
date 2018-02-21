@@ -100,19 +100,20 @@ submitDisabled() {
   render() {
    
     return (
+      <div>
+      <h3>CREATE A NEW ACCOUNT</h3>
     <form className="search">
-    
-      <div className="form-group">
-      <label htmlFor="username">User Name</label>
+    <div className="form-row">
+      <div className="form-group col-md-6">
+      <label htmlFor="username">Username</label>
         <input
           type="text"
           className="form-control"
-          placeholder="User Name"
           name='username'
           value={this.state.username}
           onChange={this.handleChange}
-        />
-        <div className="form-group">
+        /></div>
+        <div className="form-group col-md-6">
           <label htmlFor="displayName">Display Name</label>
           <input
             type="text"
@@ -120,9 +121,10 @@ submitDisabled() {
             name='displayName'
             value={this.state.displayName}
             onChange={this.handleChange}
-          />
+          /></div>
         </div>
-        <div className="form-group">
+        <div className="form-row">
+        <div className="form-group col-md-6">
           <label htmlFor="password">Password</label>
             <span style={{
                   color: 'red',
@@ -138,7 +140,7 @@ submitDisabled() {
             onChange={this.handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group col-md-6">
           <label htmlFor="password2">Confirm Password
             <span style={{
                 color: 'red',
@@ -147,7 +149,6 @@ submitDisabled() {
                   this.passwordMatch() : ''}
             </span>  
           </label>
-    
           <input
             type="password"
             className="form-control"
@@ -155,8 +156,10 @@ submitDisabled() {
             value={this.state.password2}
             onChange={this.handleChange}
           />
+          </div>
         </div>
-        <div className="form-group">
+        <div className="form-row">
+        <div className="form group col-md-6">
           <label htmlFor="email">Email
             <span style={{
                 color: 'red',
@@ -170,11 +173,12 @@ submitDisabled() {
             className="form-control"
             id="search-term"
             name='email'
+            placeholder="example@email.com"
             value={this.state.email}
             onChange={this.handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group col-md-4">
           <label htmlFor="phone">Phone Number
                 <span style={{
                 color: 'red',
@@ -184,9 +188,10 @@ submitDisabled() {
             </span>  
           </label>  
           <input
-            type="text"
+            type="tel"
             className="form-control"
             name='phone'
+            placeholder="ex: 555-555-5555"
             value={this.state.phone}
             onChange={this.handleChange}
           />
@@ -194,17 +199,17 @@ submitDisabled() {
 
         <button 
         type="submit" 
-        className="btn btn-default" 
+        className="btn btn-dark" 
         id="run-search"
         onClick={this.send.bind(this)}
         disabled={this.submitDisabled()}>
         {/* <i className="fa fa-search"></i> */}
-          Submit
+          CREATE ACCOUNT
         </button>
         
     </div>
-    </form>);
-
+    </form>
+    </div>);
 }
 
 }
