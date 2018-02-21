@@ -8,70 +8,32 @@ import React, { Component } from 'react';
 // import Container from './BSstuff.js';
 import API from '../../utils/API';
 
-class ProductPanel extends Component {
-
-    constructor(props) {
-        super(props);
-        this.props = props;
-        
-    }
-
-    state = {
-        products: []
-    }
-
-    componentDidMount() {
-        API.getProductByCategory(this.props.category).then((data) => {
-            this.setState({
-                products: data.data
-            }, () => {
-                console.log(this.state);
-            });
-        });
-    }
-
-    displayCategory(category) {
-
-        API.getProductByCategory(category)
-            .then((data) => {
-                return this.showProducts(data.data);                
-            });
-    }
-
-    render() {
-        return(
-            <div> 
-                {this.state.products.map((item,index) => {
-                    return (
-                        <div id={item.id} key={index}>
-                            
-                            <h2>{item.itemName}</h2>
-                            <p>{item.itemDescription}</p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Hourly</th>
-                                        <th>Daily</th>
-                                        <th>Weekly</th>
-                                        <th>Monthly</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{item.hourly !== null ? '$' + item.hourly +'/hr' : 'N/A'}</td>
-                                        <td>{item.daily !== null ? '$' + item.daily +'/day' : 'N/A'}</td>
-                                        <td>{item.weekly !== null ? '$' + item.weekly +'/week' : 'N/A'}</td>
-                                        <td>{item.monthly !== null ? '$' + item.monthly +'/month' : 'N/A'}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                })}
+const ProductPanel = props => <div id={props.id} key={props.index}>
+                
+                <h2>{props.itemName}</h2>
+                <p>{props.itemDescription}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hourly</th>
+                            <th>Daily</th>
+                            <th>Weekly</th>
+                            <th>Monthly</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{props.hourly !== null ? '$' + props.hourly +'/hr' : 'N/A'}</td>
+                            <td>{props.daily !== null ? '$' + props.daily +'/day' : 'N/A'}</td>
+                            <td>{props.weekly !== null ? '$' + props.weekly +'/week' : 'N/A'}</td>
+                            <td>{props.monthly !== null ? '$' + props.monthly +'/month' : 'N/A'}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        );
-    }
-}
+
+
+
 
 export default ProductPanel;
 

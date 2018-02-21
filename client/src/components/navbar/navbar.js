@@ -37,15 +37,7 @@ componentDidMount() {
   });
 }
 
-  handleChange = event => {
-    this.setState({
-    [event.target.name]: event.target.value
-  });
-  }  
-
-  search = event => {
-    console.log(this.state.searchTerm);
-  }
+ 
 
  
 
@@ -94,17 +86,7 @@ componentDidMount() {
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
             > <div>
-               Search Products 
-               <form>
-               <input
-                  type="text"
-                  className="form-control"
-                  name='searchTerm'
-                  value={this.state.searchTerm}
-                  onChange={this.handleChange}
-                />
-                <button type='submit' onClick={this.search.bind(this)}>Go</button>
-                </form>
+               <Link to="/productsearch">Search Products</Link>
                <Link to="/products">Or Browse Products</Link>
               </div>
             </li>
