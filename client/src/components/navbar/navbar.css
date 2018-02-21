@@ -11,6 +11,7 @@ span.navbar-brand {
   padding: 0px;
 }
 
+
 div#options.col {
   list-style-type: none;
   margin: 0;
@@ -46,8 +47,7 @@ li a:hover {
 }
 
 #logo{
-  height: 40%;
-  width: 40%;
+  height: 3.5em;
 }
 
 #options{
