@@ -18,7 +18,8 @@ state = {
   activeList: '',
   changeList: '',
   auth: false,
-  userName: ''
+  userName: '',
+  searchTerm: ''
 }
 
 componentDidMount() {
@@ -34,10 +35,21 @@ componentDidMount() {
       statedata
     );
   });
+}
+
+  handleChange = event => {
+    this.setState({
+    [event.target.name]: event.target.value
+  });
+  }  
+
+  search = event => {
+    console.log(this.state.searchTerm);
+  }
 
  
 
-}
+
 
   
   
@@ -75,12 +87,26 @@ componentDidMount() {
                     </form> 
                 </div>
                 
-                : 'You are not logged in'}<Link to="/">Log In</Link>
+                : <div>
+                    You are not logged in. <Link to="/">Log In</Link>
+                  </div>}
             </li>
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
-            >
-              <Link to="/products">Products</Link>
+            > <div>
+               Search Products 
+               <form>
+               <input
+                  type="text"
+                  className="form-control"
+                  name='searchTerm'
+                  value={this.state.searchTerm}
+                  onChange={this.handleChange}
+                />
+                <button type='submit' onClick={this.search.bind(this)}>Go</button>
+                </form>
+               <Link to="/products">Or Browse Products</Link>
+              </div>
             </li>
            
             
