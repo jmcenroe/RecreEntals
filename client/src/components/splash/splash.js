@@ -44,7 +44,7 @@ class Splash extends Component {
                     </div>
                     </div>
                     <div className="row">
-                    <h3>Log In with username</h3>
+                    <p> - OR - </p>
                     </div>
                     <div className="row">
                     <form action="/auth/login" method="post" id="form">

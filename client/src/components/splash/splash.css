@@ -3,10 +3,13 @@
     height: 25%;
     padding: 0px;
   }
+
 h3 {
   color: black;
   text-decoration: none;
 }
+
+
 .splashGreeting {
   margin-bottom: -1em;
 }
@@ -23,11 +26,11 @@ h3 {
 }
 
 #username{
-  margin-right: 1em;
+  margin-right: .75em;
 }
 
 #password{
-  margin-left: 1em;
+  margin-left: .75em;
 }
 
 #createOne{
