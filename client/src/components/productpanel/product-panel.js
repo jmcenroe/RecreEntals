@@ -6,32 +6,28 @@ import React, { Component } from 'react';
 // import NavBar from './header.js';
 // import Row from './BSstuff.js';
 // import Container from './BSstuff.js';
+import './product-panel.css';
 import API from '../../utils/API';
 
-const ProductPanel = props => <div id={props.id} key={props.index}>
-                
-                <h2>{props.itemName}</h2>
-                <p>{props.itemDescription}</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Hourly</th>
-                            <th>Daily</th>
-                            <th>Weekly</th>
-                            <th>Monthly</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{props.hourly !== null ? '$' + props.hourly +'/hr' : 'N/A'}</td>
-                            <td>{props.daily !== null ? '$' + props.daily +'/day' : 'N/A'}</td>
-                            <td>{props.weekly !== null ? '$' + props.weekly +'/week' : 'N/A'}</td>
-                            <td>{props.monthly !== null ? '$' + props.monthly +'/month' : 'N/A'}</td>
-                        </tr>
-                    </tbody>
-                </table>
+const ProductPanel = props =>
+            <div id={props.id} key={props.index}>
+                <div className = "row productRow">
+                            <div className="col col-4 col-xs-12 imgCol">
+                                <img src={props.imageURL} alt={props.itemName} className="productImage"/>
+                            </div>
+                        
+                            <div id={props.id} key={index} className="col col-4 col-xs-6 productInfo">
+                                <h3>{props.itemName}</h3>
+                                <h4>{props.itemDescription}</h4>
+                            </div>
+                            <div className="col col-4 col-xs-6 productPrice">
+                                <div className="row align-left">{item.hourly !== null ? '$' + props.hourly +'/hr' : 'Hourly price not available.'}</div>
+                                <div className="row align-left">{item.daily !== null ? '$' + props.daily +'/day' : 'Daily price not available'}</div>
+                                <div className="row align-left">{item.weekly !== null ? '$' + props.weekly +'/week' : 'Weekly price not available'}</div>
+                                <div className="row align-left">{item.monthly !== null ? '$' + props.monthly +'/month' : 'Monthly price not available'}</div>
+                            </div>
+                  </div>
             </div>
-
 
 
 

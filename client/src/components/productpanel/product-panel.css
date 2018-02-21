@@ -1,0 +1,13 @@
+.productImage{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px gainsboro;
+}
+
+.productRow{
+    box-shadow: 0px 0px 1em 0px black;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}

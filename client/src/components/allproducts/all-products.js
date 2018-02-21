@@ -67,7 +67,7 @@ class AllProducts extends Component{
         var rows = [];
         for(let i = 0; i<this.state.categories.length; i++) {
             rows.push(<div id={this.state.categories[i]}>
-                        <h2 className="align-left">
+                        <h2 className="align-center">
                             <span 
                                 className='category' 
                                 onClick={this.productClick.bind(this)}
