@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Container fluid={true} >
+        <div className="container-fluid" >
           <Navbar/>
           <Wrapper>
             <Route exact path='/' component={Splash}/>
@@ -31,7 +31,7 @@ class App extends Component {
             <Route exact path='/newuser' component={NewUserPage}/>
             <Route exact path='/newproduct' component={NewProductPage}/>
           </Wrapper>
-        </Container>
+        </div>
       </Router>
     );
   }
