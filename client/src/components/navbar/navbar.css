@@ -41,6 +41,11 @@ span#currentList {
   padding-left: 10px;
 }
 
+.message{
+  color: grey;
+  font-size: 0.5em;
+  margin-left: 2em;
+}
 
 
 

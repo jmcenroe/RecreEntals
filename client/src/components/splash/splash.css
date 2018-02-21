@@ -3,3 +3,52 @@
     height: 25%;
     padding: 0px;
   }
+
+.splashGreeting {
+  margin-bottom: -1em;
+}
+
+.splashGreeting > h1{
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.signIn {
+  margin-top: 2em;
+  justify-content: center;
+  text-align: center;
+}
+
+#username{
+  margin-right: 1em;
+}
+
+#password{
+  margin-left: 1em;
+}
+
+#createOne{
+  text-align: center;
+}
+
+input {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.icon {
+  height: 3em;
+  width: 3em;
+  margin: 1em;
+}
+
+#splashLogo {
+  height: 8em;
+}
+
+#splash {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 3em;
+}
