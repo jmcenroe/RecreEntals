@@ -59,7 +59,7 @@ componentDidMount() {
           </div>
         </div>
         <div className="col" id="options">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav" id="navbar-links">
             <li
               className={
                 window.location.pathname === "/"

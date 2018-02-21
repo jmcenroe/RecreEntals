@@ -43,7 +43,7 @@ componentWillMount() {
                 userid={this.state.userid}/>
           </div>
         </div>
-        : <h1> You must be signed in to add a product</h1>}
+        : <h1> Sorry, you must be signed in to add a product.</h1>}
         
       </Container>
     );
