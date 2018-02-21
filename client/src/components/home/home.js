@@ -5,7 +5,7 @@ import './home.css';
 class Home extends Component{
     render(){
         return(
-            <div className>
+            <div className="container-fluid">
                 <h2>Browse by Category</h2>
                 <h3>Small Sporting Goods</h3>
                 <p><i className="fas fa-football-ball"></i></p>

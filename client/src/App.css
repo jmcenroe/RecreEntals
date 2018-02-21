@@ -1,10 +1,12 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
 nav {
   background-color: rgba(223, 222, 222, 0.658);
-  font-family: Avenir;
 }
 
 h1, h2, h3, h4, p {
-  font-family: Avenir;
   padding: 0;
 }
 
@@ -25,7 +27,6 @@ html, body{
 
 body {
   padding: 50px;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .profile-img {
@@ -49,6 +50,8 @@ body {
   text-align: center;
 }
 
+/* Beginning of writing animation for the day/night transition
+
 @-webkit-keyframes bgTrans {
   0% {
     
@@ -69,4 +72,4 @@ body {
 
 @keyframes bgTrans {
 
-}
+} */
