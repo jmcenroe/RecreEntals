@@ -49,8 +49,8 @@ class Splash extends Component {
                     </form>
                 </div> 
                 <div className="row">
-                    <a href="/auth/google"><img class="icon" src={gIcon} alt="Sign in with Google"/></a>
-                    <a href="/auth/facebook"><img class="icon" src={fbIcon} alt="Sign in with Facebook"/></a>
+                    <a href="/auth/google"><img className="icon" src={gIcon} alt="Sign in with Google"/></a>
+                    <a href="/auth/facebook"><img className="icon" src={fbIcon} alt="Sign in with Facebook"/></a>
                 </div>
                 <div className="row">
                     <a href="/newuser"><h3 id="createOne">Don't have an account? <p>Create one here.</p></h3></a>
