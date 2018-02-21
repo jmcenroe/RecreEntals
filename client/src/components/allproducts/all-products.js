@@ -101,11 +101,15 @@ class AllProducts extends Component{
     render(){
         return(
             <div className="container products">
-                <h1>
-                    Products By Category </h1>
-                    <button 
-                        style={{'float': 'right'}}
-                        onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
+                <div className = "row d-flex">
+                    <div className = "col col-12 align-self-center">
+                        <h1>Products By Category </h1>
+                    </div>
+                    <div className="col align-self-center">
+                        <button id="add"
+                         onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
+                    </div>
+                </div>
                 {this.allCategoryDisplay()}
             </div>
         );
