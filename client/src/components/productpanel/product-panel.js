@@ -24,6 +24,8 @@ class ProductPanel extends Component {
         API.getProductByCategory(this.props.category).then((data) => {
             this.setState({
                 products: data.data
+            }, () => {
+                console.log(this.state);
             });
         });
     }
