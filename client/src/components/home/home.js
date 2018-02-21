@@ -11,7 +11,12 @@ class Home extends Component{
                 <p><i className="fas fa-football-ball"></i></p>
                 <h3>Snow Equipment</h3>
                 <p><i className="fas fa-snowflake"></i></p>
-                
+                <h3>Snow Equipment</h3>
+                <p><i className="fas fa-snowflake"></i></p>
+                <h3>Snow Equipment</h3>
+                <p><i className="fas fa-snowflake"></i></p>
+                <h3>Snow Equipment</h3>
+                <p><i className="fas fa-snowflake"></i></p>
             </div>
         );
     }

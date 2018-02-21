@@ -33,6 +33,9 @@ class Splash extends Component {
                 <div className="row splashEnd">
                     <h2>A place to rent things.</h2>
                 </div>
+                <div>
+                    <h3>Sign in to your account to start renting!</h3>
+                </div>
 
                 <div className = "row signIn">
                     <form action="/auth/login" method="post">
@@ -44,14 +47,14 @@ class Splash extends Component {
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> 
                 <div className="row">
-                    <a href="/newuser"><h3 id="createOne">Don't have an account? Create one</h3></a>
-                </div>  
-                <div className="row">                      
                     <a href="/auth/google"><img class="icon" src={gIcon} alt="Sign in with Google"/></a>
                     <a href="/auth/facebook"><img class="icon" src={fbIcon} alt="Sign in with Facebook"/></a>
                 </div>
+                <div className="row">
+                    <a href="/newuser"><h3 id="createOne">Don't have an account? <p>Create one here.</p></h3></a>
+                </div> 
             </div>
         );
     }
