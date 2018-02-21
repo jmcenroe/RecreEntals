@@ -67,7 +67,7 @@ componentDidMount() {
                   : ""
               }
             >
-              <Link to="/">Sign In / Sign Up</Link>
+              <Link to="/">Log In / Sign Up</Link>
             </li>
             <li
               className={window.location.pathname === "/home" ? "active" : ""}
