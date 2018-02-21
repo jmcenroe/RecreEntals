@@ -183,7 +183,7 @@ submitDisabled() {
             </span>  
           </label>  
           <input
-            type="text"
+            type="tel"
             className="form-control"
             name='phone'
             value={this.state.phone}

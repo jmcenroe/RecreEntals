@@ -1,3 +1,15 @@
+div.form-group.col-md-6 {
+  font-size: .85em;
+  padding-top: 10px;
+  font-weight: 600;
+  
+  
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .15rem;
+}
 nav.navbar.navbar-default {
   margin-bottom: 0;
 }
@@ -8,7 +20,6 @@ input.formcontrol {
 
 li.navbar-text {
   overflow: auto;
-  
 }
 
 li#split {
