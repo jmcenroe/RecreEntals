@@ -17,18 +17,22 @@ state = {
   lists: [],
   activeList: '',
   changeList: '',
-  message: 'Not Signed In'
+  auth: false,
+  userName: ''
 }
 
 componentDidMount() {
   API.checkAuth().then( (data) => {
-    if (data.data.auth) {
-
+    let statedata = {}
+    console.log(data.data);
+    statedata.auth = data.data.auth;
     
-      this.setState({
-      message: data.data.displayName
-      })
+    if (statedata.auth) {
+      statedata.userName= data.data.displayName;
     }
+    this.setState(
+      statedata
+    );
   });
 
  
@@ -50,11 +54,7 @@ componentDidMount() {
           </div>
           <div className='message'>
             <span>
-              {this.state.message}{this.state.message !== 'Not Signed In' ? 
-                <form action='/auth/logout' method='get'>
-                  <button type='submit'>Log Out</button>
-                </form> 
-                : ''}
+              {this.state.message}
             </span>
           </div>
         </div>
@@ -67,23 +67,22 @@ componentDidMount() {
                   : ""
               }
             >
-              <Link to="/">Log In / Sign Up</Link>
-            </li>
-            <li
-              className={window.location.pathname === "/home" ? "active" : ""}
-            >
-              <Link to="/home">Home</Link>
+             {this.state.auth ? 
+                <div> Welcome, 
+                    <Link to='/profile'>{this.state.userName}</Link>
+                    <form action='/auth/logout' method='get'>
+                      <button type='submit'>Log Out</button>
+                    </form> 
+                </div>
+                
+                : 'You are not logged in'}<Link to="/">Log In</Link>
             </li>
             <li
               className={window.location.pathname === "/products" ? "active" : ""}
             >
               <Link to="/products">Products</Link>
             </li>
-            <li
-              className={window.location.pathname === "/profile" ? "active" : ""}
-            >
-              <Link to="/profile">Profile</Link>
-            </li>
+           
             
             
                 
