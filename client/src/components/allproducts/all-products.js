@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Product from '../product';
-import ProductPanel from '../productpanel';
+import ProductGroup from '../productgroup';
 // import '../App.css';
 import logo from '../../assets/img/recre-entals-black.gif';
 // import Product from '../product';
@@ -76,7 +76,7 @@ class AllProducts extends Component{
                             </span>
                         </h2>
                         {this.state.categories[i].display ? 
-                        <ProductPanel category={this.state.categories[i].category}/> : ''}
+                        <ProductGroup category={this.state.categories[i].category}/> : ''}
                     </div>);
         }
 

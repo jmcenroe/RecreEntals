@@ -16,6 +16,7 @@ import './App.css';
 import logo from './assets/img/recre-entals-black.gif';
 import NewUserPage from './pages/newuserpage';
 import NewProductPage from './pages/newproductpage';
+import ProductSearch from './pages/productsearch';
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path='/home' component={Home}/>
             <Route exact path='/newuser' component={NewUserPage}/>
             <Route exact path='/newproduct' component={NewProductPage}/>
+            <Route exact path='/productsearch' component={ProductSearch}/>
           </Wrapper>
         </div>
       </Router>

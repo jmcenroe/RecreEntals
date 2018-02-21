@@ -31,6 +31,7 @@ router.get('/items/:category', (req, res) => {
 });
 
 router.get('/items', (req, res) => {
+	console.log('Hitting general items')
 	db.Item.findAll({}).then((data) => {
 		res.json(data);
 	})
@@ -48,6 +49,19 @@ router.post('/additem', (req, res) => {
 	});
 
 
+});
+
+router.get('/item/:search', (req, res) => {
+	console.log('hitting search');
+	db.Item.findAll({
+		where: {
+			itemName: {
+				$like: '%' + req.params.search + '%'
+			}
+		}
+	}).then((data) => {
+		res.json(data);
+	});
 });
 
 module.exports = router;
