@@ -45,9 +45,9 @@ function seedModel1(db) {
             Promise.all([
                 
                 seedModel4(db)
-            ])
-
-        })
+           
+            ]);
+        });
     })
 
     ])
@@ -100,6 +100,7 @@ function seedModel3(db) {
             UserId: 1,
             CategoryId: 7
         }),
+       
         db.Item.create({
             itemName: 'Kid\'s Snowboard', 
             itemDescription: 'Snow Daze 110 cm Blue Lightning Kids Beginner Snowboard',
@@ -128,6 +129,16 @@ function seedModel3(db) {
             imageURL: 'https://cdn.levelninesports.com/media/catalog/product/cache/1/image/1500x/040ec09b1e35df139433887a97daa66f/h/e/head-the-link-pro-r-skis-169cm_2.jpg',
             UserId: 1,
             CategoryId: 1            
+        }),
+        db.Item.create({
+            itemName: 'Helmet',
+            itemDescription: 'Daytona Women 3/4 OPEN Face Motorcycle Helmet',
+            category: 'Motor Sports',
+            daily: 50,
+            weekly: 110,
+            imageURL:'https://images.craigslist.org/00e0e_aml1hPeReoY_1200x900.jpg',
+            UserId: 1,
+            CategoryId: 5
         })
 
     ])
@@ -136,6 +147,7 @@ function seedModel3(db) {
         
 function seedModel4(db) {
     const returnablePromise = Promise.all([
+        
         db.Item.create({
             itemName: 'Trampoline', 
             itemDescription: 'Full size Olympic Trampoline',
@@ -145,6 +157,7 @@ function seedModel4(db) {
             UserId: 2,
             CategoryId: 7
         }),
+        
        
        
         db.Item.create({
@@ -164,7 +177,7 @@ function seedModel4(db) {
             imageURL:'https://images.craigslist.org/00P0P_l5GZIqcBmMM_600x450.jpg',
             UserId: 2,
             CategoryId: 6
-        }),
+        })
     ])
 }
 
