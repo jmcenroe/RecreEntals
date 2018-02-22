@@ -39,6 +39,9 @@ export default {
 
   removeItem: function(itemid) {
     return axios.delete('/api/item/' + itemid);
+  },
+  getOneProduct: function(itemid) {
+    return axios.get('/api/singleitem/'+itemid);
   }
 
     
