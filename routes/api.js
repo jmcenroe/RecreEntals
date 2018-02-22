@@ -3,6 +3,9 @@ const router = express.Router();
 const db = require('../app/db');
 const path = require('path');
 const sequelize = require('sequelize');
+const nodemailer = require('nodemailer');
+const config = require('../config/config');
+
 
 router.get('/categoriescount', (req, res) => {
 	console.log('Route hit');
@@ -100,7 +103,7 @@ router.get('/singleitem/:itemid', (req, res) => {
 		},
 		include: [{
 			model: db.User,
-			attributes: ['id', 'displayName', 'imageURL']
+			attributes: ['id', 'displayName', 'imageURL','email']
 		}]
 	}).then(data => {
 		res.json(data);
@@ -138,6 +141,32 @@ router.delete('/item/:itemid', (req, res) => {
 		res.error('No authenticated user, can\'t destroy product');
 	}
 
+});
+
+router.post('/sendmail', (req,res) => {
+	let transporter = nodemailer.createTransport(config.email);
+
+	console.log(req.body);
+	let mailOptions = {
+		from: 'recre.entals@gmail.com',
+		to: req.body.toEmail,
+		subject: 'Rental request from somebody at Recre-Entals',
+		text: 'Someone has sent you a message about ' + req.body.product +
+			'\n\nMessage From: ' + req.body.name + 
+			'\n\nPhone: ' + req.body.phone + 
+			'\n\nEmail: ' + req.body.email + 
+			'\n\nMessage: ' + req.body.message
+	  };
+
+	  transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		  console.log(error);
+		} else {
+		  res.send(info.response);
+		}
+	  });
+
+	  
 });
 
 module.exports = router;
