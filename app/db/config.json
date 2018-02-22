@@ -14,10 +14,19 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "w7qtllav73c639ng",
-    "password": "wrrkwhmz9tp773ng",
-    "database": "kqdbsoj34u9ussau",
-    "host": "edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": "mvwijb0mji6xjk3p",
+    "password": "ytwzwwxrj7trnnql",
+    "database": "vvcx0eb3e6s7ilrt",
+    "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL"
+  },
+  "email": {
+    "service": "gmail",
+    "auth": {
+      "user": "recre.entals@gmail.com",
+      "pass": "cdjtcjms"
+    }
+
   }
 }
