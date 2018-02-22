@@ -78,8 +78,7 @@ class AllProducts extends Component{
 
                                 
                                 {this.state.categories[i].category}
-                                ({this.state.categoryCount[i]})
-                                <img data-id={i} src={this.state.categories[i].Category.imageURL}/>
+                                {/* ({this.state.categoryCount[i]}) */}
                             </h3>
                         </div>
                         {this.state.categories[i].display ? 
@@ -117,6 +116,7 @@ class AllProducts extends Component{
                          onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
+                
                 {this.allCategoryDisplay()}
             </div>
         );

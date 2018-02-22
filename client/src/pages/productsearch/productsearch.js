@@ -37,44 +37,49 @@ handleChange = event => {
 
     render(){
         return(
-            <div>
-                <h2><i className="fas fa-search"></i> Product Search</h2>
+            <div className="searchFlex container-fluid">
+                {/* <h2><i className="fas fa-search"></i> Product Search</h2> */}
+                <div className="row searchRow d-flex">
                     <form id="searchbar">
-                <input
-                    type="text"
-                    className="form-control col-md-6"
-                    placeholder="Search all items for your next rental..." 
-                    name='searchTerm'
-                    value={this.state.searchTerm}
-                    onChange={this.handleChange}
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search all items for your next rental..." 
+                        name='searchTerm'
+                        value={this.state.searchTerm}
+                        onChange={this.handleChange}
                     />
-                    <button type='submit' onClick={this.search.bind(this)}>Search</button>
+                    <div className="row d-flex" id="buttonRow">
+                        <button type='submit' id="searchButton" onClick={this.search.bind(this)}>Search</button>
+                    </div>
                     </form>
+                </div>
 
-                    {this.state.searchresults.length>0 
-                    ? this.state.searchresults.map((item,index) =>{ 
-                        console.log(item.User);
-                    return <ProductPanel 
-                    {...this.props}
-                    id={item.id}
-                    index={item.index}
-                    userid={item.userid}
-                    itemName={item.itemName}
-                    itemDescription={item.itemDescription}
-                    hourly={item.hourly}
-                    daily={item.daily}
-                    weekly={item.weekly}
-                    monthly={item.monthly}
-                    imageURL={item.imageURL}
-                    userId={item.User.id}
-                    userName={item.User.displayName}
-                    userImage={item.User.imageURL}
-                    profileDisabled='false'
-                    
-                />
-                    })
-                    : 'No rentals were found. Try again.' }
-            </div>
+                        {this.state.searchresults.length>0 
+                        ? this.state.searchresults.map((item,index) =>{ 
+                            console.log(item.User);
+                        return <ProductPanel 
+                        {...this.props}
+                        id={item.id}
+                        index={item.index}
+                        userid={item.userid}
+                        itemName={item.itemName}
+                        itemDescription={item.itemDescription}
+                        hourly={item.hourly}
+                        daily={item.daily}
+                        weekly={item.weekly}
+                        monthly={item.monthly}
+                        imageURL={item.imageURL}
+                        userId={item.User.id}
+                        userName={item.User.displayName}
+                        userImage={item.User.imageURL}
+                        profileDisabled='false'
+                        
+                    />
+                        })
+                        : 'No rentals were found. Try again.' }
+                </div>
+            
         );
     }
 }
