@@ -57,7 +57,7 @@ rent = event => {
                         <div className="row" id="rentee">
                         {this.props.profileDisabled == 'false' ?
                             <div data-id={this.props.userId} onClick={this.viewProfile.bind(this)}>
-                                Rented by: <img src={this.props.userImage} alt={this.props.userName} data-id={this.props.userId} id="userIcon"/> {this.props.userName}
+                                Owned by: <img src={this.props.userImage} alt={this.props.userName} data-id={this.props.userId} id="userIcon"/> {this.props.userName}
                             </div>  
                             : '' }
                             {this.props.edit ? 

@@ -80,7 +80,22 @@ handleChange = event => {
 
   send = event => {
       event.preventDefault();
-      console.log(this.state.form);
+      let data = this.state.form;
+      data.toEmail = this.state.item.User.email;
+      data.product = this.state.item.itemName;
+
+      if (data.phone === '') {
+          data.phone = 'Not Provided'
+      }
+
+      if (data.email === '') {
+        data.email = 'Not Provided'
+    }
+
+      API.sendMessage(data).then(data => {
+          //Add flash message later
+      });
+
   }
 
   submitDisabled() {

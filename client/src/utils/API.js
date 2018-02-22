@@ -42,6 +42,9 @@ export default {
   },
   getOneProduct: function(itemid) {
     return axios.get('/api/singleitem/'+itemid);
+  },
+  sendMessage: function(data) {
+    return axios.post('/api/sendmail', data);
   }
 
     

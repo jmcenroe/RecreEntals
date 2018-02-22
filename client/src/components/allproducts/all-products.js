@@ -45,8 +45,12 @@ class AllProducts extends Component{
     productClick(event) {
         const index = parseInt(event.target.getAttribute('data-id'));
 
-        let data = this.state.categories;
+        //App throws an error if event is clicked before everything is built, ignore if data doesn't render properly
+        if (!isNaN(index)) {
 
+        
+        let data = this.state.categories;
+        console.log(index);
         if (data[index].display === true) {
             data[index].display = false;
         }
@@ -58,6 +62,8 @@ class AllProducts extends Component{
             categories: data
         });
 
+    }
+
        
     }
 
@@ -66,25 +72,29 @@ class AllProducts extends Component{
     allCategoryDisplay() {
         var rows = [];
         for(let i = 0; i<this.state.categories.length; i++) {
-            rows.push(<div id={this.state.categories[i]} className="row categoryRow">
-                        <div className="col d-flex leftCol">
-                            <h2><img src={this.state.categories[i].Category.imageURL} className="categoryIcon"/></h2>
-                        </div>
-                        <div className="col d-flex rightCol category" 
-                            data-id={i}
-                            onClick={this.productClick.bind(this)}>
-                            <h3
-                                data-id={{i}}>
+            rows.push(<div>
+                        <div id={this.state.categories[i]} data-id={i} className="row categoryRow" onClick={this.productClick.bind(this)}>
+                    
+                            <div className="col d-flex leftCol"  data-id={i}>
+                                <h2><img data-id={i} src={this.state.categories[i].Category.imageURL} className="categoryIcon"/></h2>
+                            </div>
+                            <div className="col d-flex rightCol category" 
+                                data-id={i}>
+                                <h3 data-id={i}>
 
-                                
-                                {this.state.categories[i].category}
-                                ({this.state.categoryCount[i]})
-                                <img data-id={i} src={this.state.categories[i].Category.imageURL}/>
-                            </h3>
+                                    
+                                    {this.state.categories[i].category}
+                                    ({this.state.categoryCount[i]})
+                                </h3>
+                            </div>
+                        
+                    </div>
+                        <div>
+                            {this.state.categories[i].display ? 
+                            <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
                         </div>
-                        {this.state.categories[i].display ? 
-                        <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
-                    </div>);
+                    </div>
+                    );
         }
 
         return rows;
