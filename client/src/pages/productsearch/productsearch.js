@@ -54,6 +54,7 @@ handleChange = event => {
                     ? this.state.searchresults.map((item,index) =>{ 
                         console.log(item.User);
                     return <ProductPanel 
+                    {...this.props}
                     id={item.id}
                     index={item.index}
                     userid={item.userid}
@@ -68,7 +69,7 @@ handleChange = event => {
                     userName={item.User.displayName}
                     userImage={item.User.imageURL}
                     profileDisabled='false'
-                    {...this.props}
+                    
                 />
                     })
                     : 'No Products' }

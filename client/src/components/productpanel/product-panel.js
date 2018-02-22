@@ -28,6 +28,15 @@ viewProfile = event => {
 remove = event => {
     console.log(event.target.id);
 }
+
+rent = event => {
+    this.props.history.push({
+        pathname: '/rent',
+        state: {
+            productId: event.target.id
+        }
+    });
+}
     
   render () {
   console.log(this.props.edit);
@@ -56,7 +65,7 @@ remove = event => {
                     : '' }
                   {this.props.edit ? 
                     <button id={this.props.id} onClick={this.props.remove}>Remove Item</button>
-                : ''}
+                : this.props.rentDisabled == 'true' ? '' : <button id={this.props.id} onClick={this.rent.bind(this)}>Rent Item</button>}
             </div>
 
   }

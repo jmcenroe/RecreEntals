@@ -17,6 +17,7 @@ import logo from './assets/img/recre-entals-black.gif';
 import NewUserPage from './pages/newuserpage';
 import NewProductPage from './pages/newproductpage';
 import ProductSearch from './pages/productsearch';
+import RentProduct from './pages/rentproduct';
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path='/newuser' component={NewUserPage}/>
             <Route exact path='/newproduct' component={NewProductPage}/>
             <Route exact path='/productsearch' component={ProductSearch}/>
+            <Route exact path='/rent' component={RentProduct}/>
           </Wrapper>
         </div>
       </Router>
