@@ -28,6 +28,8 @@ handleChange = event => {
       .then((data) => {
        this.setState({
         searchresults: data.data
+       }, () => {
+           console.log(this.state);
        });
       })
   }
@@ -50,6 +52,7 @@ handleChange = event => {
 
                     {this.state.searchresults.length>0 
                     ? this.state.searchresults.map((item,index) =>{ 
+                        console.log(item.User);
                     return <ProductPanel 
                     id={item.id}
                     index={item.index}
@@ -61,6 +64,11 @@ handleChange = event => {
                     weekly={item.weekly}
                     monthly={item.monthly}
                     imageURL={item.imageURL}
+                    userId={item.User.id}
+                    userName={item.User.displayName}
+                    userImage={item.User.imageURL}
+                    profileDisabled='false'
+                    {...this.props}
                 />
                     })
                     : 'No Products' }

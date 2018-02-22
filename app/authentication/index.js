@@ -56,7 +56,7 @@ module.exports = function (passport) {
       callbackURL: 'http://localhost:3001/auth/google/callback'
     },
     function (accessToken, refreshToken, profile, done) {
-      
+     
       db.User.findOrCreate({
           where: {
             otherId: profile.id
@@ -64,11 +64,11 @@ module.exports = function (passport) {
           defaults: {
             username: profile.displayName,
             displayName: profile.displayName,
-            usertype: 'Google'
+            usertype: 'Google',
+            imageURL: profile.photos[0].value
           }
         })
         .spread((user, created) => {
-          console.log(accessToken);
           return done(null, user);
         })
     }));
@@ -118,6 +118,7 @@ module.exports = function (passport) {
     },
     function (accessToken, refreshToken, profile, done) {
 
+      console.log('Here\'s the profile');
       console.log(profile);
       db.User.findOrCreate({
           where: {

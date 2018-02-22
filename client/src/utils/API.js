@@ -8,8 +8,8 @@ export default {
     return axios.get('/auth/check');
   },
 
-  getUser: function() {
-      return axios.get('/auth/getUser');
+  getUser: function(id) {
+      return axios.get('/auth/getUser/'+id);
   },
 
   addUser: function (data) {
@@ -31,6 +31,14 @@ export default {
 
   searchItem: function(searchterm) {
     return axios.get('/api/item/' + searchterm);
+  },
+
+  getProductByUser: function(userid) {
+    return axios.get('/api/item/user/' + userid);
+  },
+
+  removeItem: function(itemid) {
+    return axios.delete('/api/item/' + itemid);
   }
 
     

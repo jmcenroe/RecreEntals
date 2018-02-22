@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Profile from './components/profile';
+import Profile from './pages/profilepage';
 import Splash from './pages/splashpage';
 import Wrapper from "./components/wrapper";
 import Container from './components/container';

@@ -34,6 +34,9 @@ var User = sequelize.define("User", {
     },
     phone: {
         type: DataTypes.STRING(25)
+    },
+    imageURL: {
+        type: DataTypes.STRING(150)
     }
 
 }, {

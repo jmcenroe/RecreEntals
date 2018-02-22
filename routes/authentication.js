@@ -39,17 +39,21 @@ module.exports = function (app, passport) {
 		if (req.user) {
 			data.id = req.user.id;
 			data.displayName = req.user.displayName;
+			data.imageURL=req.user.imageURL;
 		}
 
 		res.json(data);
 	});
 
-	app.get('/auth/getUser', function (req, res) {
-		if (req.user) {
-			return req.user.displayName;
-		} else {
-			return null;
-		}
+	app.get('/auth/getUser/:id', function (req, res) {
+		db.User.findOne({
+			where: {
+				id: req.params.id
+			},
+			attributes: ['createdAt','displayName','email','id','imageURL','phone']
+		}).then( data => {
+			res.json(data);
+		})
 	});
 
 	app.get('/auth/facebook', passport.authenticate('facebook'));
