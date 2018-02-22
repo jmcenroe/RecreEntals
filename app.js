@@ -28,9 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve up static assets
+app.use(express.static("client/build"));
 
-// app.use('/', index);
-// app.use('/users', users);
+
 
 
 // Define apiRoutes
