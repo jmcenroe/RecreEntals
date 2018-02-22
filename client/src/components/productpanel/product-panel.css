@@ -11,3 +11,17 @@
     padding-bottom: 1em;
     margin-bottom: 1em;
 }
+
+#userIcon {
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+}
+
+#rentee {
+    margin-top: 1em;
+}
+
+#rentee:hover {
+    cursor: pointer;
+}
