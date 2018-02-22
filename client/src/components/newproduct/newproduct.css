@@ -2,6 +2,21 @@ nav.navbar.navbar-default {
   margin-bottom: 0;
 }
 
+.search input {
+  box-shadow: 0px 0px 10px teal;
+}
+
+.search textarea {
+  box-shadow: 0px 0px 10px teal;
+}
+
+#description {
+  margin-bottom: 0.15em;
+}
+
+input {
+  text-align: center;
+}
 
 li.navbar-text {
   overflow: auto;
