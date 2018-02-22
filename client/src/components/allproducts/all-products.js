@@ -127,6 +127,7 @@ class AllProducts extends Component{
                          onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
+                
                 {this.allCategoryDisplay()}
             </div>
         );
