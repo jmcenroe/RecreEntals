@@ -35,6 +35,7 @@ class ProductGroup extends Component {
 
         API.getProductByCategory(category)
             .then((data) => {
+                console.log(data.data);
                 return this.showProducts(data.data);                
             });
     }

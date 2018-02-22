@@ -61,25 +61,32 @@ function seedModel2(db) {
     return Promise.all([
         
         db.Category.create({
-            name: 'Winter Sports'
+            name: 'Winter Sports',
+            imageURL: 'https://i.imgur.com/E8mPIPL.png'
         }),
         db.Category.create({
-            name: 'Bikes, Skates and Boards'
+            name: 'Bikes, Skates and Boards',
+            imageURL: 'https://i.imgur.com/O9VgAR9.png'
         }),
         db.Category.create({
-            name: 'Camping and Outdoors'
+            name: 'Camping and Outdoors',
+            imageURL: 'https://i.imgur.com/7zYZlUV.png'
         }),
         db.Category.create({
-            name: 'Water Sports'
+            name: 'Water Sports',
+            imageURL: 'https://i.imgur.com/sI6W4Up.png'
         }),
         db.Category.create({
-            name: 'Field and Court Sports'
+            name: 'Field and Court Sports',
+            imageURL: 'https://i.imgur.com/a5sObKT.png'
         }),
         db.Category.create({
-            name: 'Golf'
+            name: 'Golf',
+            imageURL: 'https://i.imgur.com/5pFmAOy.png'
         }),
         db.Category.create({
-            name: 'Other'
+            name: 'Other',
+            imageURL: 'https://i.imgur.com/CZTkBlm.png'
         }).then(()=>{
             console.log('Done with last category');
         })
