@@ -124,8 +124,8 @@ handleChange = event => {
     render(){
         console.log(this.state);
         return(
-            <div>
-                {this.state.item ?
+            <div className="d-flex container-fluid" id="rentForm">
+            {this.state.item ?
                <ProductPanel 
                     {...this.props}
                     id={this.state.item.id}
@@ -146,70 +146,73 @@ handleChange = event => {
                     
                 />
                 : ''}
-                {this.state.form ? <form className="search">
-                <div className="form-row">
-               
-                    
-                    <label htmlFor="displayName">Name*</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name='name'
-                        value={this.state.form.name}
-                        onChange={this.handleChange}
-                    />
-                    </div>
+                {this.state.form ? <div className="row">
+                <form className="search">
+                <div className="col">
                     <div className="form-row">
-                    <div className="form group col-md-6">
-                    <label htmlFor="email">Email
-                        <span style={{
-                            color: 'red',
-                            paddingLeft: '25px'}}>
-                            {this.state.form.email !== ''  ? 
-                            this.checkemail() : ''}
-                        </span>  
-                    </label>  
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="search-term"
-                        name='email'
-                        placeholder="example@email.com"
-                        value={this.state.form.email}
-                        onChange={this.handleChange}
-                    />
-                    </div>
-                    <div className="form-group col-md-4">
-                    <label htmlFor="phone">Phone Number
+                        <label htmlFor="displayName">Name*</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name='name'
+                            value={this.state.form.name}
+                            onChange={this.handleChange}
+                        />
+                        </div>
+                        <div className="form-row">
+                        <div className="form group">
+                        <label htmlFor="email">Email
                             <span style={{
-                            color: 'red',
-                            paddingLeft: '25px'}}>
-                            {this.state.form.phone !== '' ? 
-                            this.checkphone() : ''}
-                        </span>  
-                    </label>  
-                    <input
-                        type="tel"
-                        className="form-control"
-                        name='phone'
-                        placeholder="ex: 555-555-5555"
-                        value={this.state.form.phone}
-                        onChange={this.handleChange}
-                    />
+                                color: 'red',
+                                paddingLeft: '25px'}}>
+                                {this.state.form.email !== ''  ? 
+                                this.checkemail() : ''}
+                            </span>  
+                        </label>  
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="search-term"
+                            name='email'
+                            placeholder="example@email.com"
+                            value={this.state.form.email}
+                            onChange={this.handleChange}
+                        />
+                        </div>
+                        <div className="form-group">
+                        <label htmlFor="phone">Phone Number
+                                <span style={{
+                                color: 'red',
+                                paddingLeft: '25px'}}>
+                                {this.state.form.phone !== '' ? 
+                                this.checkphone() : ''}
+                            </span>  
+                        </label>  
+                        <input
+                            type="tel"
+                            className="form-control"
+                            name='phone'
+                            placeholder="ex: 555-555-5555"
+                            value={this.state.form.phone}
+                            onChange={this.handleChange}
+                        />
+                        </div>
                     </div>
-                    <div className="form-group">
-                    <label htmlFor="message">Message*</label>
-                    <textarea
-                        type="text"
-                        style={{
-                        'height': '150px'
-                        }}
-                        className="form-control"
-                        placeholder='Message'
-                        name='message'
-                        value={this.state.form.message}
-                        onChange={this.handleChange}
-                    ></textarea>
+                    </div>
+                    <div className="col">
+                        <div className="form-group">
+                        <label htmlFor="message">Message*</label>
+                        <textarea
+                            type="text"
+                            style={{
+                            'height': '150px'
+                            }}
+                            className="form-control"
+                            placeholder='Message'
+                            name='message'
+                            value={this.state.form.message}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
 
                     <button 
@@ -221,9 +224,10 @@ handleChange = event => {
                     
                     SEND MESSAGE
                     </button>
-                    
-                </div>
+                    </div>
+                
             </form>
+            </div>
             : '' }
                
             </div>

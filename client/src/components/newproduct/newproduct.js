@@ -151,6 +151,7 @@ submitDisabled() {
               'height': '150px'
             }}
             className="form-control"
+            id="description"
             placeholder='Item Description'
             name='itemDescription'
             value={this.state.item.itemDescription}
@@ -171,38 +172,41 @@ submitDisabled() {
               return <option value={item}>{item}</option>
             })}
           </select>
-          <label htmlFor="hourly" className='inline'>Rates: &nbsp;&nbsp;&nbsp; Hourly </label>
+          <div>
+            Rates:
+          </div>
+          <label htmlFor="hourly" className='inline'>&nbsp;&nbsp;&nbsp;</label>
             <input
             type="text"
             className="inline-textbox"
-            placeholder="Rate"
+            placeholder="$"
             name='hourly'
             value={this.state.item.hourly}
             onChange={this.handleChange}
           />
-          <label htmlFor="daily">&nbsp; /hr&nbsp;&nbsp;&nbsp;&nbsp; Daily </label>
+          <label htmlFor="daily">&nbsp; /hr&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input
             type="text"
             className="inline-textbox"
-            placeholder="Rate"
+            placeholder="$"
             name='daily'
             value={this.state.item.daily}
             onChange={this.handleChange}
           />
-          <label htmlFor="weekly">&nbsp; /day&nbsp;&nbsp;&nbsp;&nbsp; Weekly </label>
+          <label htmlFor="weekly">&nbsp; /day&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input
             type="text"
             className="inline-textbox"
-            placeholder="Rate"
+            placeholder="$"
             name='weekly'
             value={this.state.item.weekly}
             onChange={this.handleChange}
           />
-          <label htmlFor="monthly">&nbsp; /wk&nbsp;&nbsp;&nbsp;&nbsp; Monthly </label>
+          <label htmlFor="monthly">&nbsp; /wk&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input
             type="text"
             className="inline-textbox"
-            placeholder="Rate"
+            placeholder="$"
             name='monthly'
             value={this.state.item.monthly}
             onChange={this.handleChange}
