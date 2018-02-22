@@ -18,8 +18,7 @@
     "password": "ytwzwwxrj7trnnql",
     "database": "vvcx0eb3e6s7ilrt",
     "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
-    "use_env_variable": "DATABASE_URL"
+    "dialect": "mysql"
   },
   "email": {
     "service": "gmail",
