@@ -11,7 +11,8 @@ function seedModel1(db) {
             displayName: 'Sample User',
             usertype: 'local',
             email: 'sampleuser@gmail.com',
-            phone: '555 555-5555'
+            phone: '555 555-5555',
+            imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-RsCDujTrelysR1aCZvaYaUwYqCDeBkIEYAQoSXJD9wMmpQzO3A'
         }).then(() => {
             console.log('Done with User 1 create');
             seedModel3(db)
@@ -27,7 +28,8 @@ function seedModel1(db) {
             displayName: 'Other User',
             usertype: 'local',
             email: 'otheruser@gmail.com',
-            phone: '555 666-5555'
+            phone: '555 666-5555',
+            imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6YKUU_g_oitQr7wKbLtUgUeLt-Zj_yw8-k709_3pmqLQ-w8nD3w'
         })
     }),
 
@@ -40,7 +42,8 @@ function seedModel1(db) {
             displayName: 'User Three',
             usertype: 'local',
             email: 'userthree@gmail.com',
-            phone: '555 777-5555'
+            phone: '555 777-5555',
+            imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi5moIRHf6AVqf_5cDm9GHF5UApi71bfD3KdlC6cgyhPa-vWY7ww'
         }).then(() => {
             Promise.all([
                 

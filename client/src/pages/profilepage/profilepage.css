@@ -1,0 +1,13 @@
+.container.profile{
+  padding-top: 1em;
+}
+
+.profile-img {
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px black;
+  }
+
+#profileInfo{
+  margin-top: 1em;
+}
+

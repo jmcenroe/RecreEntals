@@ -76,7 +76,7 @@ class AllProducts extends Component{
                             </span>
                         </h2>
                         {this.state.categories[i].display ? 
-                        <ProductGroup category={this.state.categories[i].category}/> : ''}
+                        <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
                     </div>);
         }
 

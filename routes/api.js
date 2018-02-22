@@ -24,7 +24,11 @@ router.get('/items/:category', (req, res) => {
 	db.Item.findAll({
 		where: {
 			category: req.params.category
-		}
+		},
+		include: [{
+			model: db.User,
+			attributes: ['id', 'displayName', 'imageURL']
+		}]
 	}).then((data) => {
 		res.json(data);
 	})
@@ -58,10 +62,59 @@ router.get('/item/:search', (req, res) => {
 			itemName: {
 				$like: '%' + req.params.search + '%'
 			}
+		},
+		include: [{
+			model: db.User,
+			attributes: ['id', 'displayName', 'imageURL']
+		}]
+	}).then(data => {
+		res.json(data);
+	}).catch((error) => {
+		console.log(error);
+	});
+});
+
+router.get('/item/user/:userid', (req, res) => {
+	db.Item.findAll({
+		where: {
+			UserId: req.params.userid
 		}
-	}).then((data) => {
+	}).then(data => {
 		res.json(data);
 	});
+});
+
+router.delete('/item/:itemid', (req, res) => {
+	//Make sure user is authenticated
+	if (req.isAuthenticated()) {
+		db.Item.findOne({
+			where: {
+				id: req.params.itemid
+			}
+		}).then((data) => {
+
+			//Make sure authenticated user "owns" product
+			if (req.user.id === data.UserId) {
+
+				db.Item.destroy({
+					where: {
+						id: req.params.itemid
+					}
+				}).then(data => {
+					res.json(data);
+				});
+
+			}
+			else {
+				res.error('Authenticated User doesn\'t own product');
+			}
+
+		});
+	}
+	else {
+		res.error('No authenticated user, can\'t destroy product');
+	}
+
 });
 
 module.exports = router;

@@ -54,6 +54,11 @@ class ProductGroup extends Component {
                                 weekly={item.weekly}
                                 monthly={item.monthly}
                                 imageURL={item.imageURL}
+                                userId={item.User.id}
+                                userName={item.User.displayName}
+                                userImage={item.User.imageURL}
+                                profileDisabled='false'
+                                {...this.props}
                             />
                     )
                 })}
