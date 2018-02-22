@@ -8,6 +8,10 @@ li.navbar-text {
   
 }
 
+#run-search {
+  margin-bottom: 1em;
+}
+
 li#split {
   color: white;
 }
