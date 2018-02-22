@@ -35,6 +35,7 @@ class ProductGroup extends Component {
 
         API.getProductByCategory(category)
             .then((data) => {
+                console.log(data.data);
                 return this.showProducts(data.data);                
             });
     }
@@ -44,6 +45,7 @@ class ProductGroup extends Component {
             <div> 
                 {this.state.products.map((item,index) => {
                     return (<ProductPanel 
+                                {...this.props}
                                 id={item.id}
                                 index={item.index}
                                 userid={item.userid}
@@ -58,7 +60,7 @@ class ProductGroup extends Component {
                                 userName={item.User.displayName}
                                 userImage={item.User.imageURL}
                                 profileDisabled='false'
-                                {...this.props}
+                                
                             />
                     )
                 })}

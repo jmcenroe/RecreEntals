@@ -8,7 +8,11 @@ router.get('/categoriescount', (req, res) => {
 	console.log('Route hit');
 	db.Item.findAndCountAll({
 		attributes: ['category'],
-		group: ['category']
+		group: ['category'],
+		include: [{
+			model: db.Category,
+			attributes: ['imageURL']
+		}]
 	}).then((data) => {
 		res.json(data);
 	});
@@ -28,6 +32,10 @@ router.get('/items/:category', (req, res) => {
 		include: [{
 			model: db.User,
 			attributes: ['id', 'displayName', 'imageURL']
+		},
+		{
+			model: db.Category,
+			attributes: ['imageURL']
 		}]
 	}).then((data) => {
 		res.json(data);
@@ -79,6 +87,21 @@ router.get('/item/user/:userid', (req, res) => {
 		where: {
 			UserId: req.params.userid
 		}
+	}).then(data => {
+		res.json(data);
+	});
+});
+
+router.get('/singleitem/:itemid', (req, res) => {
+	console.log('Hitting it');
+	db.Item.findOne({
+		where: {
+			id: req.params.itemid
+		},
+		include: [{
+			model: db.User,
+			attributes: ['id', 'displayName', 'imageURL']
+		}]
 	}).then(data => {
 		res.json(data);
 	});

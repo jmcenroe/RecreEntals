@@ -4,4 +4,15 @@
   background-color: rgba(150, 150, 150, 0.774);
   overflow-y: auto;
   overflow-x: hidden;
+
+
+::-webkit-input-placeholder {
+  text-align: left;
 }
+
+::-webkit-input {
+  text-align: left;
+}
+
+.form-control {
+  text-align: left;

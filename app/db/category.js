@@ -11,6 +11,10 @@ var Category = sequelize.define("Category", {
     name: {
         type: DataTypes.STRING(50),
         allowNull: false
+    },
+    imageURL: {
+        type: DataTypes.STRING(250),
+        allowNull: false
     }
     
 
