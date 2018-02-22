@@ -3,11 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "node app.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon app.js\" \"npm run client\"",
-    "build": "node scripts/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "axios": "^0.17.1",
