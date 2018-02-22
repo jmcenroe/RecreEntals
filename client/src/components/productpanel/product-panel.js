@@ -62,21 +62,11 @@ rent = event => {
                             : '' }
                             {this.props.edit ? 
                             <button id={this.props.id} onClick={this.props.remove}>Remove Item</button>
-                        :    ''}
+                        : this.props.rentDisabled == 'true' ? '' : <button id={this.props.id} onClick={this.rent.bind(this)}>Rent Item</button>}
                     </div>
                     </div>
                     
                   </div>
-
-                  {this.props.profileDisabled == 'false' ?
-                    <div data-id={this.props.userId} onClick={this.viewProfile.bind(this)}>
-                    Rented by: {this.props.userName}
-                    <img src={this.props.userImage} alt={this.props.userName} data-id={this.props.userId}/>
-                    </div>  
-                    : '' }
-                  {this.props.edit ? 
-                    <button id={this.props.id} onClick={this.props.remove}>Remove Item</button>
-                : this.props.rentDisabled == 'true' ? '' : <button id={this.props.id} onClick={this.rent.bind(this)}>Rent Item</button>}
 
             </div>
 

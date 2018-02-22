@@ -66,16 +66,22 @@ class AllProducts extends Component{
     allCategoryDisplay() {
         var rows = [];
         for(let i = 0; i<this.state.categories.length; i++) {
-            rows.push(<div id={this.state.categories[i]}>
-                        <h2 className="align-center">
-                            <span 
-                                className='category' 
-                                onClick={this.productClick.bind(this)}
-                                id={'category' + i}>
-                            {this.state.categories[i].category}({this.state.categoryCount[i]})
-                            </span>
-                            <img src={this.state.categories[i].Category.imageURL}/>
-                        </h2>
+            rows.push(<div id={this.state.categories[i]} className="row categoryRow">
+                        <div className="col d-flex leftCol">
+                            <h2><img src={this.state.categories[i].Category.imageURL} className="categoryIcon"/></h2>
+                        </div>
+                        <div className="col d-flex rightCol">
+                            <h3>
+                                <span 
+                                    className='category' 
+                                    onClick={this.productClick.bind(this)}
+                                    id={'category' + i}>
+                                </span>
+                                {this.state.categories[i].category}
+                                {/* <h3>({this.state.categoryCount[i]})</h3> */}
+                                <img src={this.state.categories[i].Category.imageURL}/>
+                            </h3>
+                        </div>
                         {this.state.categories[i].display ? 
                         <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
                     </div>);

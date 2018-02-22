@@ -38,7 +38,7 @@ handleChange = event => {
     render(){
         return(
             <div>
-                <h2><i class="fas fa-search"></i> Product Search</h2>
+                <h2><i className="fas fa-search"></i> Product Search</h2>
                     <form id="searchbar">
                 <input
                     type="text"

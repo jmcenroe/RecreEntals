@@ -3,7 +3,33 @@
   }
 
 .category {
-    text-align: left;
+    text-align: center;
     color: black;
     cursor: pointer;
   }
+
+.leftCol{
+  justify-content: flex-end;
+}
+
+.rightCol{
+  justify-content: flex-start;
+}
+
+.rightCol > h3 {
+  align-self: center;
+}
+
+.categoryIcon{
+  height: 3em;
+  margin-right: 1em;
+}
+
+.categoryRow {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  /* display: block; */
+  margin: 0.5em;
+  box-shadow: 0px 0px 5px rgb(108, 190, 121);
+  background: rgba(223, 223, 223, 0.507);
+}
