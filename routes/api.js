@@ -84,6 +84,21 @@ router.get('/item/user/:userid', (req, res) => {
 	});
 });
 
+router.get('/singleitem/:itemid', (req, res) => {
+	console.log('Hitting it');
+	db.Item.findOne({
+		where: {
+			id: req.params.itemid
+		},
+		include: [{
+			model: db.User,
+			attributes: ['id', 'displayName', 'imageURL']
+		}]
+	}).then(data => {
+		res.json(data);
+	});
+});
+
 router.delete('/item/:itemid', (req, res) => {
 	//Make sure user is authenticated
 	if (req.isAuthenticated()) {

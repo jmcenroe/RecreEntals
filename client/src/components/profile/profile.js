@@ -67,6 +67,7 @@ state= {
                 console.log(item);
                 return <div>
                           <ProductPanel 
+                                {...this.props}
                                 id={item.id}
                                 index={item.index}
                                 userid={item.userid}
