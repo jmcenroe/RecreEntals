@@ -103,7 +103,7 @@ class AllProducts extends Component{
             <div className="container products">
                 <div className = "row d-flex">
                     <div className = "col col-12 align-self-center">
-                        <h1>Products By Category </h1>
+                        <h2>Browse Rentals by Category</h2>
                     </div>
                     <div className="col align-self-center">
                         <button id="add"

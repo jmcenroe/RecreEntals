@@ -38,16 +38,17 @@ handleChange = event => {
     render(){
         return(
             <div>
-                <h2> Product Search </h2>
-                    <form>
+                <h2><i class="fas fa-search"></i> Product Search</h2>
+                    <form id="searchbar">
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control col-md-6"
+                    placeholder="Search all items for your next rental..." 
                     name='searchTerm'
                     value={this.state.searchTerm}
                     onChange={this.handleChange}
                     />
-                    <button type='submit' onClick={this.search.bind(this)}>Go</button>
+                    <button type='submit' onClick={this.search.bind(this)}>Search</button>
                     </form>
 
                     {this.state.searchresults.length>0 
@@ -71,7 +72,7 @@ handleChange = event => {
                     {...this.props}
                 />
                     })
-                    : 'No Products' }
+                    : 'No rentals were found. Try again.' }
             </div>
         );
     }
