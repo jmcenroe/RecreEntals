@@ -30,6 +30,8 @@ state = {
     
   }
 
+ 
+
   findUserData() {
     //Get user info if signed in
     API.checkAuth().then((data) => {
@@ -47,8 +49,7 @@ state = {
              this.setState({
                authUser: data.data,
                displayUser: data.data,
-               edit: true,
-               view: true
+               edit: true
              });
            }
            //If auth user and display user are different, get display user data and save to state
@@ -120,8 +121,11 @@ state = {
       <div className="profile container">
         {this.state.view ?
         <Profile edit={this.state.edit} 
-          {...this.state.displayUser}/>
-        : <h1>You must be <a href='/'>signed in</a> to view your own profile</h1>}
+          {...this.state.displayUser}
+          {...this.props}/>
+        : this.props.location.state ? '' : 
+        <h1>You must be <a href='/'>signed in</a> to view your own profile</h1> }
+        
         
       </div>
 

@@ -18,6 +18,15 @@
     "password": "ytwzwwxrj7trnnql",
     "database": "vvcx0eb3e6s7ilrt",
     "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL"
+  },
+  "email": {
+    "service": "gmail",
+    "auth": {
+      "user": "recre.entals@gmail.com",
+      "pass": "cdjtcjms"
+    }
+
   }
 }

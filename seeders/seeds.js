@@ -10,7 +10,7 @@ function seedModel1(db) {
             password: hash,
             displayName: 'Sample User',
             usertype: 'local',
-            email: 'sampleuser@gmail.com',
+            email: 'cclarkrun@gmail.com',
             phone: '555 555-5555',
             imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-RsCDujTrelysR1aCZvaYaUwYqCDeBkIEYAQoSXJD9wMmpQzO3A'
         }).then(() => {
@@ -65,7 +65,7 @@ function seedModel2(db) {
             imageURL: 'https://i.imgur.com/E8mPIPL.png'
         }),
         db.Category.create({
-            name: 'Bikes, Skates and Boards',
+            name: 'Wheel Sports',
             imageURL: 'https://i.imgur.com/O9VgAR9.png'
         }),
         db.Category.create({
@@ -103,12 +103,12 @@ function seedModel3(db) {
         db.Item.create({
             itemName: 'Running Shoes',
             itemDescription: 'Saucony Peregrine 7 Trail-Running Shoes - Men\'s',
-            category: 'Road Sports',
+            category: 'Field and Court Sports',
             daily: 75,
             weekly: 90,
             imageURL:'https://www.rei.com/media/44cc290b-8e64-4501-b4b6-da10baf6d58c?size=1020x510',
             UserId: 1,
-            CategoryId: 7
+            CategoryId: 5
         }),
        
         db.Item.create({
@@ -123,12 +123,12 @@ function seedModel3(db) {
         db.Item.create({
             itemName: 'Helmet',
             itemDescription: 'Daytona Women 3/4 OPEN Face Motorcycle Helmet',
-            category: 'Motor Sports',
+            category: 'Wheel Sports',
             daily: 50,
             weekly: 110,
             imageURL:'https://images.craigslist.org/00e0e_aml1hPeReoY_1200x900.jpg',
             UserId: 1,
-            CategoryId: 5
+            CategoryId: 2
         }),
         db.Item.create({
             itemName: 'Skis', 
@@ -139,16 +139,6 @@ function seedModel3(db) {
             imageURL: 'https://cdn.levelninesports.com/media/catalog/product/cache/1/image/1500x/040ec09b1e35df139433887a97daa66f/h/e/head-the-link-pro-r-skis-169cm_2.jpg',
             UserId: 1,
             CategoryId: 1            
-        }),
-        db.Item.create({
-            itemName: 'Helmet',
-            itemDescription: 'Daytona Women 3/4 OPEN Face Motorcycle Helmet',
-            category: 'Motor Sports',
-            daily: 50,
-            weekly: 110,
-            imageURL:'https://images.craigslist.org/00e0e_aml1hPeReoY_1200x900.jpg',
-            UserId: 1,
-            CategoryId: 5
         })
 
     ])
@@ -182,11 +172,11 @@ function seedModel4(db) {
         db.Item.create({
             itemName: 'Skates',
             itemDescription: 'K2 Andura ALU Inline Skates',
-            category: 'Wheeled Sports',
+            category: 'Wheel Sports',
             weekly: 55,
             imageURL:'https://images.craigslist.org/00P0P_l5GZIqcBmMM_600x450.jpg',
             UserId: 2,
-            CategoryId: 6
+            CategoryId: 2
         })
     ])
 }
