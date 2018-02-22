@@ -74,7 +74,7 @@ class AllProducts extends Component{
                                 id={'category' + i}>
                             {this.state.categories[i].category}({this.state.categoryCount[i]})
                             </span>
-                            <img src={this.state.categories[i].Category.imageURL}/>}
+                            <img src={this.state.categories[i].Category.imageURL}/>
                         </h2>
                         {this.state.categories[i].display ? 
                         <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
