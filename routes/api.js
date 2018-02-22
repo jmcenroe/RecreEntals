@@ -8,7 +8,11 @@ router.get('/categoriescount', (req, res) => {
 	console.log('Route hit');
 	db.Item.findAndCountAll({
 		attributes: ['category'],
-		group: ['category']
+		group: ['category'],
+		include: [{
+			model: db.Category,
+			attributes: ['imageURL']
+		}]
 	}).then((data) => {
 		res.json(data);
 	});
@@ -28,6 +32,10 @@ router.get('/items/:category', (req, res) => {
 		include: [{
 			model: db.User,
 			attributes: ['id', 'displayName', 'imageURL']
+		},
+		{
+			model: db.Category,
+			attributes: ['imageURL']
 		}]
 	}).then((data) => {
 		res.json(data);
