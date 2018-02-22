@@ -43,7 +43,7 @@ class AllProducts extends Component{
     }
 
     productClick(event) {
-        const index = parseInt(event.target.id.slice(8,event.target.id.length));
+        const index = parseInt(event.target.getAttribute('data-id'));
 
         let data = this.state.categories;
 
@@ -70,16 +70,16 @@ class AllProducts extends Component{
                         <div className="col d-flex leftCol">
                             <h2><img src={this.state.categories[i].Category.imageURL} className="categoryIcon"/></h2>
                         </div>
-                        <div className="col d-flex rightCol">
-                            <h3>
-                                <span 
-                                    className='category' 
-                                    onClick={this.productClick.bind(this)}
-                                    id={'category' + i}>
-                                </span>
+                        <div className="col d-flex rightCol category" 
+                            data-id={i}
+                            onClick={this.productClick.bind(this)}>
+                            <h3
+                                data-id={{i}}>
+
+                                
                                 {this.state.categories[i].category}
-                                {/* <h3>({this.state.categoryCount[i]})</h3> */}
-                                <img src={this.state.categories[i].Category.imageURL}/>
+                                ({this.state.categoryCount[i]})
+                                <img data-id={i} src={this.state.categories[i].Category.imageURL}/>
                             </h3>
                         </div>
                         {this.state.categories[i].display ? 
