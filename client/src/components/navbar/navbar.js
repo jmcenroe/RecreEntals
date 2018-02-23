@@ -74,7 +74,7 @@ componentDidMount() {
              {this.state.auth ? 
                 <div> Welcome, 
                     <Link to='/profile'>{this.state.userName}</Link>
-                    <form action='/auth/logout' method='get'>
+                    <form action='/auth/logout' method='post'>
                       <button type='submit'>Log Out</button>
                     </form> 
                 </div>

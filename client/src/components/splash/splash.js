@@ -33,6 +33,9 @@ class Splash extends Component {
                     <h3>Sign in or sign up to start renting!</h3>
                 <div className = "row signIn">
                     <div className="row">
+                        <form action='/auth/google' method='post'>
+                        <input name='submit' type='submit'/>
+                        </form>
                         <a className ="icon-border" href="/auth/google"><img className="icon" src={gIcon} alt="Sign in with Google"/>Log In with Google</a>
                         <a className ="icon-border" href="/auth/facebook"><img className="icon" src={fbIcon} alt="Sign in with Facebook"/>Log In with Facebook</a>
                     </div>

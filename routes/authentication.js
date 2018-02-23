@@ -8,7 +8,8 @@ module.exports = function (app, passport) {
 
 	const db = require('../app/db');
 
-	app.get('/auth/success', function (req, res) {
+	app.post('/auth/success', function (req, res) {
+		console.log('this hits it');
 		res.send('Congratulations, you\'ve signed in');
 	});
 
@@ -17,7 +18,7 @@ module.exports = function (app, passport) {
 		res.redirect('/profile');
 	});
 
-	app.get('/auth/google', passport.authenticate('google', {
+	app.post('/auth/google', passport.authenticate('google', {
 		scope: ['https://www.googleapis.com/auth/plus.login']
 	}));
 
@@ -74,7 +75,7 @@ module.exports = function (app, passport) {
 
 			db.User.create(user, (err, response) => {
 				if (!error) {
-					res.send('Success');
+					res.redirect('/profile');
 				} else {
 					console.log(error);
 				}
@@ -89,7 +90,7 @@ module.exports = function (app, passport) {
 		failureRedirect: '/'
 	}));
 
-	app.get('/auth/logout', function(req, res){
+	app.post('/auth/logout', function(req, res){
 		req.logout();
 		res.redirect('/');
 	  });
