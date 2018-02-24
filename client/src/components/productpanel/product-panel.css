@@ -30,3 +30,7 @@
 #rentee:hover {
     cursor: pointer;
 }
+
+.productImage { 
+    width: 50%; 
+}

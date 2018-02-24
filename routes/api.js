@@ -5,6 +5,7 @@ const path = require('path');
 const sequelize = require('sequelize');
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
+const axios=require('axios');
 
 
 router.get('/categoriescount', (req, res) => {
@@ -108,6 +109,10 @@ router.get('/singleitem/:itemid', (req, res) => {
 	}).then(data => {
 		res.json(data);
 	});
+});
+
+router.get('/middleware', (req,res) => {
+	return axios.get('/auth/success');
 });
 
 router.delete('/item/:itemid', (req, res) => {
