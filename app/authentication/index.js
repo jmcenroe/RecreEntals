@@ -53,7 +53,7 @@ module.exports = function (passport) {
   passport.use(new GoogleStrategy({
       clientID: googleClientID,
       clientSecret: googleClientSecret,
-      callbackURL: 'http://localhost:3001/auth/google/callback'
+      callbackURL: '/auth/google/callback'
     },
     function (accessToken, refreshToken, profile, done) {
      
@@ -114,7 +114,7 @@ module.exports = function (passport) {
   passport.use(new FacebookStrategy({
       clientID: facebookAppID,
       clientSecret: facebookAppSecret,
-      callbackURL: 'http://localhost:3000/auth/facebook/callback'
+      callbackURL: '/auth/facebook/callback'
     },
     function (accessToken, refreshToken, profile, done) {
 
