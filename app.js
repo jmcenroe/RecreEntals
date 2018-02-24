@@ -112,8 +112,10 @@ app.get('/auth/facebook/callback',
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function (req, res) {
+  console.log(req.originalUrl);
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+console.log('server loaded');
 
 var PORT = process.env.PORT || 3001;
 

@@ -13,58 +13,11 @@ module.exports = function (app, passport) {
 		res.send('Congratulations, you\'ve signed in');
 	});
 
-	app.get('/auth/middle', function (req, res) {
-
-		res.redirect('/profile');
-	});
-
-	app.post('/auth/google', passport.authenticate('google', {
-		scope: ['https://www.googleapis.com/auth/plus.login']
-	}));
-
-	app.get('/auth/google/callback',
-		passport.authenticate('google', {
-			failureRedirect: '/login',
-			successRedirect: 'http://localhost:3000/products'
-		}),
-		function (req, res) {
-			console.log('Authenticated');
-			res.redirect('/profile', passport.middleware());
-		});
-
-	app.get('/auth/check', function (req, res) {
-		let data = {
-			auth: req.isAuthenticated()
-		};
-
-		if (req.user) {
-			data.id = req.user.id;
-			data.displayName = req.user.displayName;
-			data.imageURL=req.user.imageURL;
-		}
-
-		res.json(data);
-	});
-
-	app.get('/auth/getUser/:id', function (req, res) {
-		db.User.findOne({
-			where: {
-				id: req.params.id
-			},
-			attributes: ['createdAt','displayName','email','id','imageURL','phone']
-		}).then( data => {
-			res.json(data);
-		})
-	});
-
-	app.get('/auth/facebook', passport.authenticate('facebook'));
 
 
-	app.get('/auth/facebook/callback',
-		passport.authenticate('facebook', {
-			successRedirect: '/profile',
-			failureRedirect: '/login'
-		}));
+	
+	
+
 
 	app.post('/auth/adduser', (req, res) => {
 
@@ -94,4 +47,5 @@ module.exports = function (app, passport) {
 		req.logout();
 		res.redirect('/');
 	  });
+	  console.log('auth routes loaded');
 }
