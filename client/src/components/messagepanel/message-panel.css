@@ -1,0 +1,22 @@
+.message-container {
+    overflow: auto;
+    margin: 10px;
+}
+
+.message {
+    width: 50%;
+    font-size: 12px;
+    background: white;
+}
+
+.active {
+    float: right;
+}
+
+.user {
+    color: green;
+}
+
+.active-user {
+    color: red;
+}
