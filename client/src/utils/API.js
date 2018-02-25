@@ -45,6 +45,12 @@ export default {
   },
   sendMessage: function(data) {
     return axios.post('/api/sendmail', data);
+  },
+  newMessage: function(data) {
+    return axios.post('/api/message', data)
+  },
+  getConversation: function(id) {
+    return axios.get('/api/conversation/'+id);
   }
 
     

@@ -177,6 +177,25 @@ function seedModel4(db) {
             imageURL:'https://images.craigslist.org/00P0P_l5GZIqcBmMM_600x450.jpg',
             UserId: 2,
             CategoryId: 2
+        }).then( () => {
+            db.Conversation.create({
+                user1Id: 1,
+                user2Id: 2
+            }).then( () => {
+                Promise.all([
+                    db.Message.create({
+                        message: 'My first message',
+                        ConversationId:  1,
+                        authorId: 1
+                    }),
+                    db.Message.create({
+                        message: 'My first response',
+                        ConversationId: 1,
+                        authorId: 2
+                    })
+
+                ])
+            })
         })
     ])
 }
