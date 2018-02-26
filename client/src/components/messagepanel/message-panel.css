@@ -9,14 +9,14 @@
     background: white;
 }
 
-.active {
+.not-active {
     float: right;
 }
 
 .user {
-    color: green;
+    color: red;
 }
 
 .active-user {
-    color: red;
+    color: green;
 }

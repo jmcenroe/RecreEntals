@@ -75,6 +75,7 @@ app.use(function (req, res, next) {
 });
 
 
+app.enable("trust proxy");
 
 // error handler
 app.use(function (err, req, res, next) {

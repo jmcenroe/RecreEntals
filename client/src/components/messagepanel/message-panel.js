@@ -10,7 +10,7 @@ import './message-panel.css';
 
 const MessagePanel = props => 
     <div id={props.index} className='message-container'>
-        <div className={props.active ? 'message active' : 'message'}>
+        <div className={props.active ? 'message' : 'message not-active'}>
             <span className='messageBox'>
                 <span className={props.active ? 'user active-user': 'user'}>{props.author} ({props.messageTime})</span>
                 <span className='messageText'>:{props.message}</span>
