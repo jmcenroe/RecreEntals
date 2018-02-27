@@ -17,6 +17,8 @@ import logo from './assets/img/recre-entals-black.gif';
 import NewUserPage from './pages/newuserpage';
 import NewProductPage from './pages/newproductpage';
 import ProductSearch from './pages/productsearch';
+import { GoogleApiWrapper } from 'google-maps-react';
+import MapContainer from './MapContainer';
 import RentProduct from './pages/rentproduct';
 
 class App extends Component {
@@ -33,6 +35,7 @@ class App extends Component {
             <Route exact path='/newuser' component={NewUserPage}/>
             <Route exact path='/newproduct' component={NewProductPage}/>
             <Route exact path='/productsearch' component={ProductSearch}/>
+            <MapContainer google={this.props.google} />
             <Route exact path='/rent' component={RentProduct}/>
           </Wrapper>
         </div>
@@ -41,4 +44,7 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyAfZ4yE01A7W4QrKMks8ceHl53caGRxze8',
+})(App)
