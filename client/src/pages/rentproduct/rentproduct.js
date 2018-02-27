@@ -172,7 +172,7 @@ handleChange = event => {
                         <input
                             type="text"
                             className="form-control"
-                            id="search-term"
+                            id="emailInput"
                             name='email'
                             placeholder="example@email.com"
                             value={this.state.form.email}

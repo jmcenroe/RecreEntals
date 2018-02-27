@@ -1,5 +1,5 @@
 .productImage{
-    width: 100%;
+    width: 50%;
     border-radius: 5%;
     box-shadow: 0px 0px 25px gainsboro;
 }
@@ -29,8 +29,4 @@
 
 #rentee:hover {
     cursor: pointer;
-}
-
-.productImage { 
-    width: 50%; 
 }
