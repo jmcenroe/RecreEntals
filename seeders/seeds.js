@@ -109,6 +109,18 @@ function seedModel3(db) {
             imageURL:'https://www.rei.com/media/44cc290b-8e64-4501-b4b6-da10baf6d58c?size=1020x510',
             UserId: 1,
             CategoryId: 5
+        }).then( () => {
+            console.log('staring reservations');
+            Promise.all([
+                db.Reservation.create({
+                    startTime: '2018-02-28 10:00:00 GMT',
+                    endTime: '2018-02-28 12:00:00 GMT'
+                }),
+                db.Reservation.create({
+                    startTime: '2018-03-01 00:00:00 GMT',
+                    endTime: '2018-03-01 23:59:59 GMT'
+                })
+            ])
         }),
        
         db.Item.create({
