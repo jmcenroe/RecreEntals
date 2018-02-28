@@ -10,7 +10,8 @@ class CalendarPage extends Component {
         dateRange: [new Date()],
         productId: 1,
         productReservations: [],
-        month: null
+        month: null,
+        startDate: new Date()
     }
 
     componentDidMount() {
@@ -30,32 +31,18 @@ class CalendarPage extends Component {
         console.log(data);
     }
 
+    eventHandler = event => {
 
-    eventHandler = daterange => {
-        let reject = false;
-        //valdiate that selection doesn't overlap another reservation
-        for(let i=0; i<this.state.productReservations.length; i++) {
-            let start = new Date(this.state.productReservations[i].startTime);
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
-            if (start >= daterange[0] && start <= daterange[1]) {
-                alert('You have overlapped a pre-existing reservation, please select again');
-                reject=true;
-
-            }
-        }
-      
-        if (!reject) {
-            this.setState({
-                dateRange: daterange
-            }, () => {
-                console.log(this.state);
-            })
-        }
-        else {
-            this.setState({
-                dateRange: []
-            })
-        }
+    calendarChange = date => {
+        
+        this.setState({
+            startDate: date
+        })
     }
 
     checkDate(dateObject) {
@@ -73,17 +60,25 @@ class CalendarPage extends Component {
         
     }
 
-    render(){ return <Calendar
-                                showNeighboringMonth={false}
-                                calendarType='US'
-                                minDate={new Date()}
-                                maxDetail='month'
-                                returnValue='range'
-                                selectRange={true}
-                                onChange={this.eventHandler}
-                                onClick={this.datacheck}
-                                tileDisabled={this.checkDate.bind(this)}
-                                />;
+    render(){ return <div className='Container'>
+                        <input type='text' 
+                            value={this.state.startDate}
+                            onChange={this.eventHandler}
+                            style={{
+                                'width': '200px'
+                            }}
+                        />        
+                        <Calendar
+                            value={this.state.startDate}
+                            showNeighboringMonth={false}
+                            calendarType='US'
+                            minDate={new Date()}
+                            maxDetail='month'
+                            returnValue='start'
+                            onChange={this.calendarChange}
+                            tileDisabled={this.checkDate.bind(this)}
+                            />
+                        </div>;
     }
 }
 
