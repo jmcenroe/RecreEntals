@@ -216,4 +216,15 @@ router.get('/conversation/:conversationid', (req, res) => {
 	});
 })
 
+router.get('/reservations/:productid', (req,res) => {
+	console.log('getting here');
+	db.Reservation.findAll({
+		where: {
+			ItemId: req.params.productid
+		}
+	}).then( data => {
+		res.json(data);
+	})
+});
+
 module.exports = router;
