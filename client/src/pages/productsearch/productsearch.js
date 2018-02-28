@@ -50,7 +50,7 @@ handleChange = event => {
                         onChange={this.handleChange}
                     />
                     <div className="row d-flex" id="buttonRow">
-                        <button type='submit' id="searchButton" onClick={this.search.bind(this)}>Search</button>
+                        <button className="btn btn-mine" type='submit' id="searchButton" onClick={this.search.bind(this)}>Search</button>
                     </div>
                     </form>
                 </div>

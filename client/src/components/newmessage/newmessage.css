@@ -1,54 +1,15 @@
-h3 {
-  font-weight: 600;
-  font-size: 1.25rem;
+.newMessageContainer {
+  margin-top: 10%;
 }
 
-div.container {
-  font-size: .85em;
-  padding-top: 10px;
-  font-weight: 600;
-}
-div.form-row {
-  margin: 0;
+.newmessage > textarea {
+  box-shadow: 0px 0px 10px rgb(108, 190, 121);
 }
 
-input.form-control {
-  padding-bottom: .5rem;  
+.btn-mine {
+  background-color: rgb(84, 172, 99);
 }
 
-.form-group {
-  margin-bottom: 0;
+#run-search {
+  margin-top: 0.25em;
 }
-
-label {
-  display: inline-block;
-  margin-bottom: 0rem;
-}
-
-nav.navbar.navbar-default {
-  margin-bottom: 0;
-}
-
-input.formcontrol {
-  width: auto;
-}
-
-li.navbar-text {
-  overflow: auto;
-}
-
-li#split {
-  color: white;
-}
-
-select#listselect {
-  margin-right: 20px;
-}
-
-span#currentList {
-  padding-left: 10px;
-}
-
-
-
-

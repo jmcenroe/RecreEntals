@@ -123,7 +123,7 @@ class AllProducts extends Component{
                         <h2>Browse Rentals by Category</h2>
                     </div>
                     <div className="col align-self-center">
-                        <button id="add"
+                        <button className="btn btn-mine" id="add"
                          onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
