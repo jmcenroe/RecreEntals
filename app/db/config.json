@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "144037",
+    "password": "password",
     "database": "rentmystuff",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -19,5 +19,13 @@
     "database": "vvcx0eb3e6s7ilrt",
     "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
+  },
+  "email": {
+    "service": "gmail",
+    "auth": {
+      "user": "recre.entals@gmail.com",
+      "pass": "cdjtcjms"
+    }
+
   }
 }

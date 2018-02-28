@@ -3,6 +3,10 @@ const router = express.Router();
 const db = require('../app/db');
 const path = require('path');
 const sequelize = require('sequelize');
+const nodemailer = require('nodemailer');
+const config = require('../config/config');
+const axios=require('axios');
+
 
 router.get('/categoriescount', (req, res) => {
 	console.log('Route hit');
@@ -52,10 +56,10 @@ router.get('/items', (req, res) => {
 router.post('/additem', (req, res) => {
 	console.log('Hitting api');
 	db.Item.create(req.body, (err, response) => {
-		if (!error) {
+		if (!err) {
 			res.send('Success');
 		} else {
-			res.send(error);
+			res.send(err);
 		}
 
 	});
@@ -100,11 +104,15 @@ router.get('/singleitem/:itemid', (req, res) => {
 		},
 		include: [{
 			model: db.User,
-			attributes: ['id', 'displayName', 'imageURL']
+			attributes: ['id', 'displayName', 'imageURL','email']
 		}]
 	}).then(data => {
 		res.json(data);
 	});
+});
+
+router.get('/middleware', (req,res) => {
+	return axios.get('/auth/success');
 });
 
 router.delete('/item/:itemid', (req, res) => {
@@ -139,5 +147,73 @@ router.delete('/item/:itemid', (req, res) => {
 	}
 
 });
+
+router.post('/sendmail', (req,res) => {
+	let transporter = nodemailer.createTransport(config.email);
+
+	console.log(req.body);
+	let mailOptions = {
+		from: 'recre.entals@gmail.com',
+		to: req.body.toEmail,
+		subject: 'Rental request from somebody at Recre-Entals',
+		text: 'Someone has sent you a message about ' + req.body.product +
+			'\n\nMessage From: ' + req.body.name + 
+			'\n\nPhone: ' + req.body.phone + 
+			'\n\nEmail: ' + req.body.email + 
+			'\n\nMessage: ' + req.body.message
+	  };
+
+	  transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		  console.log(error);
+		} else {
+		  res.send(info.response);
+		}
+	  });
+
+	  
+});
+
+router.post('/message/', (req, res) => {
+
+	console.log(req.body);
+	db.Message.create(req.body)
+	.then((error, response) => {
+		if(error) {
+			res.send(error)
+		}
+		else {
+			res.send('Success');
+		}
+	});
+
+})
+
+router.get('/conversation/:conversationid', (req, res) => {
+
+	
+	db.Conversation.findOne({
+		where: {
+			id: req.params.conversationid	
+		},
+		include: [{
+			model: db.Message,
+			as: "Messages"
+		},
+		{
+			model: db.User,
+			as: 'user1',
+			attributes: ['displayName']
+		},
+		{
+			model: db.User,
+			as: 'user2',
+			attributes: ['displayName']
+		}]
+	})
+	.then(data => {
+		res.json(data)
+	});
+})
 
 module.exports = router;

@@ -43,10 +43,14 @@ class AllProducts extends Component{
     }
 
     productClick(event) {
-        const index = parseInt(event.target.id.slice(8,event.target.id.length));
+        const index = parseInt(event.target.getAttribute('data-id'));
 
+        //App throws an error if event is clicked before everything is built, ignore if data doesn't render properly
+        if (!isNaN(index)) {
+
+        
         let data = this.state.categories;
-
+        console.log(index);
         if (data[index].display === true) {
             data[index].display = false;
         }
@@ -58,6 +62,8 @@ class AllProducts extends Component{
             categories: data
         });
 
+    }
+
        
     }
 
@@ -66,19 +72,29 @@ class AllProducts extends Component{
     allCategoryDisplay() {
         var rows = [];
         for(let i = 0; i<this.state.categories.length; i++) {
-            rows.push(<div id={this.state.categories[i]}>
-                        <h2 className="align-center">
-                            <span 
-                                className='category' 
-                                onClick={this.productClick.bind(this)}
-                                id={'category' + i}>
-                            {this.state.categories[i].category}({this.state.categoryCount[i]})
-                            </span>
-                            <img src={this.state.categories[i].Category.imageURL}/>}
-                        </h2>
-                        {this.state.categories[i].display ? 
-                        <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
-                    </div>);
+            rows.push(<div>
+                        <div id={this.state.categories[i]} data-id={i} className="row categoryRow" onClick={this.productClick.bind(this)}>
+                    
+                            <div className="col d-flex leftCol"  data-id={i}>
+                                <h2><img data-id={i} src={this.state.categories[i].Category.imageURL} className="categoryIcon"/></h2>
+                            </div>
+                            <div className="col d-flex rightCol category" 
+                                data-id={i}>
+                                <h3 data-id={i}>
+
+                                    
+                                    {this.state.categories[i].category}
+                                    ({this.state.categoryCount[i]})
+                                </h3>
+                            </div>
+                        
+                    </div>
+                        <div>
+                            {this.state.categories[i].display ? 
+                            <ProductGroup category={this.state.categories[i].category} {...this.props}/> : ''}
+                        </div>
+                    </div>
+                    );
         }
 
         return rows;
@@ -107,10 +123,11 @@ class AllProducts extends Component{
                         <h2>Browse Rentals by Category</h2>
                     </div>
                     <div className="col align-self-center">
-                        <button id="add"
+                        <button className="btn btn-mine" id="add"
                          onClick={this.authenticate.bind(this)}><i className="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
+                
                 {this.allCategoryDisplay()}
             </div>
         );

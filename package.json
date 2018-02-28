@@ -1,19 +1,26 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "private": true,
+  "name": "recre-entals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "server": "node app.js",
     "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.15.1"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
-    "concurrently": "^3.5.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
@@ -21,12 +28,16 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "mysql2": "^1.5.2",
-    "nodemon": "^1.14.12",
+    "nodemailer": "^4.6.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.33.4",
     "serve-favicon": "^2.4.5"
+  },
+  "engines": {
+    "node": "6.11.x",
+    "npm": "5.6.x"
   }
 }

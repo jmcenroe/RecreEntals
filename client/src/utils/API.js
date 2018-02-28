@@ -42,6 +42,18 @@ export default {
   },
   getOneProduct: function(itemid) {
     return axios.get('/api/singleitem/'+itemid);
+  },
+  sendMessage: function(data) {
+    return axios.post('/api/sendmail', data);
+  },
+  newMessage: function(data) {
+    return axios.post('/api/message', data)
+  },
+  getConversation: function(id) {
+    return axios.get('/api/conversation/'+id);
+  },
+  getReservations: function(id) {
+    return axios.get('/api/reservations/'+id);
   }
 
     

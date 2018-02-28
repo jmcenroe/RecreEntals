@@ -7,4 +7,5 @@ body {
   background-image: url('./assets/img/bodyBG.jpg');
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }

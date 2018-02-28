@@ -1,0 +1,15 @@
+.newMessageContainer {
+  margin-top: 10%;
+}
+
+.newmessage > textarea {
+  box-shadow: 0px 0px 10px rgb(108, 190, 121);
+}
+
+.btn-mine {
+  background-color: rgb(84, 172, 99);
+}
+
+#run-search {
+  margin-top: 0.25em;
+}
