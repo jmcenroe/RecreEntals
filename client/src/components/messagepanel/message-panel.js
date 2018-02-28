@@ -9,11 +9,11 @@ import React, { Component } from 'react';
 import './message-panel.css';
 
 const MessagePanel = props => 
-    <div id={props.index} className='message-container'>
-        <div className={props.active ? 'message' : 'message not-active'}>
+    <div id={props.index} className='message-container d-flex'>
+        <span className={props.active ? 'user active-user': 'user'}>{props.author} ({props.messageTime})</span>
+        <div className={props.active ? 'message active' : 'message not-active'}>
             <span className='messageBox'>
-                <span className={props.active ? 'user active-user': 'user'}>{props.author} ({props.messageTime})</span>
-                <span className='messageText'>:{props.message}</span>
+                <span className='messageText'>{props.message}</span>
             </span>
         </div>
     </div>

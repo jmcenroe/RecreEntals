@@ -1,22 +1,56 @@
+.allMessages{
+    height: 55%;
+    overflow-y: auto;
+    border: solid darkslategray;
+    box-shadow: 0px 0px 3px teal;
+    border-radius: 5px;
+}
+
+.allMessages::-webkit-scrollbar{
+    width: 3px;
+}
+
+.allMessages::-webkit-scrollbar-thumb{
+    background: rgb(47, 85, 90);
+    border-radius: 20px;
+    margin-top: 1
+}
+
 .message-container {
-    overflow: auto;
-    margin: 10px;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
     width: 50%;
     font-size: 12px;
-    background: white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 0px 0px 0.5px black;
 }
 
 .not-active {
-    float: right;
+    align-self: flex-end;
+    background-color: rgb(78, 211, 78);
+    
+}
+
+.message.active{
+    background-color: rgb(59, 97, 168);
+    align-self: flex-start;
 }
 
 .user {
-    color: red;
+    color: darkgreen;
+    text-shadow: 0px 0px 0.5px white;
+    align-self: flex-end;
 }
 
 .active-user {
-    color: green;
+    color: blueviolet;
+    text-shadow: 0px 0px 0.5px white;
+    align-self: flex-start;
 }

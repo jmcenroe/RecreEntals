@@ -88,8 +88,8 @@ send = event => {
 
   render() {
     return (
-        <Container>
-          <div className='container'>
+        <div className='container' style={{height: '100%'}}>
+          <div className='container allMessages'>
               { this.state.conversation.Messages
               ? this.state.conversation.Messages.map((item,index) => {
                   let activeUser=item.authorId === this.state.userid;
@@ -110,7 +110,7 @@ send = event => {
                   newMessage={this.state.newMessage}
                   send={this.send.bind(this)}/>
           
-        </Container>
+        </div>
       );
   }
 }
