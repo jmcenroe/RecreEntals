@@ -10,19 +10,19 @@ class Message2 extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.state=this.props.location.state;
 }
 
-state = {
-    conversation: {
-        Messages: []
-    },
-    conversationId: 1,
-    newMessage: '',
-    userid: 1,
-    clearInterval: null
-}
+
 
 componentWillMount() {
+    console.log(this.state);
+    API.checkAuth()
+        .then((data)=> {
+            this.setState({
+                userid: data.data.id
+            })
+        })
     this.checkData();
 
     //Set up db listener via setInterval
