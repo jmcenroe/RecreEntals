@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import Container from "../components/container";
-import NewProductForm from "../components/newproduct";
-import API from '../utils/API';
-import Calendar from 'react-calendar';
+import Container from "../../components/container";
+import NewProductForm from "../../components/newproduct";
+import API from '../../utils/API';
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import { isUndefined } from "util";
+import './calendar.css';
+import 'react-day-picker/lib/style.css';
+
+import MomentLocaleUtils, {
+    formatDate,
+    parseDate,
+  } from 'react-day-picker/moment';
 
 class CalendarPage extends Component {
 
@@ -11,7 +19,8 @@ class CalendarPage extends Component {
         productId: 1,
         productReservations: [],
         month: null,
-        startDate: new Date()
+        startDate: new Date(),
+        endDate: undefined
     }
 
     componentDidMount() {
@@ -38,8 +47,9 @@ class CalendarPage extends Component {
         })
     }
 
-    calendarChange = date => {
-        
+    calendarChange = (date,view) => {
+
+       
         this.setState({
             startDate: date
         })
@@ -60,25 +70,16 @@ class CalendarPage extends Component {
         
     }
 
-    render(){ return <div className='Container'>
-                        <input type='text' 
-                            value={this.state.startDate}
-                            onChange={this.eventHandler}
-                            style={{
-                                'width': '200px'
-                            }}
-                        />        
-                        <Calendar
-                            value={this.state.startDate}
-                            showNeighboringMonth={false}
-                            calendarType='US'
-                            minDate={new Date()}
-                            maxDetail='month'
-                            returnValue='start'
-                            onChange={this.calendarChange}
-                            tileDisabled={this.checkDate.bind(this)}
-                            />
-                        </div>;
+    render(){ 
+        return (
+            <div>
+              <DayPickerInput
+                formatDate={formatDate}
+                parseDate={parseDate}
+                placeholder='Choose Date: MM/DD/YYYY'
+              />
+            </div>
+          );
     }
 }
 
