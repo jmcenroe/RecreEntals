@@ -112,13 +112,20 @@ function seedModel3(db) {
         }).then( () => {
             console.log('staring reservations');
             Promise.all([
+                // db.Reservation.create({
+                //     startTime: '2018-02-28 10:00:00 GMT-0800',
+                //     endTime: '2018-02-28 12:00:00 GMT-0800',
+                //     ItemId: 1
+                // }),
                 db.Reservation.create({
-                    startTime: '2018-02-28 10:00:00 GMT',
-                    endTime: '2018-02-28 12:00:00 GMT'
+                    startTime: '2018-03-01 00:00:00 GMT-0800',
+                    endTime: '2018-03-01 23:59:59 GMT-0800',
+                    ItemId: 1
                 }),
                 db.Reservation.create({
-                    startTime: '2018-03-01 00:00:00 GMT',
-                    endTime: '2018-03-01 23:59:59 GMT'
+                    startTime: '2018-03-06 00:00:00 GMT-0800',
+                    endTime: '2018-03-10 23:59:59 GMT-0800',  
+                    ItemId: 1 
                 })
             ])
         }),
@@ -131,6 +138,13 @@ function seedModel3(db) {
             imageURL: 'https://images-na.ssl-images-amazon.com/images/I/61jRhAr-aGL._SL1000_.jpg',
             UserId: 1,
             CategoryId: 1
+        }).then( () => {
+
+            db.Reservation.create({
+                startTime: '2018-03-01 00:00:00 GMT-0800',
+                endTime: '2018-03-01 23:59:59 GMT-0800',
+                ItemId: 2
+            })
         }),
         db.Item.create({
             itemName: 'Helmet',
