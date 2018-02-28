@@ -51,6 +51,9 @@ export default {
   },
   getConversation: function(id) {
     return axios.get('/api/conversation/'+id);
+  },
+  getReservations: function(id) {
+    return axios.get('/api/reservations/'+id);
   }
 
     
