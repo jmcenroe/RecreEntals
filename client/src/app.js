@@ -20,7 +20,6 @@ import ProductSearch from './pages/productsearch';
 import RentProduct from './pages/rentproduct';
 import Message1 from './pages/message1';
 import Message2 from './pages/message2';
-import CalendarPage from './pages/calendar'
 
 class App extends Component {
   render() {
@@ -39,7 +38,6 @@ class App extends Component {
             <Route exact path='/rent' component={RentProduct}/>
             <Route exact path='/message' component={Message1}/>
             <Route exact path='/message2' component={Message2}/>
-            <Route exact path='/calendar' component={CalendarPage}/>
           </Wrapper>
         </div>
       </Router>

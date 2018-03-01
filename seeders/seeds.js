@@ -120,12 +120,14 @@ function seedModel3(db) {
                 db.Reservation.create({
                     startTime: '2018-03-01 00:00:00 GMT-0800',
                     endTime: '2018-03-01 23:59:59 GMT-0800',
-                    ItemId: 1
+                    ItemId: 1,
+                    UserId: 3
                 }),
                 db.Reservation.create({
                     startTime: '2018-03-06 00:00:00 GMT-0800',
                     endTime: '2018-03-10 23:59:59 GMT-0800',  
-                    ItemId: 1 
+                    ItemId: 1,
+                    UserId: 3
                 })
             ])
         }),
@@ -143,7 +145,8 @@ function seedModel3(db) {
             db.Reservation.create({
                 startTime: '2018-03-01 00:00:00 GMT-0800',
                 endTime: '2018-03-01 23:59:59 GMT-0800',
-                ItemId: 2
+                ItemId: 2,
+                UserId: 2
             })
         }),
         db.Item.create({
@@ -204,24 +207,62 @@ function seedModel4(db) {
             UserId: 2,
             CategoryId: 2
         }).then( () => {
-            db.Conversation.create({
-                user1Id: 1,
-                user2Id: 2
-            }).then( () => {
-                Promise.all([
-                    db.Message.create({
-                        message: 'My first message',
-                        ConversationId:  1,
-                        authorId: 1
-                    }),
-                    db.Message.create({
-                        message: 'My first response',
-                        ConversationId: 1,
-                        authorId: 2
-                    })
+            Promise.all([
+                db.Conversation.create({
+                    user1Id: 1,
+                    user2Id: 2
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'My first message',
+                            ConversationId:  1,
+                            authorId: 1
+                        }),
+                        db.Message.create({
+                            message: 'My first response',
+                            ConversationId: 1,
+                            authorId: 2
+                        })
 
-                ])
-            })
+                    ])
+                }),
+                db.Conversation.create({
+                    user1Id: 1,
+                    user2Id: 3
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'My second message',
+                            ConversationId:  2,
+                            authorId: 1
+                        }),
+                        db.Message.create({
+                            message: 'My this other response',
+                            ConversationId: 2,
+                            authorId: 3
+                        })
+
+                    ])
+                }),
+                db.Conversation.create({
+                    user1Id: 2,
+                    user2Id: 3
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'Another new message',
+                            ConversationId:  3,
+                            authorId: 2
+                        }),
+                        db.Message.create({
+                            message: 'Another response',
+                            ConversationId: 3,
+                            authorId: 3
+                        })
+
+                    ])
+                })
+            ])
         })
     ])
 }
