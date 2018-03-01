@@ -3,7 +3,7 @@ import Container from "../../components/container";
 import API from '../../utils/API';
 import NewMessage from '../../components/newmessage';
 import MessagePanel from '../../components/messagepanel';
-
+import './conversation.css';
 
 class Conversation extends Component {
   
@@ -86,9 +86,9 @@ displayConversations() {
     return this.state.conversations.map((item, index) => {
         //Determine if user info is user1 or user2
         const isUser1 = item.user1.id === this.state.userid;
-        return <div key={index} data-id={item.id} onClick={this.goToConversation.bind(this)}>
-                <img src={isUser1 ? item.user2.imageURL : item.user1.imageURL} data-id={item.id} alt='profile'/> 
-                {isUser1 ? item.user2.displayName : item.user1.displayName}
+        return <div className="row convoRow" key={index} data-id={item.id} onClick={this.goToConversation.bind(this)}>
+                <div className = "col"> <img className ="convoAva" src={isUser1 ? item.user2.imageURL : item.user1.imageURL} data-id={item.id} alt='profile'/> </div>
+                <div className = "col"> {isUser1 ? item.user2.displayName : item.user1.displayName}  </div>
                 </div>;
     });
 }
@@ -103,7 +103,7 @@ displayConversations() {
   render() {
       console.log(this.state);
     return (
-        <div>{this.state.auth ? 
+        <div className="convos">{this.state.auth ? 
                 this.state.conversations.length>0 ? this.displayConversations() : 'No conversations to display' 
                 : 'You must be signed in to use messenger'}
         
