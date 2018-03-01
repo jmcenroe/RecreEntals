@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Container from "../../components/container";
 import API from '../../utils/API';
 import Message from '../../pages/message1';
 import './conversation-panel.css';
@@ -58,7 +57,7 @@ class ConversationPanel extends Component {
   }
   
   checkData () {
-      console.log('checking data');
+      
       API.getAllConversations(this.state.userid)
           .then(data => {
               if (this.state.conversations.length < data.data.length) {
@@ -71,7 +70,7 @@ class ConversationPanel extends Component {
 
   goToConversation = event => {
       this.setState({
-          activeConversation: parseInt(event.target.getAttribute('data-id'))
+          activeConversation: parseInt(event.target.getAttribute('data-id'),10)
       })
       
   }
@@ -102,7 +101,7 @@ class ConversationPanel extends Component {
   
   
     render() {
-        console.log(this.state);
+      
       return (
           <div className = "container-fluid" id="convoPanel">
             {this.state.auth ? 

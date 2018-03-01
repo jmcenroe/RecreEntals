@@ -248,8 +248,10 @@ router.post('/newreservation', (req,res) => {
 });
 
 router.post('/newconversation', (req,res) => {
-	db.Conversation.create(req.body)
-		.then((data,moredata) => {
+	db.Conversation.findOrCreate({
+		where: req.body
+	})
+		.spread((data,moredata) => {
 			res.send(data)
 			
 		})

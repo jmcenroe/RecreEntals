@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import '../App.css';
-import logo from '../../assets/img/recre-entals-black.gif';
 import './product-search.css';
 import API from '../../utils/API';
 import ProductPanel from '../../components/productpanel';

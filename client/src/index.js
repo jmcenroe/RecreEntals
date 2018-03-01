@@ -5,5 +5,5 @@ import App from './app';
 import {unregister} from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-console.log('unregiseter');
+
 unregister();

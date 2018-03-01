@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Container from "../../components/container";
 import API from '../../utils/API';
 import NewMessage from '../../components/newmessage';
 import MessagePanel from '../../components/messagepanel';

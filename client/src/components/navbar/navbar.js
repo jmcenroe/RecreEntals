@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import logoWhite from "../../assets/img/recre-entals-white.gif";
-import logo from '../../assets/img/recre-entals-black.gif';
 import API from '../../utils/API';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
