@@ -5,6 +5,7 @@ const path = require('path');
 const sequelize = require('sequelize');
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
+const axios=require('axios');
 
 
 router.get('/categoriescount', (req, res) => {
@@ -55,10 +56,10 @@ router.get('/items', (req, res) => {
 router.post('/additem', (req, res) => {
 	console.log('Hitting api');
 	db.Item.create(req.body, (err, response) => {
-		if (!error) {
+		if (!err) {
 			res.send('Success');
 		} else {
-			res.send(error);
+			res.send(err);
 		}
 
 	});
@@ -108,6 +109,10 @@ router.get('/singleitem/:itemid', (req, res) => {
 	}).then(data => {
 		res.json(data);
 	});
+});
+
+router.get('/middleware', (req,res) => {
+	return axios.get('/auth/success');
 });
 
 router.delete('/item/:itemid', (req, res) => {
@@ -168,5 +173,47 @@ router.post('/sendmail', (req,res) => {
 
 	  
 });
+
+router.post('/message/', (req, res) => {
+
+	console.log(req.body);
+	db.Message.create(req.body)
+	.then((error, response) => {
+		if(error) {
+			res.send(error)
+		}
+		else {
+			res.send('Success');
+		}
+	});
+
+})
+
+router.get('/conversation/:conversationid', (req, res) => {
+
+	
+	db.Conversation.findOne({
+		where: {
+			id: req.params.conversationid	
+		},
+		include: [{
+			model: db.Message,
+			as: "Messages"
+		},
+		{
+			model: db.User,
+			as: 'user1',
+			attributes: ['displayName']
+		},
+		{
+			model: db.User,
+			as: 'user2',
+			attributes: ['displayName']
+		}]
+	})
+	.then(data => {
+		res.json(data)
+	});
+})
 
 module.exports = router;

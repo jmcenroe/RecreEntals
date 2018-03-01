@@ -9,22 +9,14 @@ module.exports = function (app, passport) {
 	const db = require('../app/db');
 
 	app.get('/auth/success', function (req, res) {
+		console.log('this hits it');
 		res.send('Congratulations, you\'ve signed in');
 	});
-
-	app.get('/auth/middle', function (req, res) {
-
-		res.redirect('/profile');
-	});
-
-	app.get('/auth/google', passport.authenticate('google', {
-		scope: ['https://www.googleapis.com/auth/plus.login']
-	}));
 
 	app.get('/auth/google/callback',
 		passport.authenticate('google', {
 			failureRedirect: '/login',
-			successRedirect: 'http://localhost:3000/products'
+			successRedirect: '/products'
 		}),
 		function (req, res) {
 			console.log('Authenticated');
@@ -39,7 +31,7 @@ module.exports = function (app, passport) {
 		if (req.user) {
 			data.id = req.user.id;
 			data.displayName = req.user.displayName;
-			data.imageURL=req.user.imageURL;
+			data.imageURL = req.user.imageURL;
 		}
 
 		res.json(data);
@@ -50,8 +42,8 @@ module.exports = function (app, passport) {
 			where: {
 				id: req.params.id
 			},
-			attributes: ['createdAt','displayName','email','id','imageURL','phone']
-		}).then( data => {
+			attributes: ['createdAt', 'displayName', 'email', 'id', 'imageURL', 'phone']
+		}).then(data => {
 			res.json(data);
 		})
 	});
@@ -61,20 +53,33 @@ module.exports = function (app, passport) {
 
 	app.get('/auth/facebook/callback',
 		passport.authenticate('facebook', {
-			successRedirect: '/profile',
+			successRedirect: '/products',
 			failureRedirect: '/login'
 		}));
+
+	app.get('/auth/middle', function (req, res) {
+
+		res.redirect('/profile');
+	});
+
+	app.get('/auth/google', passport.authenticate('google', {
+		scope: ['https://www.googleapis.com/auth/plus.login']
+	}));
+
+
+
+
 
 	app.post('/auth/adduser', (req, res) => {
 
 		bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
 			let user = req.body;
 			user.password = hash;
-			user.usertype='local';
+			user.usertype = 'local';
 
 			db.User.create(user, (err, response) => {
 				if (!error) {
-					res.send('Success');
+					res.redirect('/profile');
 				} else {
 					console.log(error);
 				}
@@ -89,8 +94,9 @@ module.exports = function (app, passport) {
 		failureRedirect: '/'
 	}));
 
-	app.get('/auth/logout', function(req, res){
+	app.post('/auth/logout', function (req, res) {
 		req.logout();
 		res.redirect('/');
-	  });
+	});
+	console.log('auth routes loaded');
 }

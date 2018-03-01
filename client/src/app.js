@@ -20,6 +20,8 @@ import ProductSearch from './pages/productsearch';
 import { GoogleApiWrapper } from 'google-maps-react';
 import MapContainer from './MapContainer';
 import RentProduct from './pages/rentproduct';
+import Message1 from './pages/message1';
+import Message2 from './pages/message2';
 
 class App extends Component {
   render() {
@@ -37,6 +39,8 @@ class App extends Component {
             <Route exact path='/productsearch' component={ProductSearch}/>
             <MapContainer google={this.props.google} />
             <Route exact path='/rent' component={RentProduct}/>
+            <Route exact path='/message' component={Message1}/>
+            <Route exact path='/message2' component={Message2}/>
           </Wrapper>
         </div>
       </Router>
