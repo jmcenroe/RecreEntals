@@ -59,6 +59,10 @@ export default {
   },
   makeReservation: function(data) {
     return axios.post('/api/newreservation',data);
+  },
+  startConversation: function(data) {
+    console.log('Getting to React API');
+    return axios.post('/api/newconversation', data);
   }
 
     

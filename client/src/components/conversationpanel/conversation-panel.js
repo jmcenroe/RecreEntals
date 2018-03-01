@@ -38,22 +38,22 @@ class ConversationPanel extends Component {
           })
       
   
-      // //Set up db listener via setInterval
-      // if (this.state.clearInterval === null){
+      //Set up db listener via setInterval
+      if (this.state.clearInterval === null){
   
-      //     let intervalVar = setInterval(this.checkData.bind(this),10000);
+          let intervalVar = setInterval(this.checkData.bind(this),10000);
   
-      //     this.setState({
-      //         clearInterval: intervalVar
-      //     });
-      // }
+          this.setState({
+              clearInterval: intervalVar
+          });
+      }
   
       
       
   }
   
   componentWillUnmount() {
-      // clearInterval(this.state.clearInterval);
+      clearInterval(this.state.clearInterval);
   }
   
   checkData () {

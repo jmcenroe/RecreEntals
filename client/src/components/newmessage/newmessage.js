@@ -15,7 +15,7 @@ class NewMessage extends Component {
 }
 
 handleChange = event => {
-  console.log('Trying to get here');
+
   this.setState({
       [event.target.id]: event.target.value
   })
@@ -26,6 +26,10 @@ state = {
 }
 
 send = event => {
+  event.preventDefault();
+
+  if (this.props.conversationId)
+ {
   event.preventDefault();
   let sendData = {
       message: this.state.newMessage,
@@ -48,9 +52,53 @@ send = event => {
       newMessage: ''
   })
 }
+else {
+ var firstId=null,
+     secondId=null;
+
+    if (this.props.userid<this.props.toId) {
+      firstId= this.props.userid;
+      secondId=this.props.toId;
+    }
+    else {
+      firstId= this.props.toId;
+      secondId=this.props.userid;
+    }
+  let conversationData = {
+    user1Id: firstId,
+    user2Id: secondId
+       
+  }
+  console.log(conversationData);
+  API.startConversation(conversationData)
+    .then((data) => {
+      let messageData = {
+        message: this.state.newMessage,
+        ConversationId:  data.data.id,
+        authorId: this.props.userid
+    }
+
+    API.newMessage(messageData)
+      .then(() => {
+          console.log('response')
+          if (this.props.checkData) {
+                    
+          this.props.checkData();
+          }
+          else {
+            this.props.clearMessage();
+          }
+      });
+  this.setState({
+      newMessage: ''
+  })
+      
+    })
+}
+
+}
   
   render() {
-    console.log('loading component');
     return <div className="newMessageContainer">
       <form className="newmessage">
           <textarea

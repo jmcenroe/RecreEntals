@@ -5,6 +5,7 @@ import './rentproduct.css';
 import API from '../../utils/API';
 import ProductPanel from '../../components/productpanel';
 import Calendar from '../../components/calendar';
+import NewMessage from '../../components/newmessage';
 
 class RentProduct extends Component{
    
@@ -13,6 +14,9 @@ class RentProduct extends Component{
         super(props);
         this.props = props;
         this.state=this.props.location.state;
+        this.setState({
+            showMessage: false
+        })
         
     }
 
@@ -37,9 +41,32 @@ componentDidMount() {
             this.setState({
                 auth: false
             })
+            
         }
     })
 }
+
+newMessage() {
+    API.checkAuth()
+      .then(data => {
+        if (data.data.auth) {
+          this.setState({
+            userid: data.data.id,
+            showMessage: true
+          })
+        }
+        else {
+          alert('You have to be signed in to send a message');
+        }
+      })
+    
+  }
+
+  clearMessage() {
+    this.setState({
+      showMessage: false
+    });
+  }
 
     render(){
         console.log(this.state);
@@ -68,10 +95,22 @@ componentDidMount() {
                 : ''}
 
                 {this.state.auth ? 
-                <Calendar 
-                    productId={this.state.productId}
-                    userId={this.state.userid}
-                    />
+                <div>
+                    <Calendar 
+                        productId={this.state.productId}
+                        userId={this.state.userid}
+                        />
+                   <button className="contact-button" onClick={this.newMessage.bind(this)}>Send Message</button>
+                        {this.state.showMessage ?
+                        <div style={{'width': '300px','height':'200px','float':'right'}}>
+                            <NewMessage
+                            userid={this.state.userid}
+                            toId={this.state.item.User.id}
+                            clearMessage={this.clearMessage.bind(this)}/>
+                        </div>
+                        : ''}
+                </div>
+
                 : <h1>You have to be logged in to make a reservation for this product</h1>}
                 
 
