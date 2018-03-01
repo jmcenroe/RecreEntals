@@ -22,7 +22,7 @@ import Message1 from './pages/message1';
 import Message2 from './pages/message2';
 
 
-import Conversation from './pages/conversations';
+import ConversationPanel from './components/conversationpanel';
 
 
 class App extends Component {
@@ -43,7 +43,7 @@ class App extends Component {
             <Route exact path='/message' component={Message1}/>
             <Route exact path='/message2' component={Message2}/>
 
-            <Route exact path='/conversation' component={Conversation}/>
+            <Route exact path='/conversation' component={ConversationPanel}/>
 
           </Wrapper>
         </div>

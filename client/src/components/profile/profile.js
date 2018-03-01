@@ -34,6 +34,10 @@ state= {
     });
   }
 
+  newMessage() {
+    console.log('Send a new message');
+  }
+
   remove = event => {
 
     API.removeItem(event.target.id).then(() => {
@@ -60,7 +64,7 @@ state= {
                           this.props.email : 'Email not provided'}</p>
               <p>Phone: {this.props.phone!== null ? 
                         this.props.phone : 'Phone not provided'}</p>
-              <p><button className="contact-button">Contact</button></p>
+              <p><button className="contact-button" onClick={this.newMessage}>Contact</button></p>
               <p className="Products">Products:</p>
               {this.state.products.length > 0 ?
               this.state.products.map((item,index) =>{

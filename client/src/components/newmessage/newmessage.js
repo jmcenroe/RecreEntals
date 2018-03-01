@@ -7,8 +7,51 @@ import API from '../../utils/API';
 // import logoWhite from '../../assets/img/recre-entals-white.gif';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-const NewMessage = props =>  
-    <div className="newMessageContainer">
+class NewMessage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.props = props;
+}
+
+handleChange = event => {
+  console.log('Trying to get here');
+  this.setState({
+      [event.target.id]: event.target.value
+  })
+}
+
+state = {
+  newMessage: ''
+}
+
+send = event => {
+  event.preventDefault();
+  let sendData = {
+      message: this.state.newMessage,
+      ConversationId:  this.props.conversationId,
+      authorId: this.props.userid
+  }
+
+  console.log(sendData);
+
+  API.newMessage(sendData)
+      .then(() => {
+          console.log('response')
+          if (this.props.checkData) {
+                    
+          this.props.checkData();
+          }
+          
+      });
+  this.setState({
+      newMessage: ''
+  })
+}
+  
+  render() {
+    console.log('loading component');
+    return <div className="newMessageContainer">
       <form className="newmessage">
           <textarea
                   type="text"
@@ -16,8 +59,8 @@ const NewMessage = props =>
                   id="newMessage"
                   placeholder='New Message'
                   name='newMessage'
-                  value={props.newMessage}
-                  onChange={props.handleChange}
+                  value={this.state.newMessage}
+                  onChange={this.handleChange}
                 ></textarea>
         
             <button 
@@ -25,7 +68,7 @@ const NewMessage = props =>
             type="submit" 
             className="btn btn-mine" 
             id="run-search"
-            onClick={props.send}
+            onClick={this.send}
             >
               Send Message
             </button>
@@ -34,7 +77,8 @@ const NewMessage = props =>
       </form>
     </div>;
 
-
+  }
+}
 
 
 export default NewMessage;
