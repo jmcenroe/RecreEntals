@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from '../../utils/API';
 import NewMessage from '../../components/newmessage';
 import MessagePanel from '../../components/messagepanel';
+import Moment from 'moment';
 
 
 class Message2 extends Component {
@@ -94,6 +95,12 @@ send = event => {
     });
 }
 
+formatTime(time) {
+    var date = Moment(time).format('MMM Do, h:mm');
+    
+    return date;
+}
+
 
   render() {
     return (
@@ -108,7 +115,7 @@ send = event => {
                               author={item.authorId === this.state.conversation.user1Id ? 
                                       this.state.conversation.user1.displayName:
                                       this.state.conversation.user2.displayName}
-                              messageTime={item.createdAt}
+                              messageTime={this.formatTime(item.createdAt)}
                               message={item.message}
                               index={index}
                               />
