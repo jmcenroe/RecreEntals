@@ -23,7 +23,7 @@
 }
 
 .message {
-    width: 50%;
+    width: 100%;
     font-size: 12px;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -35,7 +35,6 @@
 .not-active {
     align-self: flex-end;
     background-color: rgb(78, 211, 78);
-    
 }
 
 .message.active{

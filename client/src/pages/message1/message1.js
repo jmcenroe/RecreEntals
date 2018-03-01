@@ -105,7 +105,7 @@ formatTime(time) {
   render() {
     return (
         <div className='container' style={{height: '100%'}}>
-          <div className='container allMessages' style={{"max-height": "200px", "overflow": "auto"}}>
+          <div className='container allMessages' style={{"max-height": "200px", "max-width": "250px", "overflow": "auto"}}>
               { this.state.conversation.Messages
               ? this.state.conversation.Messages.map((item,index) => {
                   let activeUser=item.authorId === this.state.userid;
