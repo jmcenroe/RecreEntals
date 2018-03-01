@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/container";
 import NewProductForm from "../components/newproduct";
-import API from '../utils/API';
 
 
 class NewProductPage extends Component {

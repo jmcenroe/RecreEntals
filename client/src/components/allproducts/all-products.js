@@ -1,7 +1,6 @@
 // product grid of all products for rent 
 
 import React, { Component } from 'react';
-import Product from '../product';
 import ProductGroup from '../productgroup';
 // import '../App.css';
 import logo from '../../assets/img/recre-entals-black.gif';

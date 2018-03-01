@@ -5,7 +5,7 @@ import NewMessage from '../../components/newmessage';
 import MessagePanel from '../../components/messagepanel';
 
 
-class Message2 extends Component {
+class FirstMessage extends Component {
   
   constructor(props) {
     super(props);
@@ -115,4 +115,4 @@ send = event => {
   }
 }
 
-export default Message2;
+export default FirstMessage;

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 // import Row from './BSstuff.js';
 // import Container from './BSstuff.js';
 import './product-panel.css';
-import API from '../../utils/API';
+
 
 class ProductPanel extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ rent = event => {
 }
     
   render () {
-  console.log(this.props.edit);
+ 
   return <div id={this.props.id} key={this.props.index}>
                 <div className = "row productRow">
                     <div className="col-12 col-md-4 col-xl-4 imgCol">

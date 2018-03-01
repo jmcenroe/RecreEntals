@@ -1,7 +1,6 @@
 // user profile page to edit / public profile 
 import React, { Component } from 'react';
 // import '../App.css';
-import logo from '../../assets/img/recre-entals-black.gif';
 import './profilepage.css';
 import API from '../../utils/API';
 import Profile from '../../components/profile'
@@ -44,7 +43,7 @@ state = {
          if(this.props.location.state) {
 
            //Check if auth user and display user are the same, save both to state
-           if (parseInt(this.props.location.state.profileId) === data.data.id) {
+           if (parseInt(this.props.location.state.profileId,10) === data.data.id) {
              console.log('Checkpoint 1');
              this.setState({
                authUser: data.data,

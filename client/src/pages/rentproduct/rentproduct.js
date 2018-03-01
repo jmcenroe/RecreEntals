@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import '../App.css';
-import logo from '../../assets/img/recre-entals-black.gif';
 import './rentproduct.css';
 import API from '../../utils/API';
 import ProductPanel from '../../components/productpanel';
@@ -14,9 +13,7 @@ class RentProduct extends Component{
         super(props);
         this.props = props;
         this.state=this.props.location.state;
-        this.setState({
-            showMessage: false
-        })
+        this.state.showMessage=false;
         
     }
 
@@ -69,7 +66,7 @@ newMessage() {
   }
 
     render(){
-        console.log(this.state);
+      
         return(
             <div className="d-flex container-fluid" id="rentForm">
             {this.state.item ?
