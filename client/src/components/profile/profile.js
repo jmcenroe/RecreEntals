@@ -5,6 +5,7 @@ import logo from '../../assets/img/recre-entals-black.gif';
 import './profile.css';
 import API from '../../utils/API';
 import ProductPanel from '../../components/productpanel';
+import NewMessage from '../newmessage';
 
 
 class Profile extends Component {
@@ -16,7 +17,8 @@ class Profile extends Component {
 }
 
 state= {
-  products: []
+  products: [],
+  showMessage: false
 }
 
 
@@ -34,6 +36,27 @@ state= {
     });
   }
 
+  newMessage() {
+    API.checkAuth()
+      .then(data => {
+        if (data.data.auth) {
+          this.setState({
+            userid: data.data.id,
+            showMessage: true
+          })
+        }
+        else {
+          alert('You have to be signed in to send a message');
+        }
+      })
+    
+  }
+
+  clearMessage() {
+    this.setState({
+      showMessage: false
+    });
+  }
   remove = event => {
 
     API.removeItem(event.target.id).then(() => {
@@ -60,7 +83,20 @@ state= {
                           this.props.email : 'Email not provided'}</p>
               <p>Phone: {this.props.phone!== null ? 
                         this.props.phone : 'Phone not provided'}</p>
-              <p><button className="contact-button">Contact</button></p>
+              {this.props.edit ? '' :
+              <div style={{'overflow':'auto'}}>
+                <button className="contact-button" onClick={this.newMessage.bind(this)}>Contact</button>
+                  {this.state.showMessage ?
+                  <div style={{'width': '300px','height':'200px','float':'right'}}>
+                    <NewMessage
+                      userid={this.state.userid}
+                      toId={this.props.id}
+                      clearMessage={this.clearMessage.bind(this)}/>
+                  </div>
+                  : ''}
+                  
+                </div>
+                }
               <p className="Products">Products:</p>
               {this.state.products.length > 0 ?
               this.state.products.map((item,index) =>{

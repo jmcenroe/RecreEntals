@@ -10,29 +10,19 @@ class Message2 extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    
 }
 
-state= {
-    conversationId: this.props.conversationId,
+state = {
     conversation: {
         Messages: []
     },
+    conversationId: 1,
     newMessage: '',
-    userid: this.props.userid,
+    userid: 2,
     clearInterval: null
 }
 
-
-
 componentWillMount() {
-    console.log(this.state);
-    API.checkAuth()
-        .then((data)=> {
-            this.setState({
-                userid: data.data.id
-            })
-        })
     this.checkData();
 
     //Set up db listener via setInterval
@@ -51,6 +41,7 @@ componentWillMount() {
 
 componentWillUnmount() {
     clearInterval(this.state.clearInterval);
+
 }
 
 checkData() {
@@ -62,7 +53,7 @@ checkData() {
             if (this.state.conversation.Messages.length !== data.data.Messages.length) {
                 this.setState({
                     conversation: data.data
-                });
+                })
             }
     });
 }
@@ -84,15 +75,14 @@ send = event => {
     console.log(sendData);
 
     API.newMessage(sendData)
-        .then((response) => {
-            console.log('getting response');
-            console.log(response);
+        .then(() => {
+            console.log('response')
             this.checkData();
             
         });
     this.setState({
         newMessage: ''
-    });
+    })
 }
 
 
@@ -100,7 +90,6 @@ send = event => {
     return (
         <div className='container' style={{height: '100%'}}>
           <div className='container allMessages'>
-            <button onClick={this.props.clear}>Clear</button>
               { this.state.conversation.Messages
               ? this.state.conversation.Messages.map((item,index) => {
                   let activeUser=item.authorId === this.state.userid;
@@ -117,10 +106,9 @@ send = event => {
               : ''}
           </div>
               <NewMessage
-                  checkData={this.checkData.bind(this)}
-                  conversationId={this.state.conversationId}
-                  userid={this.state.userid}
-                  />
+                  handleChange={this.handleChange.bind(this)}
+                  newMessage={this.state.newMessage}
+                  send={this.send.bind(this)}/>
           
         </div>
       );

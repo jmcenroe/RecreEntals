@@ -244,6 +244,14 @@ router.post('/newreservation', (req,res) => {
 	db.Reservation.create(req.body)
 		.then(data => {
 			res.send('Success');
+		});
+});
+
+router.post('/newconversation', (req,res) => {
+	db.Conversation.create(req.body)
+		.then((data,moredata) => {
+			res.send(data)
+			
 		})
 })
 
