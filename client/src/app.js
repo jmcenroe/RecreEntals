@@ -23,6 +23,10 @@ import RentProduct from './pages/rentproduct';
 import Message1 from './pages/message1';
 import Message2 from './pages/message2';
 
+
+import Conversation from './pages/conversations';
+
+
 class App extends Component {
   render() {
     return (
@@ -43,6 +47,9 @@ class App extends Component {
               <div>
                 <map-container google={this.props.google} />
               </div>
+
+            <Route exact path='/conversation' component={Conversation}/>
+
           </Wrapper>
         </div>
       </Router>

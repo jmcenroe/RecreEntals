@@ -10,19 +10,19 @@ class Message2 extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.state=this.props.location.state;
 }
 
-state = {
-    conversation: {
-        Messages: []
-    },
-    conversationId: 1,
-    newMessage: '',
-    userid: 1,
-    clearInterval: null
-}
+
 
 componentWillMount() {
+    console.log(this.state);
+    API.checkAuth()
+        .then((data)=> {
+            this.setState({
+                userid: data.data.id
+            })
+        })
     this.checkData();
 
     //Set up db listener via setInterval
@@ -88,8 +88,8 @@ send = event => {
 
   render() {
     return (
-        <Container>
-          <div className='container'>
+        <div className='container' style={{height: '100%'}}>
+          <div className='container allMessages'>
               { this.state.conversation.Messages
               ? this.state.conversation.Messages.map((item,index) => {
                   let activeUser=item.authorId === this.state.userid;
@@ -110,7 +110,7 @@ send = event => {
                   newMessage={this.state.newMessage}
                   send={this.send.bind(this)}/>
           
-        </Container>
+        </div>
       );
   }
 }

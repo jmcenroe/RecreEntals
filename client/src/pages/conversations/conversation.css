@@ -1,0 +1,25 @@
+.convos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.convoAva {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    box-shadow: 0px 0px 5px;
+}
+
+.convoRow {
+    width: 80%;
+    border: solid thin teal;
+    border-radius: 10px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background: rgba(223, 223, 223, 0.8);
+    box-shadow: 0px 0px 5px black;
+}
+

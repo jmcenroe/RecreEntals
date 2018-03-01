@@ -109,6 +109,27 @@ function seedModel3(db) {
             imageURL:'https://www.rei.com/media/44cc290b-8e64-4501-b4b6-da10baf6d58c?size=1020x510',
             UserId: 1,
             CategoryId: 5
+        }).then( () => {
+            console.log('staring reservations');
+            Promise.all([
+                // db.Reservation.create({
+                //     startTime: '2018-02-28 10:00:00 GMT-0800',
+                //     endTime: '2018-02-28 12:00:00 GMT-0800',
+                //     ItemId: 1
+                // }),
+                db.Reservation.create({
+                    startTime: '2018-03-01 00:00:00 GMT-0800',
+                    endTime: '2018-03-01 23:59:59 GMT-0800',
+                    ItemId: 1,
+                    UserId: 3
+                }),
+                db.Reservation.create({
+                    startTime: '2018-03-06 00:00:00 GMT-0800',
+                    endTime: '2018-03-10 23:59:59 GMT-0800',  
+                    ItemId: 1,
+                    UserId: 3
+                })
+            ])
         }),
        
         db.Item.create({
@@ -119,6 +140,14 @@ function seedModel3(db) {
             imageURL: 'https://images-na.ssl-images-amazon.com/images/I/61jRhAr-aGL._SL1000_.jpg',
             UserId: 1,
             CategoryId: 1
+        }).then( () => {
+
+            db.Reservation.create({
+                startTime: '2018-03-01 00:00:00 GMT-0800',
+                endTime: '2018-03-01 23:59:59 GMT-0800',
+                ItemId: 2,
+                UserId: 2
+            })
         }),
         db.Item.create({
             itemName: 'Helmet',
@@ -178,24 +207,62 @@ function seedModel4(db) {
             UserId: 2,
             CategoryId: 2
         }).then( () => {
-            db.Conversation.create({
-                user1Id: 1,
-                user2Id: 2
-            }).then( () => {
-                Promise.all([
-                    db.Message.create({
-                        message: 'My first message',
-                        ConversationId:  1,
-                        authorId: 1
-                    }),
-                    db.Message.create({
-                        message: 'My first response',
-                        ConversationId: 1,
-                        authorId: 2
-                    })
+            Promise.all([
+                db.Conversation.create({
+                    user1Id: 1,
+                    user2Id: 2
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'My first message',
+                            ConversationId:  1,
+                            authorId: 1
+                        }),
+                        db.Message.create({
+                            message: 'My first response',
+                            ConversationId: 1,
+                            authorId: 2
+                        })
 
-                ])
-            })
+                    ])
+                }),
+                db.Conversation.create({
+                    user1Id: 1,
+                    user2Id: 3
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'My second message',
+                            ConversationId:  2,
+                            authorId: 1
+                        }),
+                        db.Message.create({
+                            message: 'My this other response',
+                            ConversationId: 2,
+                            authorId: 3
+                        })
+
+                    ])
+                }),
+                db.Conversation.create({
+                    user1Id: 2,
+                    user2Id: 3
+                }).then( () => {
+                    Promise.all([
+                        db.Message.create({
+                            message: 'Another new message',
+                            ConversationId:  3,
+                            authorId: 2
+                        }),
+                        db.Message.create({
+                            message: 'Another response',
+                            ConversationId: 3,
+                            authorId: 3
+                        })
+
+                    ])
+                })
+            ])
         })
     ])
 }

@@ -25,7 +25,6 @@ export default {
     return axios.get('/api/categories');
   },
   addItem: function(data) {
-    console.log('getting here');
     return axios.post('/api/additem',data);
   },
 
@@ -49,8 +48,17 @@ export default {
   newMessage: function(data) {
     return axios.post('/api/message', data)
   },
-  getConversation: function(id) {
-    return axios.get('/api/conversation/'+id);
+  getAllConversations: function(userid) {
+    return axios.get('/api/conversations/'+userid);
+  },
+  getConversation: function(conversationid) {
+    return axios.get('/api/conversation/'+conversationid);
+  },
+  getReservations: function(id) {
+    return axios.get('/api/reservations/'+id);
+  },
+  makeReservation: function(data) {
+    return axios.post('/api/newreservation',data);
   }
 
     
