@@ -48,8 +48,11 @@ export default {
   newMessage: function(data) {
     return axios.post('/api/message', data)
   },
-  getConversation: function(id) {
-    return axios.get('/api/conversation/'+id);
+  getAllConversations: function(userid) {
+    return axios.get('/api/conversations/'+userid);
+  },
+  getConversation: function(conversationid) {
+    return axios.get('/api/conversation/'+conversationid);
   },
   getReservations: function(id) {
     return axios.get('/api/reservations/'+id);

@@ -66,6 +66,7 @@ componentDidMount() {
                     
                 />
                 : ''}
+
                 {this.state.auth ? 
                 <Calendar 
                     productId={this.state.productId}
@@ -73,6 +74,7 @@ componentDidMount() {
                     />
                 : <h1>You have to be logged in to make a reservation for this product</h1>}
                 
+
                 
                
             </div>
