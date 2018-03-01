@@ -188,7 +188,7 @@ class Calendar extends React.Component {
   render() {
     const { selectedStartDay, startIsDisabled, selectedEndDay, endIsDisabled } = this.state;
     return (
-        <div>
+        <div id="calendarHolder">
             <div className='row'>
                 <div className='col-sm-6'>
                 <p>
@@ -243,10 +243,13 @@ class Calendar extends React.Component {
         <p>One Day Reservation</p>
         </div>
         <div className='row'>
-        <button
-            onClick={this.send.bind(this)}
-            disabled={this.disableSubmit()}
-            >Make Reservation</button>
+            <button
+                style={{"margin-bottom": "0.5em"}}
+                className="btn btn-mine btn-block"
+                onClick={this.send.bind(this)}
+                disabled={this.disableSubmit()}
+                >Make reservation
+            </button>
         </div>
     </div>
     );

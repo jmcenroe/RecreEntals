@@ -85,9 +85,9 @@ state= {
                         this.props.phone : 'Phone not provided'}</p>
               {this.props.edit ? '' :
               <div style={{'overflow':'auto'}}>
-                <button className="contact-button" onClick={this.newMessage.bind(this)}>Contact</button>
+                <button className="contact-button btn btn-block btn-tan" onClick={this.newMessage.bind(this)}>Contact</button>
                   {this.state.showMessage ?
-                  <div style={{'width': '300px','height':'200px','float':'right'}}>
+                  <div>
                     <NewMessage
                       userid={this.state.userid}
                       toId={this.props.id}

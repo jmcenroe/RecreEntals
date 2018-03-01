@@ -99,8 +99,7 @@ send = event => {
   render() {
     return (
         <div className='container' style={{height: '100%'}}>
-          <div className='container allMessages'>
-            <button onClick={this.props.clear}>Clear</button>
+          <div className='container allMessages' style={{"max-height": "200px", "overflow": "auto"}}>
               { this.state.conversation.Messages
               ? this.state.conversation.Messages.map((item,index) => {
                   let activeUser=item.authorId === this.state.userid;
@@ -115,6 +114,9 @@ send = event => {
                               />
               })
               : ''}
+            <hr style={{"margin-top": "0", "margin-bottom": "0.5em"}}/>
+            <button class="btn-mine" id="close" onClick={this.props.clear}>Close</button>
+
           </div>
               <NewMessage
                   checkData={this.checkData.bind(this)}

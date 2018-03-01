@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Container from "../../components/container";
 import API from '../../utils/API';
-import Message from '../../pages/message1'
+import Message from '../../pages/message1';
+import './conversation-panel.css';
 
 
 
@@ -67,7 +68,7 @@ class ConversationPanel extends Component {
               }
           })
   }
-  
+
   goToConversation = event => {
       this.setState({
           activeConversation: parseInt(event.target.getAttribute('data-id'))
@@ -82,12 +83,12 @@ class ConversationPanel extends Component {
   }
   
   displayConversations() {
-      // return <div>Here I am</div>;
+    //   return <div>Here I am</div>;
       return this.state.conversations.map((item, index) => {
           //Determine if user info is user1 or user2
           const isUser1 = item.user1.id === this.state.userid;
-          return <div key={index} data-id={item.id} onClick={this.goToConversation.bind(this)}>
-                  <img src={isUser1 ? item.user2.imageURL : item.user1.imageURL} data-id={item.id} alt='profile'/> 
+          return <div className="oneMessenger" key={index} data-id={item.id} onClick={this.goToConversation.bind(this)}>
+                  <img className="panelAva" src={isUser1 ? item.user2.imageURL : item.user1.imageURL} data-id={item.id} alt='profile'/> 
                   {isUser1 ? item.user2.displayName : item.user1.displayName}
                   </div>;
       });
@@ -103,19 +104,20 @@ class ConversationPanel extends Component {
     render() {
         console.log(this.state);
       return (
-          <div>
+          <div className = "container-fluid" id="convoPanel">
             {this.state.auth ? 
-               <div className='row'>
-                <div> 
+               <div>
+                    <div id="messengerNames"> 
+                        {this.state.conversations.length>0 ? this.displayConversations() : 'No conversations to display'} 
+                    </div>
+                <div id="messageNames"> 
                   {this.state.activeConversation ? 
                   <Message 
                     conversationId={this.state.activeConversation}
                     userid={this.state.userid}
                     clear={this.clear.bind(this)} /> : ''} 
                 </div>
-                <div> 
-                  {this.state.conversations.length>0 ? this.displayConversations() : 'No conversations to display'} 
-                </div>
+                
                 
                 </div>
                   : 'You must be signed in to use messenger'}

@@ -95,14 +95,14 @@ newMessage() {
                 : ''}
 
                 {this.state.auth ? 
-                <div>
+                <div className = "d-flex" id="reserve">
                     <Calendar 
                         productId={this.state.productId}
                         userId={this.state.userid}
                         />
-                   <button className="contact-button" onClick={this.newMessage.bind(this)}>Send Message</button>
+                   <button className="contact-button btn btn-block btn-tan" onClick={this.newMessage.bind(this)}>Send Message</button>
                         {this.state.showMessage ?
-                        <div style={{'width': '300px','height':'200px','float':'right'}}>
+                        <div>
                             <NewMessage
                             userid={this.state.userid}
                             toId={this.state.item.User.id}

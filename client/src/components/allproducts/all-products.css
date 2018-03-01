@@ -23,6 +23,8 @@
 .categoryIcon{
   height: 3em;
   margin-right: 1em;
+  border: solid 1px white;
+  border-radius: 50%;
 }
 
 .categoryRow {
