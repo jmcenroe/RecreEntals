@@ -8,17 +8,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Profile from './pages/profilepage';
 import Splash from './pages/splashpage';
 import Wrapper from "./components/wrapper";
-import Container from './components/container';
+// import Container from './components/container';
 import Navbar from "./components/navbar";
 import Search from './components/allproducts';
 import Home from './components/home';
 import './App.css';
-import logo from './assets/img/recre-entals-black.gif';
+// import logo from './assets/img/recre-entals-black.gif';
 import NewUserPage from './pages/newuserpage';
 import NewProductPage from './pages/newproductpage';
 import ProductSearch from './pages/productsearch';
 import { GoogleApiWrapper } from 'google-maps-react';
-import MapContainer from './MapContainer';
+// import MapContainer from './components/mapcontainer';
 import RentProduct from './pages/rentproduct';
 import Message1 from './pages/message1';
 import Message2 from './pages/message2';
@@ -37,10 +37,12 @@ class App extends Component {
             <Route exact path='/newuser' component={NewUserPage}/>
             <Route exact path='/newproduct' component={NewProductPage}/>
             <Route exact path='/productsearch' component={ProductSearch}/>
-            <MapContainer google={this.props.google} />
             <Route exact path='/rent' component={RentProduct}/>
             <Route exact path='/message' component={Message1}/>
             <Route exact path='/message2' component={Message2}/>
+              <div>
+                <map-container google={this.props.google} />
+              </div>
           </Wrapper>
         </div>
       </Router>
@@ -48,7 +50,7 @@ class App extends Component {
   }
 }
 
-// export default App;
-export default GoogleApiWrapper({
+export default App;
+GoogleApiWrapper({ // exporting the App component WITH the GoogleApiWrapper and passing it down with an object containing the API key
   apiKey: 'AIzaSyAfZ4yE01A7W4QrKMks8ceHl53caGRxze8',
-})(App)
+})//(App)

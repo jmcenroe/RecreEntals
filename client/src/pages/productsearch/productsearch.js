@@ -4,6 +4,7 @@ import logo from '../../assets/img/recre-entals-black.gif';
 import './product-search.css';
 import API from '../../utils/API';
 import ProductPanel from '../../components/productpanel';
+import mapcontainer from '../../components/mapcontainer';
 
 class ProductSearch extends Component{
 
@@ -34,26 +35,6 @@ handleChange = event => {
       })
   }
 
-componentDidUpdate() {
-this.loadMap(); 
-}
-
-loadMap() {
-if (this.props && this.props.google) { 
-    const {google} = this.props; 
-    const maps = google.maps; 
-
-    const mapRef = this.refs.map; 
-    const node = ReactDOM.findDOMNode(mapRef); 
-
-    const mapConfig = Object.assign({}, {
-    center: {lat: 32.7157, lng: -117.1611}, 
-    zoom: 13, 
-    scrollwheel: true,
-    })
-
-    this.map = new maps.Map(node, mapConfig); 
-}
 
     render(){
         return(
@@ -75,37 +56,31 @@ if (this.props && this.props.google) {
                     </form>
                 </div>
 
-            <div ref="map" style={style}>
-            loading map...
-            </div>
-        const style = { 
-            width: '30vw', // takes up 90% of the width screen. 
-            height: '25vh' // akes up roughly 75% of the height of the screen. 
-        }
-
-                {this.state.searchresults.length>0 
-                ? this.state.searchresults.map((item,index) =>{ 
-                    console.log(item.User);
-                return <ProductPanel 
-                {...this.props}
-                id={item.id}
-                index={item.index}
-                userid={item.userid}
-                itemName={item.itemName}
-                itemDescription={item.itemDescription}
-                hourly={item.hourly}
-                daily={item.daily}
-                weekly={item.weekly}
-                monthly={item.monthly}
-                imageURL={item.imageURL}
-                userId={item.User.id}
-                userName={item.User.displayName}
-                userImage={item.User.imageURL}
-                profileDisabled='false'
-                />
-                })
-                : 'No rentals were found. Try again.' }
-            </div>
+                        {this.state.searchresults.length>0 
+                        ? this.state.searchresults.map((item,index) =>{ 
+                            console.log(item.User);
+                        return <ProductPanel 
+                        {...this.props}
+                        id={item.id}
+                        index={item.index}
+                        userid={item.userid}
+                        itemName={item.itemName}
+                        itemDescription={item.itemDescription}
+                        hourly={item.hourly}
+                        daily={item.daily}
+                        weekly={item.weekly}
+                        monthly={item.monthly}
+                        imageURL={item.imageURL}
+                        userId={item.User.id}
+                        userName={item.User.displayName}
+                        userImage={item.User.imageURL}
+                        profileDisabled='false'
+                        
+                    />
+                        })
+                        : 'No rentals were found. Try again.' }
+                </div>
+            
         );
     }
 }
