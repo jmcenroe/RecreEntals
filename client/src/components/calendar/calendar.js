@@ -38,18 +38,18 @@ class Calendar extends React.Component {
       selectedEndDay,
       endIsDisabled: modifiers.disabled === true,
     }, () => {
-        console.log(this.state.selectedEndDay);
+       
     });
   }
 
   componentDidMount() {
         API.getReservations(this.state.productId)
             .then(data => {
-                console.log(data);
+               
                 this.setState({
                     productReservations: data.data
                 }, () => {
-                    console.log(this.state);
+                   
                 })
             })
     }
@@ -104,9 +104,9 @@ class Calendar extends React.Component {
       //Check to see if other date field has been selected
       if (this.state.selectedStartDay) {
           //Don't allow user to select days before start day
-          console.log(disabledArray);
+         
           disabledArray[0].before = this.state.selectedStartDay
-          console.log(disabledArray);
+         
 
         // Check reservations to see if any exist after start day to generate an after day
         for(let i=0; i<this.state.productReservations.length; i++) {
@@ -162,14 +162,14 @@ class Calendar extends React.Component {
          UserId: this.state.userId 
       }
       if (this.state.oneDay) {
-          console.log(requestData.startTime);
+          
           requestData.endTime=requestData.startTime;
-          console.log(requestData.endTime)
+          
       }
       else {
           requestData.endTime=this.state.selectedEndDay
       }
-      console.log(requestData);
+     
       API.makeReservation(requestData)
         .then(() => {
             alert('You have successfully completed your reservation');
@@ -180,7 +180,7 @@ class Calendar extends React.Component {
      this.setState({
          oneDay: !this.state.oneDay
      }, () => {
-         console.log(this.state.oneDay);
+        
      })
      
   }
