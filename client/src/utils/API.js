@@ -25,7 +25,6 @@ export default {
     return axios.get('/api/categories');
   },
   addItem: function(data) {
-    console.log('getting here');
     return axios.post('/api/additem',data);
   },
 
@@ -57,6 +56,9 @@ export default {
   },
   getReservations: function(id) {
     return axios.get('/api/reservations/'+id);
+  },
+  makeReservation: function(data) {
+    return axios.post('/api/newreservation',data);
   }
 
     

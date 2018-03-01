@@ -9,7 +9,6 @@ const axios=require('axios');
 
 
 router.get('/categoriescount', (req, res) => {
-	console.log('Route hit');
 	db.Item.findAndCountAll({
 		attributes: ['category'],
 		group: ['category'],
@@ -47,14 +46,12 @@ router.get('/items/:category', (req, res) => {
 });
 
 router.get('/items', (req, res) => {
-	console.log('Hitting general items')
 	db.Item.findAll({}).then((data) => {
 		res.json(data);
 	})
 });
 
 router.post('/additem', (req, res) => {
-	console.log('Hitting api');
 	db.Item.create(req.body, (err, response) => {
 		if (!err) {
 			res.send('Success');
@@ -68,7 +65,6 @@ router.post('/additem', (req, res) => {
 });
 
 router.get('/item/:search', (req, res) => {
-	console.log('hitting search');
 	db.Item.findAll({
 		where: {
 			itemName: {
@@ -97,7 +93,6 @@ router.get('/item/user/:userid', (req, res) => {
 });
 
 router.get('/singleitem/:itemid', (req, res) => {
-	console.log('Hitting it');
 	db.Item.findOne({
 		where: {
 			id: req.params.itemid
@@ -151,7 +146,6 @@ router.delete('/item/:itemid', (req, res) => {
 router.post('/sendmail', (req,res) => {
 	let transporter = nodemailer.createTransport(config.email);
 
-	console.log(req.body);
 	let mailOptions = {
 		from: 'recre.entals@gmail.com',
 		to: req.body.toEmail,
@@ -175,8 +169,6 @@ router.post('/sendmail', (req,res) => {
 });
 
 router.post('/message/', (req, res) => {
-
-	console.log(req.body);
 	db.Message.create(req.body)
 	.then((error, response) => {
 		if(error) {
@@ -217,7 +209,6 @@ router.get('/conversation/:conversationid', (req, res) => {
 })
 
 router.get('/reservations/:productid', (req,res) => {
-	console.log('getting here');
 	db.Reservation.findAll({
 		where: {
 			ItemId: req.params.productid
@@ -226,5 +217,34 @@ router.get('/reservations/:productid', (req,res) => {
 		res.json(data);
 	})
 });
+
+router.get('/conversations/:userid', (req,res) => {
+	db.Conversation.findAll({
+		where: {
+			$or: {
+				user1Id: req.params.userid,
+				user2Id: req.params.userid
+			}
+		},
+		include: [{
+			model: db.User,
+			as: 'user1',
+			attributes: ['id','displayName','imageURL']
+		},
+		{	model: db.User,
+			as: 'user2',
+			attributes: ['id','displayName','imageURL']
+		}]
+	}).then( data => {
+		res.json(data);
+	})
+});
+
+router.post('/newreservation', (req,res) => {
+	db.Reservation.create(req.body)
+		.then(data => {
+			res.send('Success');
+		})
+})
 
 module.exports = router;
