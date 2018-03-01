@@ -107,15 +107,16 @@ class ConversationPanel extends Component {
             {this.state.auth ? 
                <div className='row'>
                 <div> 
-                  {this.state.conversations.length>0 ? this.displayConversations() : 'No conversations to display'} 
-                </div>
-                <div> 
                   {this.state.activeConversation ? 
                   <Message 
                     conversationId={this.state.activeConversation}
                     userid={this.state.userid}
                     clear={this.clear.bind(this)} /> : ''} 
                 </div>
+                <div> 
+                  {this.state.conversations.length>0 ? this.displayConversations() : 'No conversations to display'} 
+                </div>
+                
                 </div>
                   : 'You must be signed in to use messenger'}
           

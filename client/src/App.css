@@ -50,6 +50,12 @@ body {
   text-align: center;
 }
 
+.conversation {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+}
+
 /* Beginning of writing animation for the day/night transition
 
 @-webkit-keyframes bgTrans {

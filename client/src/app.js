@@ -20,8 +20,6 @@ import ProductSearch from './pages/productsearch';
 import RentProduct from './pages/rentproduct';
 import Message1 from './pages/message1';
 import Message2 from './pages/message2';
-
-
 import ConversationPanel from './components/conversationpanel';
 
 
@@ -42,10 +40,11 @@ class App extends Component {
             <Route exact path='/rent' component={RentProduct}/>
             <Route exact path='/message' component={Message1}/>
             <Route exact path='/message2' component={Message2}/>
-
             <Route exact path='/conversation' component={ConversationPanel}/>
-
           </Wrapper>
+          <div className='conversation'>
+            <ConversationPanel/>
+          </div>
         </div>
       </Router>
     );
