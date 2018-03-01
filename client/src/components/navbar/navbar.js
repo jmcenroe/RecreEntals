@@ -75,12 +75,12 @@ componentDidMount() {
                 <div> Welcome, 
                     <Link to='/profile'>{this.state.userName}</Link>
                     <form action='/auth/logout' method='post'>
-                      <button type='submit'>Log Out</button>
+                      <button type='submit' className="btn btn-mine" style={{padding: "0"}}>Log Out</button>
                     </form> 
                 </div>
                 
                 : <div>
-                    You are not logged in. <Link to="/">Log In</Link>
+                    You are not logged in. <Link to="/"><button type="submit" className="btn btn-mine" style={{padding: "0"}}>Log In</button></Link>
                   </div>}
             </li>
             <li
